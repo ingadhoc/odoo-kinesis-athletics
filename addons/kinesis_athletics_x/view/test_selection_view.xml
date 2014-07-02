@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    Kinesis Athletics
+#    Copyright (C) 2014 Ingenieria Adhoc
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- kinesis_athletics.test_selection -->
+<!-- kinesis_athletics.test_selection -->
+<!-- kinesis_athletics.test_selection -->
+<openerp>
+    <data>
+
+        <!-- FORMVIEW -->
+        <record id="view_kinesis_athletics_test_selection_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.test_selection.form</field>
+            <field name="model">kinesis_athletics.test_selection</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_test_selection_form"/>
+            <field name="arch" type="xml">
+                    <sheet position="replace">
+                    <sheet>
+                        <field name="image" widget="image" class="oe_left oe_avatar" options="{'size': [90, 90]}"/>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                        </div>
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="Name"/>
+                            </h1>
+                        </div>
+                    </sheet>
+                    </sheet>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

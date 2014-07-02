@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_report_kinesis_athletics_evaluation_detail_graph" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation_detail.report.graph</field>
+            <field name="model">kinesis_athletics.evaluation_detail.report</field>
+            <field name="arch" type="xml">
+                <graph string="Evaluation Details" type="pivot" stacked="True">
+                    <field name="partner_id" type="col"/>
+                    <field name="test_id" type="row"/>
+                    <field name="result" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_report_kinesis_athletics_evaluation_detail_graph_two" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation_detail.report.graph.two</field>
+            <field name="model">kinesis_athletics.evaluation_detail.report</field>
+            <field name="arch" type="xml">
+                <graph string="Test" type="pivot" stacked="True">
+                    <field name="test_id" type="row"/>
+                    <field name="partner_id" type="col"/>
+                    <field name="val_min" type="measure"/>
+                    <field name="val_max" type="measure"/>
+                    <field name="result" type="measure"/>
+
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_report_kinesis_athletics_evaluation_detail_graph_three" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation_detail.report.graph.three</field>
+            <field name="model">kinesis_athletics.evaluation_detail.report</field>
+            <field name="arch" type="xml">
+                <graph string="Test" type="pivot" stacked="True">
+                    <field name="partner_id" type="row"/>
+                    <field name="test_id" type="row"/>
+                    <field name="date" type="col"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_report_kinesis_athletics_evaluation_detail_graph_four" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation_detail.report.graph.three</field>
+            <field name="model">kinesis_athletics.evaluation_detail.report</field>
+            <field name="arch" type="xml">
+                <graph string="Test" type="pivot" stacked="True">
+                    <field name="test_id" type="row"/>
+                    <field name="group_id" type="col"/>
+                    <field name="result" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_report_kinesis_athletics_evaluation_detail_filter" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation_detail.report.select</field>
+            <field name="model">kinesis_athletics.evaluation_detail.report</field>
+            <field name="arch" type="xml">
+                <search string="Evaluation Details">
+                    <field name="test_id"/>
+                    <field name="partner_id"/>
+                    <field name="company_id"/>
+                    <field name="group_id"/>
+                    <group expand="1" string="Group By...">
+                        <filter string="User" icon="terp-personal" domain="[]" context="{'group_by':'user_id'}" />
+                        <filter string="Person" icon="terp-partner" context="{'group_by':'partner_id'}"/>
+                        <filter string="Test" icon="terp-check" context="{'group_by':'test_id'}" />
+                        <filter string="Company" icon="terp-partner" context="{'group_by':'company_id'}"/>
+                        <filter string="Group" icon="terp-check" context="{'group_by':'group_id'}" />
+                        <filter string="Evaluation date (day)" icon="terp-go-year"
+                            domain="[]" context="{'group_by':'date:day'}"/>
+                        <filter string="Evaluation date (week)" icon="terp-go-year"
+                            domain="[]" context="{'group_by':'date:week'}"/>
+                        <filter string="Evaluation date (month)" icon="terp-go-year"
+                            domain="[]" context="{'group_by':'date:month'}" name="month"/>
+                        <filter string="Evaluation date (year)" icon="terp-go-year"
+                            domain="[]" context="{'group_by':'date:year'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="action_report_kinesis_athletics_evaluation_details" model="ir.actions.act_window">
+           <field name="name">Evaluation Details</field>
+           <field name="res_model">kinesis_athletics.evaluation_detail.report</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">graph</field>
+       </record>
+
+       <record model="ir.actions.act_window.view" id="action_report_kinesis_athletics_evaluation_details_graph">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_report_kinesis_athletics_evaluation_detail_graph"/>
+            <field name="act_window_id" ref="action_report_kinesis_athletics_evaluation_details"/>
+       </record>
+
+
+       <record id="action_report_kinesis_athletics_evaluation_details_two" model="ir.actions.act_window">
+           <field name="name">Evaluation Details</field>
+           <field name="res_model">kinesis_athletics.evaluation_detail.report</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">graph</field>
+       </record>
+
+       <record model="ir.actions.act_window.view" id="action_report_kinesis_athletics_evaluation_details_graph_two">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_report_kinesis_athletics_evaluation_detail_graph_two"/>
+            <field name="act_window_id" ref="action_report_kinesis_athletics_evaluation_details_two"/>
+       </record>
+
+       <record id="action_report_kinesis_athletics_evaluation_details_three" model="ir.actions.act_window">
+           <field name="name">Evaluation Details</field>
+           <field name="res_model">kinesis_athletics.evaluation_detail.report</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">graph</field>
+       </record>
+
+       <record model="ir.actions.act_window.view" id="action_report_kinesis_athletics_evaluation_details_graph_two">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_report_kinesis_athletics_evaluation_detail_graph_three"/>
+            <field name="act_window_id" ref="action_report_kinesis_athletics_evaluation_details_three"/>
+       </record>
+
+
+         <record id="action_report_kinesis_athletics_evaluation_details_four" model="ir.actions.act_window">
+           <field name="name">Evaluation Details</field>
+           <field name="res_model">kinesis_athletics.evaluation_detail.report</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">graph</field>
+       </record>
+
+       <record model="ir.actions.act_window.view" id="action_report_kinesis_athletics_evaluation_details_graph_two">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_report_kinesis_athletics_evaluation_detail_graph_four"/>
+            <field name="act_window_id" ref="action_report_kinesis_athletics_evaluation_details_four"/>
+       </record>
+
+
+
+        <menuitem
+            name="Kinesis"
+            id="menu_report"
+            sequence="50"
+            parent="base.menu_reporting"
+            groups="kinesis_athletics.group_user"
+            />
+
+        <menuitem
+            name="Test by Partner "
+            id="menu_report_evaluation"
+            sequence="50"
+            action="action_report_kinesis_athletics_evaluation_details"
+            parent="menu_report"
+            />
+
+        <menuitem
+            name="Test by Result"
+            id="menu_report_test"
+            sequence="60"
+            action="action_report_kinesis_athletics_evaluation_details_two"
+            parent="menu_report"
+            />
+
+        <menuitem
+            name="Test by Date"
+            id="menu_report_date"
+            sequence="70"
+            action="action_report_kinesis_athletics_evaluation_details_three"
+            parent="menu_report"
+            />
+
+        <menuitem
+            name="Test by Group"
+            id="menu_report_group"
+            sequence="80"
+            action="action_report_kinesis_athletics_evaluation_details_four"
+            parent="menu_report"
+            />
+
+            
+<!-- Partner Graphs -->
+
+        <record id="action_report_kinesis_partner_graphs" model="ir.actions.act_window">
+            <field name="name">Partner Graphs</field>
+            <field name="res_model">kinesis_athletics.evaluation_detail.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban</field>
+        </record>
+        
+        <menuitem
+            id="menu_partner_graphs"
+            sequence="40"
+            action="action_report_kinesis_partner_graphs"
+            parent="menu_report"
+            />
+
+        <record model="ir.ui.view" id="view_report_kinesis_partner_graphs_kanban">
+            <field name="name">kinesis_athletics.evaluation_detail.report.kanban</field>
+            <field name="model">kinesis_athletics.evaluation_detail.report</field>
+            <field name="arch" type="xml">
+                <kanban>
+                <!-- <kanban default_group_by='state'> -->
+                    <field name='color'/>
+                    <field name='evaluation_id'/>
+                    <field name='test_id'/>
+                    <field name='company_id'/>
+                    <field name='group_id'/>
+                    <field name='result'/>
+                    <field name='result_max'/>
+                    <field name='partner_id'/>
+                    <field name='date'/>
+                    <field name='user_id'/>
+                    <field name='val_min'/>
+                    <field name='val_max'/>
+                    <field name='uom_id'/>
+                    <!-- <field name='total'/> -->
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                            <!-- <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click oe_kanban_mass_mailing"> -->
+                                <div class="oe_dropdown_toggle oe_dropdown_kanban">
+                                    <span class="oe_e">i</span>
+                                    <ul class="oe_dropdown_menu">
+                                    </ul>
+                                </div>
+                                 <div class="oe_kanban_content">
+                                    <div>
+                                        <h3><field name="partner_id"/></h3>
+                                        <h4 style="display: inline;"><field name="test_id"/></h4>
+                                    </div>
+                                    <div>
+                                        <div style="display: inline-block">
+                                            <field name="result" widget="gauge" style="width:120px; height: 90px;"
+                                                options="{'max_field': 'val_max','min_field': 'val_min'}"/>
+                                        </div>
+<!--                                         <div style="display: inline-block; vertical-align: top;">
+                                            <strong>Opened</strong> <field name="opened_ratio"/> %<br />
+                                            <strong>Replied</strong> <field name="replied_ratio"/> %
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="oe_clear"></div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+    </data>
+</openerp>

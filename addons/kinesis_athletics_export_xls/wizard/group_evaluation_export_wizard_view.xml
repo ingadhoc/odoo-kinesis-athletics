@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="group_evaluation_export_wizard_form" model="ir.ui.view">
+            <field name="name">Group Evaluation Export Wizard</field>
+            <field name="model">kinesis_athletics.group_evaluation_export_wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Group Evaluation Export" version="7.0">
+                    <group>
+                        <field name="template_id"/>
+                    </group>
+                    <footer>
+                        <button name="generate_report" string="Print" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="group_evaluation_export_wizard_action" model="ir.actions.act_window">
+            <field name="name">Group Evaluation Export Wizard Action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kinesis_athletics.group_evaluation_export_wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,8 @@
+id,active,category_id/id,factor_inv,factor,rounding,uom_type,name
+product_uom_1,True,product_uom_categ_1,1.0,1.0,0.01,reference,%
+product_uom_2,True,product_uom_categ_2,1.0,1.0,0.01,reference,dB
+product_uom_3,True,product_uom_categ_1,1.0,1.0,0.01,reference,fc
+product_uom_4,True,product.uom_categ_length,1000.0,1,0.01,bigger,km
+product_uom_5,True,product.uom_categ_length,1.0,1.0,0.01,reference,m
+product_uom_6,True,product_uom_categ_1,1.0,1.0,0.01,reference,mmHg
+product_uom_7,True,product.product_uom_categ_kgm,1000.0,1,0.01,bigger,t

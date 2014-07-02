@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+kinesis_athletics.access_kinesis_athletics_test_portal,kinesis_athletics.test.portal,kinesis_athletics.model_kinesis_athletics_test,base.group_portal,1,0,0,0
+kinesis_athletics.access_kinesis_athletics_evaluation_portal,kinesis_athletics.evaluation.portal,kinesis_athletics.model_kinesis_athletics_evaluation,base.group_portal,1,0,0,0

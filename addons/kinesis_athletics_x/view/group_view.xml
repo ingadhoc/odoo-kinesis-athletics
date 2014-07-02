@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    kinesis_athletics
+#    Copyright (C) 2014 Sistemas Adhoc
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- kinesis_athletics.group -->
+<!-- kinesis_athletics.group -->
+<!-- kinesis_athletics.group -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_kinesis_athletics_group_filter" model="ir.ui.view">
+            <field name="name">kinesis_athletics.group.select</field>
+            <field name="model">kinesis_athletics.group</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_group_filter"/>
+            <field name="arch" type="xml">
+                <group string="By Attribute">
+                    <filter name="actual_year" string="Actual Year" context="{'hide_year':True}" domain="[('year','=',context_today().year)]"/>
+                    </group>
+                    <group string="By object" position="replace">
+                     <group expand="1" string="Group By...">
+                        <filter string="Year" icon="terp-personal" domain="[]" context="{'group_by':'year'}" />
+                        <filter string="Company" icon="terp-personal" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+
+                </group>
+                </group>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_kinesis_athletics_group_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.group.form</field>
+            <field name="model">kinesis_athletics.group</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_group_form"/>
+            <field name="arch" type="xml">
+
+                <sheet position="replace">
+                    <sheet>
+                         <div class="oe_right oe_button_box" name="buttons">
+                            <button class="oe_inline" type="action" string="Evaluations"
+                                    name="%(kinesis_athletics.action_kinesis_athletics_evaluation_evaluations)d"
+                                    context="{'search_default_group_id': active_id,'search_default_group_by_date': 1}"/>
+                        </div>
+                        <group>
+                            <field name="company_id" widget="selection" groups="base.group_multi_company"  on_change="onchange_is_school(company_id)" domain="[('has_group','=',True)]"/>
+                            <field name="year"/>
+                            <field name="name"/>
+                            <field name="new_year_group_id" />
+                            <field name="group_level_id" attrs="{'invisible':[('is_school','!=',True)],'required':[('is_school','=',True)]}"/>
+                            <field name="is_school" invisible="1"/>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Persons" autofocus="autofocus">
+                                <field name="partner_ids" domain="[('company_id','=',company_id)]"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </sheet>
+                <header position="inside">
+                    <button name="%(import_evaluation_wizard_action)d" class="oe_highlight" type="action" string="Import Evaluation"/>
+                    <button name="%(wizard_evaluation_action)d" type="action" string="Create Evaluations"/>
+                    <button name="%(wizard_move_year_action)d" type="action" string="Escalate to New Group"/>
+                </header>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+        <record id="view_kinesis_athletics_group_tree" model="ir.ui.view">
+            <field name="name">kinesis_athletics.group.tree</field>
+            <field name="model">kinesis_athletics.group</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_group_tree"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="attributes">
+                    <attribute name="invisible">'show_institutions' not in context</attribute>
+                    <attribute name="groups">base.group_multi_company</attribute>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

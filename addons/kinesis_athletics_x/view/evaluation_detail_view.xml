@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    kinesis_athletics
+#    Copyright (C) 2014 Sistemas Adhoc
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- kinesis_athletics.evaluation_detail -->
+<!-- kinesis_athletics.evaluation_detail -->
+<!-- kinesis_athletics.evaluation_detail -->
+<openerp>
+    <data>
+
+         <!-- SEARCH VIEW -->
+        <record id="kinesis_athletics.view_kinesis_athletics_evaluation_detail_filter" model="ir.ui.view">
+        <!-- <record id="view_kinesis_athletics_evaluation_detail_filter" model="ir.ui.view"> -->
+            <field name="name">kinesis_athletics.evaluation_detail.select</field>
+            <field name="model">kinesis_athletics.evaluation_detail</field>
+            <field name="inherit_id" ref=""/>
+            <!-- <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_evaluation_detail_filter"/> -->
+            <field name="arch" type="xml">
+                <search string="evaluation_detail" version="7.0">
+                    <group string="By Attribute">
+                        <field name="partner_id" string="Partner"/>
+                        <field name="evaluation_id" string="Evaluation"/>
+                        <field name="test_id" string="Test"/>
+                        <field name="first_parent_id" string="Test Class"/>
+                    </group>
+                    <group expand="1" string="Group By...">
+                        <filter string="Test" icon="terp-personal" domain="[]" context="{'group_by':'test_id'}" />
+                        <filter string="Person" icon="terp-partner" context="{'group_by':'partner_id'}"/>
+                        <filter string="Evaluation" icon="terp-partner" context="{'group_by':'evaluation_id'}"/>
+                        <filter string="Test Class" icon="terp-partner" context="{'group_by':'first_parent_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+        <record model="ir.ui.view" id="view_kinesis_athletics_evaluation_detail_kanban">
+            <field name="name">kinesis_athletics.evaluation_detail.kanban</field>
+            <field name="model">kinesis_athletics.evaluation_detail</field>
+            <field name="secuence">10</field>
+            <field name="arch" type="xml">
+
+                <kanban>
+                <!-- <kanban default_group_by="first_parent_id"> -->
+                    <field name='color'/>
+                    <field name='evaluation_id'/>
+                    <field name='test_id'/>
+                    <field name='test_description'/>
+                    <field name='result'/>
+                    <field name='test_selection_id'/>
+                    <field name='partner_id'/>
+                    <!-- <field name='ref_min'/> -->
+                    <!-- <field name='ref_max'/> -->
+                    <!-- <field name='group_min'/> -->
+                    <!-- <field name='group_max'/> -->
+                    <!-- <field name='level_min'/> -->
+                    <!-- <field name='level_max'/> -->
+                    <!-- <field name='age_min'/> -->
+                    <!-- <field name='age_avg'/>
+                    <field name='test_type'/>
+                    <field name='first_parent_id'/>
+                    <field name='plotband_ext_min'/>
+                    <field name='plotband_val_min'/>
+                    <field name='plotband_val_max'/>
+                    <field name='plotband_ext_max'/>
+                    <field name='rating_below_minimum'/>
+                    <field name='rating_over_maximum'/> -->
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card">
+                                 <div class="oe_kanban_content" style="width:160px;">
+                                    <div>
+                                        <h4 style="display: inline;"><field name="test_id"/><img src="/web/static/src/img/icons/terp-stock_align_left_24.png" t-if="record.test_description.raw_value" t-att-title="record.test_description.raw_value" style="margin-left:5px;"/></h4>
+                                    </div>
+                                    <div t-if="record.test_type.raw_value == 'value'">
+                                        <div t-if="record.group_min.raw_value and record.group_max.raw_value">
+                                            <field name="result" widget="gauge" style="width:160px; height: 130px" options="{'max_field': 'group_max','min_field': 'group_min'}">Group</field>
+                                        </div>
+        <!-- simulamos le nuevo compartamiento donde solo vamos a mostrar una -->
+<!--                                         <div t-if="record.ref_min.raw_value and record.ref_max.raw_value">
+                                            <field name="result" widget="gauge" style="width:160px; height: 130px"
+                                                options="{'max_field': 'ref_max','min_field': 'ref_min'}">Reference</field>
+                                        </div>
+                                        <div t-if="record.level_max.raw_value and record.level_min.raw_value">
+                                            <field name="result" widget="gauge" style="width:160px; height: 130px"
+                                                options="{'max_field': 'level_max','min_field': 'level_min'}">Level</field>
+                                        </div>
+                                        <div t-if="record.age_max.raw_value and record.age_min.raw_value">
+                                            <field name="result" widget="gauge" style="width:160px; height: 130px"
+                                                options="{'max_field': 'age_max','min_field': 'age_min'}">Age</field>
+                                        </div> -->
+                                    </div>
+                                    <div t-if="record.test_type.raw_value == 'selection'">
+                                          <img t-att-src="kanban_image('kinesis_athletics.test_selection', 'image', record.test_selection_id.raw_value)" class="oe_kanban_avatar" t-if="record.test_selection_id.value" style="margin:5px;width:93%"/>
+                                          <h4 style="text-align: center;text-transform: uppercase;"><field name="test_selection_id"/></h4>
+                                    </div>
+                                </div>
+                                <div class="oe_clear"></div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+<!-- TREEVIEW -->
+
+
+             <record id="view_kinesis_athletics_evaluation_detail_tree" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation_detail.tree</field>
+            <field name="model">kinesis_athletics.evaluation_detail</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_evaluation_detail_tree"/>
+            <field name="secuence">20</field>
+            <field name="arch" type="xml">
+                <tree string="evaluation_detail" position="replace">
+                    <tree string="evaluation_detail" editable="top" colors="black:result==0.0;black:state==False,blue:state=='superior';red:state=='alert';green:state=='ideal'">
+                    <!-- <button type="action" string="Test Detail"  icon="terp-stock_align_left_24" help="Test Details"
+                            name="%(action_kinesis_athletics_test_details)d" context="{'readonly':True}"
+                            /> -->
+                        <button type="object" string="Test Detail" icon="STOCK_JUSTIFY_LEFT" help="Test Details" name="get_test_description" context="{'readonly':True}"/>
+                        <!-- <button type="object" string="Test Detail" icon="terp-stock_align_left_24" help="Test Details" name="get_test_description" context="{'readonly':True, 'id': active_id}"/> -->
+                        <field name="test_id" on_change="onchange_test_id(test_id)"/>
+                        <!-- <field name="evaluation_id" invisible="1"/> -->
+                        <field name="result" attrs="{'readonly':[('test_type','!=','value')]}"/>
+                        <!-- <field name="uom_id"/> -->
+                        <field name="test_type" invisible="1"/>
+                        <!-- <field name="test_selection_id" domain="[('test_ids','in', test_id)]" attrs="{'readonly':[('test_type','!=','selection')]}"/> -->
+                        <field name="test_selection_id" domain="[('test_id','=', test_id)]" attrs="{'readonly':[('test_type','!=','selection')]}"/>
+                        <!-- <field name="ref_min" invisible="1" groups="base.group_no_one"/>
+                        <field name="ref_max" invisible="1" groups="base.group_no_one"/>
+                        <field name="group_min" invisible="1" groups="base.group_no_one"/>
+                        <field name="group_max" invisible="1" groups="base.group_no_one"/>
+                        <field name="level_min" invisible="1" groups="base.group_no_one"/>
+                        <field name="level_max" invisible="1" groups="base.group_no_one"/>
+                        <field name="age_min" invisible="1" groups="base.group_no_one"/>
+                        <field name="age_max" invisible="1" groups="base.group_no_one"/> -->
+                        <!-- <field name="age_avg"/> -->
+                        <field name="state" invisible="1"/>
+                        <!-- <field name='plotband_ext_min'/>
+                        <field name='plotband_val_min'/>
+                        <field name='plotband_val_max'/>
+                        <field name='plotband_ext_max'/>
+                        <field name='rating_below_minimum'/>
+                        <field name='rating_over_maximum'/> -->
+                    </tree>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_kinesis_athletics_evaluation_detail" model="ir.actions.act_window">
+            <field name="name">Graph Details</field>
+            <field name="res_model">kinesis_athletics.evaluation_detail</field>
+            <field name="view_mode">kanban,tree</field>
+            <field name="view_id" ref="view_kinesis_athletics_evaluation_detail_kanban"/>
+        </record>
+
+
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4 -->

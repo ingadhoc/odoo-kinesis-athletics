@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    Kinesis Athletics
+#    Copyright (C) 2014 Sistemas Adhoc
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- kinesis_athletics.company -->
+<!-- res.company -->
+<!-- res.company -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="kinesis_athletics.view_kinesis_athletics_company_filter" model="ir.ui.view">
+            <field name="name">kinesis_athletics.company.select</field>
+            <field name="model">res.company</field>
+            <field name="arch" type="xml">
+                <search string="Company" version="7.0">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_kinesis_athletics_company_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <group>
+
+                    <field name="company_type_id"/>
+                    <field name="has_group"/>
+                    <field name="active"/>
+
+            </group>
+
+            <page string="Configuration" position="after">
+              <page string="Courses/Areas" autofocus="autofocus" attrs="{'invisible':[('has_group','!=',True)]}">
+
+              <field name="groups_ids" />
+            </page>
+        </page>
+
+        </field>
+        </record>
+
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

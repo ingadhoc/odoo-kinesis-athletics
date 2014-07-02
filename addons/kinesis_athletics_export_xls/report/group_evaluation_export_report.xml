@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+<!-- ODS Catalog -->
+    <record id="kinesis_athletics_export_xls" model="ir.actions.report.xml">
+        <field name="name">kinesis_athletics_export_xls</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">kinesis_athletics.group</field>
+        <field name="report_name">kinesis_athletics_export_xls</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-ods</field>
+        <!-- <field name="out_format" ref="report_aeroo_ooo.report_mimetypes_pdf_odt"/> -->
+        <field name="report_rml">kinesis_athletics_export_xls/report/group_evaluation_export.ods</field>
+        <field name="parser_loc">kinesis_athletics_export_xls/report/group_evaluation_export_parser.py</field>
+        <field name="parser_state">loc</field>
+        <!-- <field name="parser_state">default</field> -->
+        <field name="tml_source">file</field>
+    </record>
+
+</data>
+</openerp>

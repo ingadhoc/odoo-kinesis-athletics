@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">
+    <!-- Multi - Company Rules -->
+
+    <record model="ir.rule" id="kinesis_group_comp_rule">
+        <field name="name">Kinesis Group multi-company</field>
+        <field name="model_id" ref="kinesis_athletics.model_kinesis_athletics_group"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+    <record model="ir.rule" id="kinesis_evaluation_template_comp_rule">
+        <field name="name">Kinesis Evaluation Template Read Only multi-company</field>
+        <field name="model_id" ref="kinesis_athletics.model_kinesis_athletics_evaluation"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|','|',('company_id.child_ids','child_of',[user.company_id.id]),('company_id','child_of',[user.company_id.id]),('company_id','=',False)]</field>
+        <!-- <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field> -->
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>             
+        <field name="perm_write" eval="False"/>             
+    </record>
+
+    <record model="ir.rule" id="kinesis_evaluation_comp_rule">
+        <field name="name">Kinesis Evaluation multi-company</field>
+        <field name="model_id" ref="kinesis_athletics.model_kinesis_athletics_evaluation"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',user.company_id.id)]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>             
+        <field name="perm_write" eval="True"/>                   
+    </record>
+    
+</data>
+</openerp>

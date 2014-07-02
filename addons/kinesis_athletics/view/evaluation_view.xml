@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    Kinesis Athletics
+#    Copyright (C) 2014 Ingenieria Adhoc
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- kinesis_athletics.evaluation -->
+<!-- kinesis_athletics.evaluation -->
+<!-- kinesis_athletics.evaluation -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_kinesis_athletics_evaluation_filter" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation.select</field>
+            <field name="model">kinesis_athletics.evaluation</field>
+            <field name="arch" type="xml">
+                <search string="evaluation" version="7.0">
+                    <group string="By Attribute">
+                    <field name="date" string="Date"
+                            />
+                    <field name="group_id" string="Group"
+                            />
+                    <field name="user_id" string="User"
+                            />
+                    </group>
+                    <group string="By object">
+                    <field name="partner_id" string="Person"
+                            />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_kinesis_athletics_evaluation_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation.form</field>
+            <field name="model">kinesis_athletics.evaluation</field>
+            <field name="arch" type="xml">
+                <form string="evaluation" version="7.0">
+                    <header>
+                    </header>
+                    <sheet string="evaluation">
+                     <group>
+                        <field name="date"
+                            />
+                        <field name="note"
+                            />
+                        <field name="group_id"
+                            />
+                        <field name="user_id"
+                            />
+                    <field name="evaluation_detail_ids"
+                            />
+                    <field name="partner_id"
+                            />
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+
+        <record id="view_kinesis_athletics_evaluation_tree" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation.tree</field>
+            <field name="model">kinesis_athletics.evaluation</field>
+            <field name="arch" type="xml">
+                <tree string="evaluation"
+                    >
+                    <field name="date"
+                            invisible="'default_is_template' in context"
+                        />
+                    <field name="group_id"
+                            invisible="'default_is_template' in context"
+                        />
+                    <field name="partner_id"
+                        />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    kinesis_athletics
+#    Copyright (C) 2014 Sistemas Adhoc
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- kinesis_athletics.partner -->
+<!-- res.partner -->
+<!-- res.partner -->
+<openerp>
+    <data>
+
+        <!-- INHERITED SEARCH -->
+        <record id="view_kinesis_athletics_partner_filter" model="ir.ui.view">
+            <field name="name">kinesis_athletics.partner.select</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_partner_filter"/>
+            <field name="arch" type="xml">
+                    <group string="Group By..." position="replace">
+                    <group expand="1" string="Group By...">
+                    <filter string="Company" icon="terp-personal" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                        <filter string="Group" icon="terp-personal" domain="[]" context="{'group_by':'actual_group'}" groups="base.group_multi_company"/>
+                  </group>
+                  </group>
+            </field>
+        </record>
+
+        <!-- INHERITED FORM -->
+        <record id="view_kinesis_athletics_partner_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="kinesis_athletics_x.view_kinesis_athletics_partner_form"/>
+            <field eval="90" name="priority"/>
+            <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='partner_group_ids']" position="after">
+                <field name="supplier" invisible="1"/>
+                <field name="customer" invisible="1"/>
+            </xpath>
+
+              <xpath expr="//page[@name='sales_purchases']" position="replace">
+              </xpath>
+
+              <page string="Personal Information" position="replace">
+              </page>
+
+
+                <group position="replace">
+                  <group>
+                    <group>
+                      <field name="active"/>
+                      <field name="birthdate" required="1"/>
+                      <field name="sex" required="1"/>
+                    </group>
+                    <group>
+                      <field name="phone"/>
+                      <field name="mobile"/>
+                      <field name="email"/>
+                      <field name="street" invisible="1"/>
+                      <field name="street2" invisible="1"/>
+                      <field name="city" invisible="1"/>
+                      <field name="zip" invisible="1"/>
+                      <field name="state_id" invisible="1"/>
+                      <field name="country_id" invisible="1"/>
+                    </group>
+                  </group>
+                </group>
+            </field>
+        </record>
+
+    </data>
+</openerp>
