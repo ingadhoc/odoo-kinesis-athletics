@@ -4,7 +4,7 @@
 
         
 
-        <menuitem name="Kinesis" id="portal_kinesis_athletics" parent="portal.portal_after_sales" 
+        <menuitem name="Kinesis" id="portal_kinesis_athletics" parent="portal.portal_menu" 
             sequence="10"/>
         <menuitem name="Evaluation" id="portal_kinesis_athletics_evaluation" parent="portal_kinesis_athletics" 
             action="kinesis_athletics.action_kinesis_athletics_evaluation_evaluations" sequence="10"/>

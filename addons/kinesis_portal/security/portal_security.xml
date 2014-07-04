@@ -4,7 +4,7 @@
         <record id="portal_kinesis_rule" model="ir.rule">
             <field name="name">Portal Kinesis</field>
             <field ref="kinesis_athletics.model_kinesis_athletics_evaluation" name="model_id"/>
-            <field name="domain_force">['|', ('message_follower_ids','in', [user.partner_id.id]), ('partner_id','=', user.partner_id.id)]</field>
+            <field name="domain_force">[('partner_id','=', user.partner_id.id)]</field>
             <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
             <field eval="0" name="perm_unlink"/>
             <field eval="0" name="perm_write"/>
