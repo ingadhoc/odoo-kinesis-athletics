@@ -166,6 +166,20 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
     }
 });
 
+instance.web_kanban.KinesisStateWidget = instance.web_kanban.AbstractField.extend({
+    className: "kinesis_state",
+    template: 'KinesisState',
+
+    start: function() {
+        debugger;
+        this.color = color_map[this.field.raw_value];
+        this.set("color", color_map[this.field.raw_value]);
+        debugger;
+        //this.$().html(QWeb.render("FieldSelectionSelect", {widget: this, values: values}));
+    }
+});
+
 instance.web_kanban.fields_registry.add("kinesis_metric", "instance.web_kanban.KinesisMetricWidget");
+instance.web_kanban.fields_registry.add("kinesis_state", "instance.web_kanban.KinesisStateWidget");
 
 };
