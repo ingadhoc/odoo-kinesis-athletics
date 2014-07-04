@@ -230,4 +230,16 @@ class evaluation_detail(osv.osv):
         return {'value': v}
 
 
+    def _check_result(self, cr, uid, ids, context=None):
+      obj = self.browse(cr, uid, ids[0], context=context)
+      if obj.test_id.has_range:
+        if obj.result < obj.plotband_ext_min or obj.result > obj.plotband_ext_max:
+          return False
+        else:
+          return True
+
+
+    _constraints = [(_check_result, 'Result out of range', ['result'])]
+
+
 evaluation_detail()
