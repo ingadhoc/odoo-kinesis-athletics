@@ -110,6 +110,7 @@
                                         <field name='plotband_ext_max'/>
                                         <field name='rating_below_minimum'/>
                                         <field name='rating_over_maximum'/>
+                                        <field name='age_avg'/>
                                         <templates>
                                               <!-- <div><h4 style="text-align: center;text-transform: uppercase;">References</h4></div> -->
                                             <t t-name="kanban-box">

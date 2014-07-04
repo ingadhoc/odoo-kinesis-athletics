@@ -47,6 +47,23 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
             rating_over_maximum_color = color_map[this.getParent().record['rating_over_maximum'].raw_value];
         }
 
+        var series = [{
+            data: [value],
+            yAxis: 0
+        }]
+
+        if (this.getParent().record['age_avg'] != null) {
+            series.push({
+                data: [this.getParent().record['age_avg'].raw_value],
+                backgroundColor: '#ffffff',
+                dial: {
+                    radius: '105%',
+                    backgroundColor: '#999'
+                },
+                yAxis: 0
+            });
+        }
+
         this.$el.highcharts({
             chart: {
                 renderTo: 'container',
@@ -121,10 +138,7 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
                 }
             },
                 
-            series: [{
-                data: [value],
-                yAxis: 0
-            }]
+            series: series
         });
     }
 });
