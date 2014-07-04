@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template" xml:space="preserve">
+
+<t t-name="KinesisState">
+    <div t-att-class="'kinesis_result_state ' + widget.field.raw_value">
+        <t t-esc="widget.field.value"/> - <t t-esc="widget.color"/>
+    </div>
+</t>
+
+</templates>
