@@ -27,34 +27,33 @@ from openerp.osv import osv, fields
 
 class test_range(osv.osv):
     """"""
-    
+
     _name = 'kinesis_athletics.test_range'
     _inherit = 'kinesis_athletics.test_range'
 
     _columns = {
-        
+
     }
 
     _defaults = {
         'to_age':100,
     }
-    
-       
 
-        
-        
+
+
+
+
 
     def _check_ranges(self, cr, uid, ids, context=None):
         obj = self.browse(cr, uid, ids[0], context=context)
         test_range_obj = self.pool['kinesis_athletics.test_range']
         test_range_ids = test_range_obj.search(cr, uid, [('test_id', '=',obj.test_id.id)], context=context)
-        print test_range_ids
         if len(test_range_ids) > 1:
             for record_id in test_range_ids :
                 record = self.browse(cr, uid, record_id, context=context)
                 # Verfica que el valor min no supere al max
                 if obj.val_min > obj.val_max:
-                    
+
                     return False
                 if record.id != obj.id:
                     if obj.sex == record.sex or record.sex=='both' or obj.sex=='both':
@@ -65,9 +64,9 @@ class test_range(osv.osv):
                                 if obj.from_age >= record.to_age:
                                     return True
 
-                       
+
                         return False
-             
+
         return True
     _constraints = [(_check_ranges, 'Existen rangos en conflicto', ['test_range_ids'])
     ]
