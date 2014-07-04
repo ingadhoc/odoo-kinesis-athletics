@@ -91,11 +91,11 @@ class evaluation(osv.osv):
         """
         res = {}
         for record in self.browse(cr, uid, ids, context=context):
-            if record.is_template:
-                name = record.name
-            else:
-                name = record.template_id.name
-            res[record.id] = name
+          if not record.template_id.name:
+            name = record.name
+          else:
+            name = record.template_id.name
+          res[record.id] = name
         return res
 
     _columns = {
