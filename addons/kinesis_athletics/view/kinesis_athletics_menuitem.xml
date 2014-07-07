@@ -38,7 +38,6 @@
             id="menu_athletics"
             sequence="20"
             parent="menu_kinesis"
-            groups="group_user"
             />
 
 
@@ -95,7 +94,7 @@
             sequence="40"
             action="action_kinesis_athletics_evaluation_evaluation_templates"
             parent="menu_athletics"
-            groups="group_manager"
+            groups="group_manager,group_manager"
             />
 
         <record id="action_kinesis_athletics_evaluation_evaluations" model="ir.actions.act_window">
@@ -114,7 +113,6 @@
             sequence="30"
             action="action_kinesis_athletics_evaluation_evaluations"
             parent="menu_athletics"
-            groups="group_user"
             />
 
         <record id="action_kinesis_athletics_group_groups" model="ir.actions.act_window">
@@ -173,7 +171,7 @@
             sequence="20"
             action="action_kinesis_athletics_test_tests"
             parent="menu_athletics"
-            groups="group_manager"
+            groups="group_manager,group_manager"
             />
 
 

@@ -37,7 +37,7 @@
 
                <sheet position="before">
                 <header>
-                <button name="%(wizard_evaluation_person_action)d" type="action" string="Create Evaluations"/>
+                <button name="%(wizard_evaluation_person_action)d" type="action" string="Create Evaluations" groups="base.group_multi_company"/>
                 </header>
             </sheet>
 
