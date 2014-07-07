@@ -82,6 +82,7 @@
                             <group>
                                 <field name="date" attrs="{'required':[('is_template','=',False)],'invisible':[('is_template','=',True)],'readonly':[('is_template','!=',True)]}"/>
                                 <field name="user_id" attrs="{'required':[('is_template','=',False)],'invisible':[('is_template','=',True)]}" groups="base.group_multi_company"/>
+                                <!-- <field name="age"/> -->
 
                             </group>
                         </group>

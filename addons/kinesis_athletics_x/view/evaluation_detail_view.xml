@@ -78,15 +78,15 @@
                     <!-- <field name='level_min'/> -->
                     <!-- <field name='level_max'/> -->
                     <!-- <field name='age_min'/> -->
-                    <!-- <field name='age_avg'/>
-                    <field name='test_type'/>
-                    <field name='first_parent_id'/>
-                    <field name='plotband_ext_min'/>
-                    <field name='plotband_val_min'/>
-                    <field name='plotband_val_max'/>
-                    <field name='plotband_ext_max'/>
-                    <field name='rating_below_minimum'/>
-                    <field name='rating_over_maximum'/> -->
+                    <!-- <field name='age_avg'/> -->
+                    <!-- <field name='test_type'/> -->
+                    <!-- <field name='first_parent_id'/> -->
+                    <!-- <field name='plotband_ext_min'/> -->
+                    <!-- <field name='plotband_val_min'/> -->
+                    <!-- <field name='plotband_val_max'/> -->
+                    <!-- <field name='plotband_ext_max'/> -->
+                    <!-- <field name='rating_below_minimum'/> -->
+                    <!-- <field name='rating_over_maximum'/> -->
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_card">

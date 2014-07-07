@@ -98,8 +98,17 @@ class evaluation(osv.osv):
           res[record.id] = name
         return res
 
+    def _get_partner_age(self, cr, uid, ids, name, arg, context=None):
+      res = {}
+
+      for record in self.browse(cr, uid, ids, context=context):
+        res[record.id] = record.partner_id.age
+
+      return res
+
     _columns = {
         'complete_name': fields.function(_complete_name, type='char', string="Name", store=True,),
+        'age': fields.function(_get_partner_age, type='integer', string="Age", store=True),
         # 'evaluation_detail_value_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Values', domain=[('test_type','=','value'),('result','!=',0.0)], readonly=True),
         'evaluation_detail_value_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Values', domain=[('test_type','=','value')], readonly=True),
         # 'evaluation_detail_selection_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Selections', domain=[('test_type','=','selection'),('test_selection_id','!=',False)], readonly=True),
@@ -208,6 +217,7 @@ class evaluation(osv.osv):
     #         return True
     #     else:
     #         return False
+
     def _check_person(self, cr, uid, ids, context=None):
         obj = self.browse(cr, uid, ids[0], context=context)
         if obj.group_id.partner_ids and obj.partner_id:

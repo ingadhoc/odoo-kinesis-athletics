@@ -119,16 +119,18 @@ class test(osv.osv):
             domain.append(('evaluation_id.partner_id','=',partner_id))
         if test_id:
             domain.append(('test_id','=',test_id))
-        if group_id:
-            domain.append(('evaluation_id.group_id','=',group_id))
-        if level_id:
-            domain.append(('evaluation_id.group_id.group_level_id','=',level_id))
-        if age_to and age_from:
-            today = datetime.strptime(time.strftime(DEFAULT_SERVER_DATE_FORMAT), DEFAULT_SERVER_DATE_FORMAT)
-            date_from = today - relativedelta(years=age_to + 1 or 0)
-            date_to = today - relativedelta(years=age_from or 0)
-            domain.append(('evaluation_id.partner_id.birthdate','>=',date_from))
-            domain.append(('evaluation_id.partner_id.birthdate','<=',date_to))
+        # if group_id:
+        #     domain.append(('evaluation_id.group_id','=',group_id))
+        # if level_id:
+        #   domain.append(('evaluation_id.group_id.group_level_id','=',level_id))
+        if age_from and age_to:
+          domain.append(('evaluation_id.age', '>=', age_from))
+          domain.append(('evaluation_id.age', '<=', age_to))
+            # today = datetime.strptime(time.strftime(DEFAULT_SERVER_DATE_FORMAT), DEFAULT_SERVER_DATE_FORMAT)
+            # date_from = today - relativedelta(years=age_to + 1 or 0)
+            # date_to = today - relativedelta(years=age_from or 0)
+            # domain.append(('evaluation_id.partner_id.birthdate','>=',date_from))
+            # domain.append(('evaluation_id.partner_id.birthdate','<=',date_to))
         evaluation_detail_ids = evaluation_detail_obj.search(cr, uid, domain, context=context)
         results = []
         for evaluation_detail in evaluation_detail_obj.browse(cr, uid, evaluation_detail_ids, context=context):
