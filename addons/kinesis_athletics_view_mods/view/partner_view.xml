@@ -67,6 +67,7 @@
                     <group>
                       <field name="active"/>
                       <field name="birthdate" required="1"/>
+                      <field name="age"/>
                       <field name="sex" required="1"/>
                     </group>
                     <group>
