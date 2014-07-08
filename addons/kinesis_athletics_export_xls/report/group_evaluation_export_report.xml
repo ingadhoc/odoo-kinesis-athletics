@@ -1,31 +1,18 @@
 <?xml version="1.0"?>
 <openerp>
 <data>
-<!-- ODS Catalog 
+    <report
+        id="kinesis_athletics_export_xls"
+        model="kinesis_athletics.group"
+        report_type="qweb-html"
+        string="Kinesis Export XLS"
+        name="kinesis_athletics_export_xls.groups_xls"
+        file="kinesis_athletics_export_xls.groups_xls"
+    />
+
     <record id="kinesis_athletics_export_xls" model="ir.actions.report.xml">
-        <field name="report_name">kinesis_athletics_export_xls</field>
-        <field name="type">ir.actions.report.xml</field>
-        <field name="model">kinesis_athletics.group</field>
         <field name="report_type">controller</field>
         <field name="report_rml">/report/kinesis_athletics_group_evaluation_export_xls</field>
-    </record>-->
-
-    
-
-
-    <report
-            id="kinesis_athletics_export_xls"
-            model="kinesis_athletics.group"
-            report_type="controller"
-            string="Kinesis Export XLS"
-            name="kinesis_athletics_export_xls.groups_xls"
-            file="kinesis_athletics_export_xls.groups_xls"
-        />
-
-
-    <record id="kinesis_athletics_export_xls" model="ir.actions.report.xml">
-        <field name="report_type">controller</field>
-        <field name="report_rml">/report/account.report_vat_xls</field>
     </record>
 
 </data>

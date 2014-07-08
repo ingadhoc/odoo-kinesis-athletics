@@ -20,7 +20,6 @@
 #
 ##############################################################################
 
-#import group_evaluation_export_parser
 import group_evaluation_export
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
