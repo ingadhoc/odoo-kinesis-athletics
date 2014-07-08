@@ -28,7 +28,6 @@
       ],
     'depends': [
       'kinesis_athletics_x', 
-      'report_aeroo',
       ],
     'description': '',
     'init_xml': [],

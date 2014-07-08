@@ -33,7 +33,15 @@ class kinesis_athletics_group_evaluation_export_wizard(osv.osv_memory):
 
     _defaults = {
     }
-    
+
+    def generate_xls(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        datas = {}
+        
+        return self.pool['report'].get_action(cr, uid, [], 'kinesis_athletics_export_xls', data=datas, context=context)
+
+        #return self.pool.get("report").get_action(cr, uid, [], '<stock class=""></stock>report_picking', context=context)
     
     def generate_report(self, cr, uid, ids, context=None):
         wizard = self.browse(cr, uid, ids)[0]
