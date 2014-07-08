@@ -126,7 +126,6 @@ class evaluation_detail(osv.osv):
       plotband_val_min = False
       plotband_val_max = False
       plotband_ext_max = False
-
       for evaluation_detail in self.browse(cr, uid, ids, context=context):
         test = evaluation_detail.test_id
         partner = evaluation_detail.evaluation_id.partner_id
@@ -134,15 +133,12 @@ class evaluation_detail(osv.osv):
         if test_range_ids and partner:
           plotband_val_min, plotband_val_max, plotband_ext_max, plotband_ext_min = test_obj._get_min_max(cr, uid, test.id, partner.id, context=None)
 
-          res[evaluation_detail.id] = {
+        res[evaluation_detail.id] = {
             'plotband_val_min': plotband_val_min,
             'plotband_val_max': plotband_val_max,
             'plotband_ext_max': plotband_ext_max,
             'plotband_ext_min': plotband_ext_min,
-          }
-
-        else:
-          res[evaluation_detail.id] = {}
+        }
 
       return res
 
@@ -231,14 +227,14 @@ class evaluation_detail(osv.osv):
 
 
     def _check_result(self, cr, uid, ids, context=None):
-      obj = self.browse(cr, uid, ids[0], context=context)
-      if not obj.evaluation_id.is_template:
-        if obj.test_id.has_range:
-          if obj.plotband_ext_min and obj.plotband_ext_max:
-            if obj.result != 0:
-              if obj.result < obj.plotband_ext_min or obj.result > obj.plotband_ext_max:
-                return False
-      return True
+        for obj in self.browse(cr, uid, ids, context=context):
+            if not obj.evaluation_id.is_template:
+                if obj.test_id.has_range:
+                    if obj.plotband_ext_min and obj.plotband_ext_max:
+                        if obj.result != 0:
+                            if obj.result < obj.plotband_ext_min or obj.result > obj.plotband_ext_max:
+                                return False
+        return True
 
 
     _constraints = [(_check_result, 'Result out of range', ['result'])]
