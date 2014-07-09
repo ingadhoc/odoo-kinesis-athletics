@@ -43,7 +43,7 @@
       'data/res_users.xml',
       'data/kinesis_athletics.evaluation.csv',
       'data/kinesis_athletics.test_selection.csv',
-      'data/kinesis_athletics.evaluation_detail.csv',
+      #'data/kinesis_athletics.evaluation_detail.csv',
       'data/kinesis_athletics.test_selection.xml',
       'data/stage_2/res.partner.csv',
       'data/stage_2/kinesis_athletics.group.csv',

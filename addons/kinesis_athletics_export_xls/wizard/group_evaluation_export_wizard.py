@@ -35,13 +35,26 @@ class kinesis_athletics_group_evaluation_export_wizard(osv.osv_memory):
     }
 
     def generate_xls(self, cr, uid, ids, context=None):
+        wizard = self.browse(cr, uid, ids)[0]
         if context is None:
             context = {}
         datas = {}
         
-        return self.pool['report'].get_action(cr, uid, [], 'kinesis_athletics_export_xls.groups_xls', data=datas, context=context)
+        active_id = context.get('active_id', False)
+        if not active_id:
+            return {'type': 'ir.actions.act_window_close'}
 
-        #return self.pool.get("report").get_action(cr, uid, [], '<stock class=""></stock>report_picking', context=context)
+        group = self.pool['kinesis_athletics.group'].browse(cr, uid, active_id, context=context)
+        tests = [x.test_id for x in wizard.template_id.evaluation_detail_ids]
+        datas['tests'] =  tests
+        print '*******************************************'
+        print '*******************************************'
+        print '*******************************************'
+        print 'active_id: %s' % active_id
+        print 'group: %s' % group
+        print datas
+
+        return self.pool['report'].get_action(cr, uid, [], 'kinesis_athletics_export_xls.groups_xls', data=datas, context=context)
     
     def generate_report(self, cr, uid, ids, context=None):
         wizard = self.browse(cr, uid, ids)[0]
