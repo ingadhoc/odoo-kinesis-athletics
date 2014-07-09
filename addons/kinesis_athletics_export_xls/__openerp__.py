@@ -9,7 +9,10 @@
     'category': 'base.module_category_hidden',
     'demo_xml': [
       ],
-    'depends': ['kinesis_athletics_x','report_aeroo'],
+    'depends': [
+      'kinesis_athletics_x', 
+      ],
+    'description': '',
     'init_xml': [],
     'installable': True,
     'license': 'AGPL-3',

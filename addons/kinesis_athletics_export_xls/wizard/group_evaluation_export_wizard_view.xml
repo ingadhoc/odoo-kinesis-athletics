@@ -11,7 +11,7 @@
                         <field name="template_id"/>
                     </group>
                     <footer>
-                        <button name="generate_report" string="Print" type="object" class="oe_highlight"/>
+                        <button name="generate_xls" string="Print" type="object" class="oe_highlight"/>
                         or
                         <button string="Cancel" special="cancel" class="oe_link"/>
                     </footer>
