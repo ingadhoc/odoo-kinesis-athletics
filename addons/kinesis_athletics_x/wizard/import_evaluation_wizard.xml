@@ -22,14 +22,14 @@
     </record>
 
     <record id="import_evaluation_wizard_action" model="ir.actions.act_window">
-      <field name="name">Import Evaluation Wizard</field>
-      <field name="type">ir.actions.act_window</field>
-      <field name="res_model">import.evaluation.wizard</field>
-      <field name="view_type">form</field>
-      <field name="view_mode">form</field>
-      <field name="target">new</field>
-      <field name="view_id" ref="import_evaluation_wizard_view"/>
+        <field name="name">Import Evaluation Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">import.evaluation.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="import_evaluation_wizard_view"/>
     </record>
 
-  </data> 
+  </data>
 </openerp>

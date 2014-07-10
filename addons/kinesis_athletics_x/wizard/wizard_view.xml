@@ -8,7 +8,6 @@
             <field name="arch" type="xml">
                 <form string="Create Evaluations" version="7.0">
                     <group>
-
                         <field name="date"/>
                         <field name="evaluation_id"/>
                     </group>
@@ -16,11 +15,11 @@
                         <button name="createEvaluationsWizard" string="Confirm" type="object" class="oe_highlight"/>
                         or
                         <button string="Cancel" class="oe_link" special="cancel" />
-
                     </footer>
                 </form>
             </field>
         </record>
+
         <record id="wizard_evaluation_person_form_view" model="ir.ui.view">
             <field name="name">Evaluation Persons</field>
             <field name="model">kinesis_athletics.evaluation.person.wizard</field>
@@ -34,88 +33,75 @@
                         <button name="EvaluationsPersonWizard" string="Confirm" type="object" class="oe_highlight"/>
                         or
                         <button string="Cancel" class="oe_link" special="cancel" />
-
                     </footer>
                 </form>
             </field>
         </record>
+
         <record id="wizard_move_year_form_view" model="ir.ui.view">
             <field name="name">Move Year</field>
             <field name="model">kinesis_athletics.move_group_new_year.wizard</field>
             <field name="arch" type="xml">
                 <form string="Escalate to New Group" version="7.0">
                     <group>
-
                         <field name="new_year"/>
                     </group>
                     <footer>
                         <button name="confirm" string="Confirm" type="object" class="oe_highlight"/>
                         or
                         <button string="Cancel" class="oe_link" special="cancel" />
-
                     </footer>
                 </form>
             </field>
         </record>
 
+        <record id="wizard_reevaluate_form_view" model="ir.ui.view">
+            <field name="name">Reevaluate</field>
+            <field name="model">kinesis_athletics.reevaluate.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Reevaluate" version="7.0">
+                    <h2>Are you sure you want to reevaluate the selected evaluations?</h2>
+                    <footer>
+                        <button name="confirm" string="Confirm" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
 
-<record id="wizard_reevaluate_form_view" model="ir.ui.view">
-    <field name="name">Reevaluate</field>
-    <field name="model">kinesis_athletics.reevaluate.wizard</field>
-    <field name="arch" type="xml">
-        <form string="Reevaluate" version="7.0">
-            <h2>Are you sure you want to reevaluate the selected evaluations?</h2>
-            <footer>
-                <button name="confirm" string="Confirm" type="object" class="oe_highlight"/>
-                or
-                <button string="Cancel" class="oe_link" special="cancel" />
-            </footer>
-        </form>
-    </field>
-</record>
+         <act_window name="Create Evaluations"
+                    src_model="kinesis_athletics.group"
+                    res_model="kinesis_athletics.evaluation.wizard"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"
+                    id="wizard_evaluation_action"/>
 
-<!-- <record id="import_evaluation_wizard_action" model="ir.actions.act_window">
-      <field name="name">Take Evaluation</field>
-      <field name="type">ir.actions.act_window</field>
-      <field name="res_model">kinesis_athletics.group</field>
-      <field name="src_model">kinesis_athletics.evaluation.wizard</field>
-      <field name="view_type">form</field>
-      <field name="view_mode">form</field>
-      <field name="target">new</field>
-      <field name="view_id" ref="wizard_evaluation"/>
-    </record> -->
- <act_window name="Create Evaluations"
-            src_model="kinesis_athletics.group"
-            res_model="kinesis_athletics.evaluation.wizard"
-            view_mode="form"
-            target="new"
-            key2="client_action_multi"
-            id="wizard_evaluation_action"/>
+        <act_window name="Create Evaluations Person"
+                    src_model="res.partner"
+                    res_model="kinesis_athletics.evaluation.person.wizard"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"
+                    id="wizard_evaluation_person_action"/>
 
-<act_window name="Create Evaluations Person"
-            src_model="res.partner"
-            res_model="kinesis_athletics.evaluation.person.wizard"
-            view_mode="form"
-            target="new"
-            key2="client_action_multi"
-            id="wizard_evaluation_person_action"/>
+         <act_window name="Escalate to New Group"
+                    src_model="kinesis_athletics.group"
+                    res_model="kinesis_athletics.move_group_new_year.wizard"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"
+                    id="wizard_move_year_action"/>
 
- <act_window name="Escalate to New Group"
-            src_model="kinesis_athletics.group"
-            res_model="kinesis_athletics.move_group_new_year.wizard"
-            view_mode="form"
-            target="new"
-            key2="client_action_multi"
-            id="wizard_move_year_action"/>
-
-<act_window name="Reevaluate"
-           src_model="kinesis_athletics.evaluation"
-           res_model="kinesis_athletics.reevaluate.wizard"
-           view_mode="form"
-           target="new"
-           key2="client_action_multi"
-           id="wizard_reevaluate_action"
-           groups="kinesis_athletics.group_user"/>
+        <act_window name="Reevaluate"
+                   src_model="kinesis_athletics.evaluation"
+                   res_model="kinesis_athletics.reevaluate.wizard"
+                   view_mode="form"
+                   target="new"
+                   key2="client_action_multi"
+                   id="wizard_reevaluate_action"
+                   groups="kinesis_athletics.group_user"/>
 
     </data>
 </openerp>
