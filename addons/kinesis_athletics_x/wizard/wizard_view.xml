@@ -114,7 +114,8 @@
            view_mode="form"
            target="new"
            key2="client_action_multi"
-           id="wizard_reevaluate_action"/>
+           id="wizard_reevaluate_action"
+           groups="kinesis_athletics.group_user"/>
 
     </data>
 </openerp>
