@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from openerp import netsvc
-from openerp.osv import osv, fields
+from openerp import models, fields, api, _
 
-class company(osv.osv):
+class company(models.Model):
     """"""
 
     _name = 'res.company'
     _inherit = 'res.company'
 
-    _columns = {
-    'groups_ids': fields.one2many('kinesis_athletics.group', 'company_id', string='Groups'),
-    'active': fields.related('partner_id', 'active', relation='res.partner', type='boolean', string="Active"),
-    }
+    groups_ids = fields.One2many('kinesis_athletics.group', 'company_id', string='Groups')
+    active = fields.Boolean(related='partner_id.active', string="Active")
 
     def _check_groups(self, cr, uid, ids, context=None):
         obj = self.browse(cr, uid, ids[0], context=context)
