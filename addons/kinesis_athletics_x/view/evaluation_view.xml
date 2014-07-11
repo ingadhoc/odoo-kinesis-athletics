@@ -77,7 +77,11 @@
                                         <templates>
                                             <t t-name="kanban-box">
                                                 <div t-attf-class="oe_kanban_card">
-                                                    <div class="oe_kanban_content" style="width: 390px; height: 150px; margin: 0 auto;">
+                                                    <div class="oe_kanban_content" style="width: 390px; height: 175px; margin: 0 auto;">
+                                                        <div class="kinesis_graph_display_information">
+                                                            <field name="result" widget="kinesis_result_display"/>
+                                                            <field name="age_avg" widget="kinesis_age_avg_display"/>
+                                                        </div>
                                                         <field name="result" widget="kinesis_metric"/>
                                                         <field name="state" widget="kinesis_state"/>
                                                   </div>

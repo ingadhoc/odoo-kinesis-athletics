@@ -6,7 +6,7 @@ var _t = instance.web._t,
     _lt = instance.web._lt;
 var QWeb = instance.web.qweb;
 
-var color_map = {'alert': '#ff3333', 'superior': '#33ccff', 'ideal': '#66ff66'}
+var color_map = {'alert': '#ff3333', 'superior': '#33ccff', 'ideal': '#2de15c'}
 
 instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.extend({
     className: "kinesis_metric",
@@ -141,9 +141,9 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
             yAxis: [{
                 min: plotband_ext_min,
                 max: plotband_ext_max,
-                lineColor: '#666',
-                tickColor: '#666',
-                minorTickColor: '#666',            
+                lineColor: '#666666',
+                tickColor: '#666666',
+                minorTickColor: '#666666',            
                 minorTickPosition: 'outside',
                 tickPosition: 'outside',
                 lineWidth: 1,
@@ -156,7 +156,7 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
                     rotation: 'auto',
                     distance: 25,
                     style: {
-                        color: '#000',
+                        color: '#000000',
                     },
                 },
                 plotBands: plotBands,        
@@ -184,7 +184,19 @@ instance.web_kanban.KinesisStateWidget = instance.web_kanban.AbstractField.exten
     template: 'KinesisState',
 });
 
+instance.web_kanban.KinesisResultDisplayWidget = instance.web_kanban.AbstractField.extend({
+    className: "kinesis_result_display",
+    template: 'KinesisResultDisplay',
+});
+
+instance.web_kanban.KinesisAgeAvgDisplayWidget = instance.web_kanban.AbstractField.extend({
+    className: "kinesis_age_avg_display",
+    template: 'KinesisAgeAvgDisplay',
+});
+
 instance.web_kanban.fields_registry.add("kinesis_metric", "instance.web_kanban.KinesisMetricWidget");
 instance.web_kanban.fields_registry.add("kinesis_state", "instance.web_kanban.KinesisStateWidget");
+instance.web_kanban.fields_registry.add("kinesis_result_display", "instance.web_kanban.KinesisResultDisplayWidget");
+instance.web_kanban.fields_registry.add("kinesis_age_avg_display", "instance.web_kanban.KinesisAgeAvgDisplayWidget");
 
 };
