@@ -63,7 +63,7 @@
 			</model>
 		</userDefined>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jul 04 11:55:26 ART 2014'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Fri Jul 11 12:37:34 ART 2014'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -863,7 +863,7 @@
               </UML:Classifier.feature>
             </UML:Class>
             <UML:Actor xmi.id = '127-0-1-1-2cf3082:144d540a132:-8000:0000000000000CB3'
-              name = 'Manager' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
+              name = 'Configuracion' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:ModelElement.stereotype>
                 <UML:Stereotype href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1-5ee79c33:13bb911d610:-8000:0000000000000FA1'/>
@@ -2369,7 +2369,7 @@
               </UML:Classifier.feature>
             </UML:Class>
             <UML:Actor xmi.id = '127-0-1-1-31d5b633:14589d4ddea:-8000:0000000000000DB4'
-              name = 'User' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
+              name = 'Responsable' isSpecification = 'false' isRoot = 'false' isLeaf = 'false'
               isAbstract = 'false'>
               <UML:ModelElement.stereotype>
                 <UML:Stereotype href = 'http://argouml.org/user-profiles/OpenObjectStadardElements.xmi#127-0-1-1-5ee79c33:13bb911d610:-8000:0000000000000FA1'/>
@@ -7846,7 +7846,7 @@
       name="Use Case Diagram"
 >
   <group name="Fig0"
-       description="org.argouml.uml.diagram.use_case.ui.FigActor[24, 392, 119, 98]pathVisible=false;stereotypeView=0;"
+       description="org.argouml.uml.diagram.use_case.ui.FigActor[24, 392, 124, 98]pathVisible=false;stereotypeView=0;"
        href="127-0-1-1-2cf3082:144d540a132:-8000:0000000000000CB3"
        fill="1"
        fillcolor="white"
@@ -7869,7 +7869,7 @@
     <text name="Fig0.1"
       x="52"
       y="447"
-      width="63"
+      width="96"
       height="23"
       fill="0"
       fillcolor="white"
@@ -7881,7 +7881,7 @@
       bold="false"
       textsize="12"
       justification="Center"
-    >Manager</text>
+    >Configuracion</text>
     <ellipse name="Fig0.2"
       x="83"
       y="409"
@@ -9771,7 +9771,7 @@
     </group>
   </group>
   <group name="Fig22"
-       description="org.argouml.uml.diagram.use_case.ui.FigActor[32, 216, 119, 98]pathVisible=false;stereotypeView=0;"
+       description="org.argouml.uml.diagram.use_case.ui.FigActor[32, 216, 125, 98]pathVisible=false;stereotypeView=0;"
        href="127-0-1-1-31d5b633:14589d4ddea:-8000:0000000000000DB4"
        fill="1"
        fillcolor="white"
@@ -9794,7 +9794,7 @@
     <text name="Fig22.1"
       x="72"
       y="271"
-      width="38"
+      width="85"
       height="23"
       fill="0"
       fillcolor="white"
@@ -9806,7 +9806,7 @@
       bold="false"
       textsize="12"
       justification="Center"
-    >User</text>
+    >Responsable</text>
     <ellipse name="Fig22.2"
       x="91"
       y="233"
