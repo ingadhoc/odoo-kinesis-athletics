@@ -45,36 +45,12 @@ class kinesis_athletics_group_evaluation_export_wizard(osv.osv_memory):
             return {'type': 'ir.actions.act_window_close'}
 
         group = self.pool['kinesis_athletics.group'].browse(cr, uid, active_id, context=context)
-        tests = [x.test_id for x in wizard.template_id.evaluation_detail_ids]
+        tests = [x.test_id.name for x in wizard.template_id.evaluation_detail_ids]
+
+        partner_information = [(partner.id, partner.name) for partner in group.partner_ids]
+
+        datas['partner_information'] =  partner_information
         datas['tests'] =  tests
-        print '*******************************************'
-        print '*******************************************'
-        print '*******************************************'
-        print 'active_id: %s' % active_id
-        print 'group: %s' % group
-        print datas
 
         return self.pool['report'].get_action(cr, uid, [], 'kinesis_athletics_export_xls.groups_xls', data=datas, context=context)
     
-    def generate_report(self, cr, uid, ids, context=None):
-        wizard = self.browse(cr, uid, ids)[0]
-        
-        active_id = context.get('active_id', False)
-        group = self.pool['kinesis_athletics.group'].browse(cr, uid, active_id, context=context)
-        if not active_id:
-            return {'type': 'ir.actions.act_window_close'}
-        
-        # Fijate que por ejemplo este tests si me los lee el xls 
-        test_ids = [x.test_id.id for x in wizard.template_id.evaluation_detail_ids]
-        context['tests'] =  test_ids
-        # Pero no puedo pasar un browse sobre estos test porque como que no puedo pasar browse
-        # en un diccionario, por eso estas dos lineas estan comentadas
-        # context['tests'] =  self.pool['kinesis_athletics.test'].browse(cr, uid, test_ids, context=context)
-        # context['partners'] = group.partner_ids
-
-        report_id = self.pool.get('ir.model.data').get_object_reference(cr, uid, 'kinesis_athletics_export_xls', 'kinesis_athletics_export_xls')[1]
-        report_name = self.pool.get('ir.actions.report.xml').browse(cr, uid, report_id, context=context).report_name
-        result = {'type' : 'ir.actions.report.xml',
-                  'context' : context,
-                  'report_name': report_name,}
-        return result
