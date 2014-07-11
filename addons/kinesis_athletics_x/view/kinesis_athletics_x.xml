@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- vim:fdn=3:
--->
 <openerp>
     <data>
+
         <template id="assets_backend" name="kinesis_athletics_x assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
             	<link rel="stylesheet" href="/kinesis_athletics_x/static/src/css/kinesis_athletics.css"/>
-
                 <script type="text/javascript" src="/kinesis_athletics_x/static/src/js/highcharts.js"></script>
                 <script type="text/javascript" src="/kinesis_athletics_x/static/src/js/highcharts-more.js"></script>
                 <script type="text/javascript" src="/kinesis_athletics_x/static/src/js/evaluation.js"></script>
             </xpath>
         </template>
+
     </data>
 </openerp>

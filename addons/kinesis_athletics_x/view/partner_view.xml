@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-##############################################################################
-#
-#    kinesis_athletics
-#    Copyright (C) 2014 Sistemas Adhoc
-#    No email
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
--->
-<!-- kinesis_athletics.partner -->
-<!-- res.partner -->
-<!-- res.partner -->
 <openerp>
     <data>
 
@@ -36,38 +11,34 @@
             <field name="arch" type="xml">
 
                <sheet position="before">
-                <header>
-                <button name="%(wizard_evaluation_person_action)d" type="action" string="Create Evaluations" groups="base.group_multi_company"/>
-                </header>
-            </sheet>
+                    <header>
+                        <button name="%(wizard_evaluation_person_action)d" type="action" string="Create Evaluations" groups="kinesis_athletics.group_user"/>
+                    </header>
+                </sheet>
 
                 <div class="oe_edit_only" position="replace">
                     <field name="is_company" invisible="1"/>
                     <field name="has_group" invisible="1"/>
-
-
                 </div>
+
                 <field name="parent_id" position="replace">
                   <field name="company_id" placeholder="Company" required="1" on_change="on_change_company(company_id)"/>
                   <field name="parent_id" invisible="1"/>
                 </field>
 
                 <xpath expr="//page[@name='sales_purchases']" position="before" >
-                  <page string="Courses/Areas" autofocus="autofocus" attrs="{'invisible': [('has_group', '=', False)]}">
-                      <field name="partner_group_ids" domain="[('company_id','=',company_id)]"/>
-                                        </page>
+                    <page string="Courses/Areas" autofocus="autofocus" attrs="{'invisible': [('has_group', '=', False)]}">
+                          <field name="partner_group_ids" domain="[('company_id','=',company_id)]"/>
+                    </page>
                 </xpath>
 
                 <div class="oe_edit_only" position="attributes">
                     <attribute name="invisible">'hide_is_company' in context</attribute>
                 </div>
 
-
                 <div name="buttons" position="inside">
                     <button class="oe_inline" type="action" string="Evaluations"
-                            attrs="{'invisible': [('is_company', '=', True)]}"
-                            name="%(kinesis_athletics.action_kinesis_athletics_evaluation_evaluations)d"
-                            context="{'search_default_partner_id': active_id,}"/>
+                            attrs="{'invisible': [('is_company', '=', True)]}" name="%(kinesis_athletics.action_kinesis_athletics_evaluation_evaluations)d" context="{'search_default_partner_id': active_id,}"/>
                 </div>
 
             </field>
@@ -80,7 +51,6 @@
             <field name="inherit_id" ref="base.view_partner_tree"/>
             <field name="arch" type="xml">
                 <tree position="inside">
-                    <!-- <field name="actual_group"/> -->
                     <field name="actual_group" position="attributes">
                         <attribute name="invisible">'show_actual_group' not in context</attribute>
                     </field>

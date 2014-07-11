@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
-
 {
     'name': 'Portal Kinesis',
     'version': '0.1',
@@ -10,7 +8,7 @@
     'description': """
 
     """,
-    'author': 'Ingenieria ADHOC',
+    'author': 'Ingeniería ADHOC',
     'depends': ['kinesis_athletics_x','portal'],
     'data': [
         'portal_kinesis_view.xml',
@@ -21,4 +19,3 @@
     'auto_install': True,
     'category': 'Hidden',
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
