@@ -5,8 +5,8 @@ import simplejson
 import xlwt
 import StringIO
 
-class group_evaluation_export_xls(http.Controller):
-    @http.route(['/report/kinesis_athletics_group_evaluation_export_xls'], type='http', auth='user', website=True, multilang=True)
+class export_evaluation_report_controller(http.Controller):
+    @http.route(['/report/kinesis_athletics_export_evaluation'], type='http', auth='user', website=True, multilang=True)
     def report_account_tax_xls(self, **data):
         data = simplejson.loads(data['options'])
 

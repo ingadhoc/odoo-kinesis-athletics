@@ -17,8 +17,9 @@
     'license': 'AGPL-3',
     'test': [],
     'update_xml': [
-        'wizard/group_evaluation_export_wizard_view.xml',
-        'report/group_evaluation_export_report.xml',
+        'wizard/export_evaluation_wizard_view.xml',
+        'wizard/import_evaluation_wizard_view.xml',
+        'report/export_evaluation_report.xml',
         'group_view.xml',
     ],
     'version':'1.0'

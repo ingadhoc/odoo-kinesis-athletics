@@ -12,7 +12,7 @@
 
     <record id="kinesis_athletics_export_xls" model="ir.actions.report.xml">
         <field name="report_type">controller</field>
-        <field name="report_rml">/report/kinesis_athletics_group_evaluation_export_xls</field>
+        <field name="report_rml">/report/kinesis_athletics_export_evaluation</field>
     </record>
 
 </data>

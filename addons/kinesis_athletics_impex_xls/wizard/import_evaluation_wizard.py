@@ -7,18 +7,14 @@ import xlrd
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
 
-import logging
-
-_logger = logging.getLogger(__name__)
-
-
 class import_evaluation_wizard(osv.osv_memory):
     _name = 'import.evaluation.wizard'
-    _description = 'Import Evaluation wizard'
+    _description = _('Wizard to import XLS evaluations for Kinesis groups')
+
     _columns = {
-        'date': fields.date(string='Date', required=True),
-        'evaluation_data': fields.binary('Evaluation File', required=True),
-        'evaluation_fname': fields.char('Evaluation Filename', size=128, required=True),
+        'date': fields.date(string=_('Date'), required=True),
+        'evaluation_data': fields.binary(_('Evaluation File'), required=True),
+        'evaluation_fname': fields.char(_('Evaluation Filename'), size=128, required=True),
     }
 
     _defaults = {
