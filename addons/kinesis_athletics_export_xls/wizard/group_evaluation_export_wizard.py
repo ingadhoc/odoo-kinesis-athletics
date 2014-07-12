@@ -26,12 +26,8 @@ class kinesis_athletics_group_evaluation_export_wizard(osv.osv_memory):
     _name = 'kinesis_athletics.group_evaluation_export_wizard'
     _description = 'Wizard to XLS for evalution import with Aeroo Reports'
 
-
     _columns = {     
         'template_id': fields.many2one('kinesis_athletics.evaluation', string='Template', context={'default_is_template': True}, domain=[('is_template', '=', True)], required=True), 
-    }
-
-    _defaults = {
     }
 
     def generate_xls(self, cr, uid, ids, context=None):
@@ -47,10 +43,11 @@ class kinesis_athletics_group_evaluation_export_wizard(osv.osv_memory):
         group = self.pool['kinesis_athletics.group'].browse(cr, uid, active_id, context=context)
         tests = [x.test_id.name for x in wizard.template_id.evaluation_detail_ids]
 
-        partner_information = [(partner.id, partner.name) for partner in group.partner_ids]
+        partner_information = [{'id': partner.id, 'name': partner.name} for partner in group.partner_ids]
 
         datas['partner_information'] =  partner_information
         datas['tests'] =  tests
+        datas['group_name'] = group.name
 
         return self.pool['report'].get_action(cr, uid, [], 'kinesis_athletics_export_xls.groups_xls', data=datas, context=context)
     
