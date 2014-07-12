@@ -31,7 +31,7 @@
             <field name="inherit_id" ref="kinesis_athletics_x.view_kinesis_athletics_group_form"/>
             <field name="arch" type="xml">
                 <button string="Import Evaluation" position="before">
-                    <button name="%(kinesis_athletics_export_xls.group_evaluation_export_wizard_action)d" class="oe_highlight" type="action" string="Generate XLS"/>
+                    <button name="%(kinesis_athletics_impex_xls.group_evaluation_export_wizard_action)d" class="oe_highlight" type="action" string="Generate XLS"/>
                 </button>
             </field>
         </record>
