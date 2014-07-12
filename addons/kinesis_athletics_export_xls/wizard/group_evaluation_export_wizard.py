@@ -24,7 +24,7 @@ from openerp.tools.translate import _
 
 class kinesis_athletics_group_evaluation_export_wizard(osv.osv_memory):
     _name = 'kinesis_athletics.group_evaluation_export_wizard'
-    _description = 'Wizard to XLS for evalution import with Aeroo Reports'
+    _description = _('Wizard to XLS for evalution import with Aeroo Reports')
 
     _columns = {     
         'template_id': fields.many2one('kinesis_athletics.evaluation', string='Template', context={'default_is_template': True}, domain=[('is_template', '=', True)], required=True), 

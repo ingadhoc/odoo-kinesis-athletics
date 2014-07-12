@@ -1,13 +1,11 @@
 # -*- encoding: utf-8 -*-
 
 import base64
-import time
 import tempfile
 import xlrd
 
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
-from openerp import tools
 
 import logging
 
@@ -24,9 +22,8 @@ class import_evaluation_wizard(osv.osv_memory):
     }
 
     _defaults = {
-        'evaluation_fname': lambda *a: '',
+        'evaluation_fname': lambda *a: 'imported_evaluation',
     }
-
 
     def import_evaluation(self, cr, uid, ids, context=None):
         if context is None:
@@ -70,17 +67,18 @@ class import_evaluation_wizard(osv.osv_memory):
                     'partner_id': int(evaluation_dic.get('partner_id'))
                 }
                 evaluation_id = evaluation_obj.create(cr, uid, val, context=context)
-
                 detail_fields = ['evaluation_id/.id', 'test_id', 'result']
                 detail_data = []
-
+                
                 for test_name in record_header[2:]:
                     eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
                     detail_data.append(eval_detail)
 
                 evaluation_detail_obj.load(cr, uid, detail_fields, detail_data, context=context)
-        except:
-            raise osv.except_osv(_('Error'), _('File is does not have the correct format, check that the Persons in the file belong to the underlygin Group.'))
+        except Exception as e:
+            raise osv.except_osv(
+                _('Error'),
+                _('File is does not have the correct format, check that the Persons in the file belong to the underlygin Group.\nError Details: %s') % e)
             return False
 
         return True

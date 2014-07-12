@@ -25,7 +25,7 @@ class group_evaluation_export_xls(http.Controller):
         		group_sheet.write(r + 1, 0, partner_information[r]['id'])
         		group_sheet.write(r + 1, 1, partner_information[r]['name'])
 
-    		group_sheet.write(0, 0, 'Id')
+    		group_sheet.write(0, 0, 'partner_id')
     		group_sheet.write(0, 1, 'Name')
     		for r in range(0, len(tests)):
     			group_sheet.write(0, r + 2, tests[r])
