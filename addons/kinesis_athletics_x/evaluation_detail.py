@@ -2,6 +2,7 @@
 
 from openerp import netsvc
 from openerp.osv import osv, fields
+from openerp.exceptions import except_orm, Warning, RedirectWarning
 
 
 class evaluation_detail(osv.osv):
@@ -124,8 +125,17 @@ class evaluation_detail(osv.osv):
 
         return {'value': v}
 
+    def _check_duplicate_test(self, cr, uid, ids, context=None):
+        obj =self.browse(cr, uid, ids, context=context)
+        test = self.search(cr, uid, [('test_id', '=',obj.test_id.id),('evaluation_id', '=',obj.evaluation_id.id)], context=context)
+        print test
+        if len(test) ==1:
+            return True
+        else:
+            return False
 
     def _check_result(self, cr, uid, ids, context=None):
+        
         for obj in self.browse(cr, uid, ids, context=context):
             if not obj.evaluation_id.is_template:
                 if obj.test_id.has_range:
@@ -136,7 +146,7 @@ class evaluation_detail(osv.osv):
         return True
 
 
-    _constraints = [(_check_result, 'Result out of range', ['result'])]
+    _constraints = [(_check_result, 'Result out of range', ['result']),(_check_duplicate_test, 'Already loaded the test',['test_id'])]
 
 
 evaluation_detail()

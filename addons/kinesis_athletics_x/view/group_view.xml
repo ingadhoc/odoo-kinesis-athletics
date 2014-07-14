@@ -49,7 +49,6 @@
                     </sheet>
                 </sheet>
                 <header position="inside">
-                    <button name="%(import_evaluation_wizard_action)d" class="oe_highlight" type="action" string="Import Evaluation"/>
                     <button name="%(wizard_evaluation_action)d" type="action" string="Create Evaluations"/>
                     <button name="%(wizard_move_year_action)d" type="action" string="Escalate to New Group"/>
                 </header>

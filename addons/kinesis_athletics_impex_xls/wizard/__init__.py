@@ -19,4 +19,5 @@
 #
 ##############################################################################
 
-import group_evaluation_export_wizard
+import export_evaluation_wizard
+import import_evaluation_wizard

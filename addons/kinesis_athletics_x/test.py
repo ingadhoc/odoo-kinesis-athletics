@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from openerp import netsvc
-from openerp.osv import osv, fields
+from openerp import models, fields, api, _
 from dateutil.relativedelta import relativedelta
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP, float_compare
 import time
 from datetime import datetime
 
 
-class test(osv.osv):
+class test(models.Model):
     """"""
 
     _inherit = 'kinesis_athletics.test'

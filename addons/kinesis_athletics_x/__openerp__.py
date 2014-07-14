@@ -37,7 +37,6 @@
     'data': [
       u'view/test_view.xml',
       u'wizard/wizard_view.xml',
-      u'wizard/import_evaluation_wizard.xml',
       u'view/evaluation_detail_view.xml',
       u'view/partner_view.xml',
       u'view/group_view.xml',
