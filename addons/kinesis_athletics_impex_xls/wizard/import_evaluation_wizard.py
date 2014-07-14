@@ -19,6 +19,7 @@ class import_evaluation_wizard(osv.osv_memory):
 
     _defaults = {
         'evaluation_fname': lambda *a: 'imported_evaluation',
+        'date':fields.date.context_today,
     }
 
     def import_evaluation(self, cr, uid, ids, context=None):
