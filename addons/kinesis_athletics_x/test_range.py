@@ -15,7 +15,7 @@ class test_range(models.Model):
     }
 
     @api.one
-    @api.constrains('extreme_minimum', 'val_min', 'val_max', 'extreme_maximum')
+    @api.constrains('extreme_minimum', 'val_min', 'val_max', 'extreme_maximum', 'sex', 'from_age', 'to_age')
     def _check_ranges(self):
         if self.extreme_minimum < self.val_min < self.val_max < self.extreme_maximum:
             if self.from_age <= self.to_age:
@@ -24,11 +24,12 @@ class test_range(models.Model):
                     for test_range in test_ranges:
                         if test_range.id != self.id:
                             if self.sex == test_range.sex or test_range.sex == 'both' or self.sex == 'both':
-                                if self.to_age < test_range.from_age:
-                                    if self.from_age >= test_range.to_age:
-                                        return True
-                else:
-                    return True
-        raise Warning(_('There are values in conflict'))
+                                if self.to_age > test_range.from_age:
+                                    if self.from_age <= test_range.to_age:
+                                        raise Warning(_('There are ranges in conflict'))
+
+        else:
+            raise Warning(_('There are values in conflict'))
+        return True
 
 test_range()
