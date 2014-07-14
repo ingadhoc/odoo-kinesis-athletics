@@ -1,43 +1,34 @@
 # -*- coding: utf-8 -*-
 
-from openerp import netsvc
-from openerp.osv import osv, fields
+from openerp import models, fields, api, _
+from openerp.exceptions import except_orm, Warning, RedirectWarning
 
 
-class test_range(osv.osv):
+class test_range(models.Model):
     """"""
 
     _name = 'kinesis_athletics.test_range'
     _inherit = 'kinesis_athletics.test_range'
 
     _defaults = {
-        'to_age':100,
+        'to_age':99,
     }
 
-
-    def _check_ranges(self, cr, uid, ids, context=None):
-        obj = self.browse(cr, uid, ids[0], context=context)
-        test_range_obj = self.pool['kinesis_athletics.test_range']
-        test_range_ids = test_range_obj.search(cr, uid, [('test_id', '=',obj.test_id.id)], context=context)
-
-        if len(test_range_ids) > 1:
-            for record_id in test_range_ids :
-                record = self.browse(cr, uid, record_id, context=context)
-                if obj.val_min > obj.val_max:
-                    return False
-                if record.id != obj.id:
-                    if obj.sex == record.sex or record.sex=='both' or obj.sex=='both':
-                        if obj.from_age <= obj.to_age:
-                            if obj.to_age < record.from_age:
-                                return True
-                            else:
-                                if obj.from_age >= record.to_age:
-                                    return True
-                        return False
-        return True
-
-
-    _constraints = [(_check_ranges, 'Existen rangos en conflicto', ['test_range_ids'])]
-
+    @api.one
+    @api.constrains('extreme_minimum', 'val_min', 'val_max', 'extreme_maximum')
+    def _check_ranges(self):
+        if self.extreme_minimum < self.val_min < self.val_max < self.extreme_maximum:
+            if self.from_age <= self.to_age:
+                test_ranges = self.env['kinesis_athletics.test_range'].search([('test_id', '=',self.test_id.id)])
+                if len(test_ranges) > 1:
+                    for test_range in test_ranges:
+                        if test_range.id != self.id:
+                            if self.sex == test_range.sex or test_range.sex == 'both' or self.sex == 'both':
+                                if self.to_age < test_range.from_age:
+                                    if self.from_age >= test_range.to_age:
+                                        return True
+                else:
+                    return True
+        raise Warning(_('There are values in conflict'))
 
 test_range()

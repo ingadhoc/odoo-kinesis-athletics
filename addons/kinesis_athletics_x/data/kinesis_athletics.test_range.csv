@@ -3,9 +3,9 @@ range_1,0,100,Male,90,110,220,250,test_2
 range_2,0,100,Female,80,100,200,220,test_2
 range_3,0,100,M/F,20,40,80,120,test_3
 range_4,10,80,Male,20,40,80,200,test_4
-range_5,10,70,Female,20,30,80,50,test_4
+range_5,10,70,Female,20,30,80,90,test_4
 range_6,10,80,Male,50,80,180,200,test_5
-range_7,10,70,Female,40,10,25,50,test_5
+range_7,10,70,Female,10,40,50,60,test_5
 range_9,5,60,Male,0,10,25,60,test_6
 range_10,10,58,Male,0,40,70,90,test_7
 range_11,0,100,Male,20,40,60,90,test_8
