@@ -5,13 +5,18 @@ from openerp.osv import osv, fields
 from openerp.tools.translate import _
 from datetime import datetime
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP, float_compare
-
+# from openerp import models, fields, api, _
 class evaluation(osv.osv):
     """"""
 
     _inherit = 'kinesis_athletics.evaluation'
     _rec_name = 'complete_name'
 
+    # complete_name= fields.Function(_complete_name, type='char', string="Name", store=True,)
+    # age= fields.Function(_get_partner_age, type='integer', string="Age", store=True)
+    # evaluation_detail_value_ids= fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Values', domain=[('test_type','=','value')], readonly=True)
+    # evaluation_detail_selection_ids= fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Selections', domain=[('test_type','=','selection')], readonly=True)
+    # has_group=fields.Boolean(related='company_id.has_group',relation='res.company', string='Has Group', store=True)
 
     def _complete_name(self, cr, uid, ids, name, args, context=None):
         """ Forms complete name of location from parent location to child location.

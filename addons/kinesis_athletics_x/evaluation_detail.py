@@ -128,7 +128,6 @@ class evaluation_detail(osv.osv):
     def _check_duplicate_test(self, cr, uid, ids, context=None):
         obj =self.browse(cr, uid, ids, context=context)
         test = self.search(cr, uid, [('test_id', '=',obj.test_id.id),('evaluation_id', '=',obj.evaluation_id.id)], context=context)
-        print test
         if len(test) ==1:
             return True
         else:
