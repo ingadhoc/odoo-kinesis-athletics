@@ -18,6 +18,13 @@
         <field name="domain">[]</field>
     </record>
 
+
+    <record id="base.menu_management" model="ir.ui.menu">
+        <field name="groups_id"
+                   eval="[(6, 0, [ref('base.group_no_one')])]"/>
+    </record>
+
+    
     <!-- <menuitem
         name="Companies"
         id="menu_companies"

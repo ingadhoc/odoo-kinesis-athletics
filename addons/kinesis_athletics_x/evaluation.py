@@ -17,7 +17,7 @@ class evaluation(osv.osv):
     # evaluation_detail_value_ids= fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Values', domain=[('test_type','=','value')], readonly=True)
     # evaluation_detail_selection_ids= fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Selections', domain=[('test_type','=','selection')], readonly=True)
     # has_group=fields.Boolean(related='company_id.has_group',relation='res.company', string='Has Group', store=True)
-
+    # 'evaluation_detail_ids': fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Evaluation Details', required=True, copy=True), 
     def _complete_name(self, cr, uid, ids, name, args, context=None):
         """ Forms complete name of location from parent location to child location.
         @return: Dictionary of values
