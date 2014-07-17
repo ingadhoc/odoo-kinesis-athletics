@@ -121,6 +121,7 @@ class evaluation(osv.osv):
             current_evaluation = self.browse(cr, uid, i, context=context)
             if current_evaluation.is_template:
               new_id = self.copy(cr, uid, i, default = {
+                                                  'date': datetime.today(),
                                                   'template_id':i,
                                                   'is_template':False,
                                                   }, context=context)

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 8.0rc1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 16:37+0000\n"
-"PO-Revision-Date: 2014-07-17 10:38-0300\n"
+"PO-Revision-Date: 2014-07-17 11:40-0300\n"
 "Last-Translator: Nicolas <nmac@ingadhoc.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -646,7 +646,7 @@ msgstr "Apellido"
 #: field:kinesis_athletics.reevaluate.wizard,write_uid:0
 #: field:partner.config.settings,write_uid:0
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Ultima actualización de"
 
 #. modules: partner_person, kinesis_athletics_impex_xls, kinesis_athletics_x, kinesis_athletics
 #: field:kinesis_athletics.company_type,write_date:0
@@ -666,7 +666,7 @@ msgstr "Last Updated by"
 #: field:kinesis_athletics.reevaluate.wizard,write_date:0
 #: field:partner.config.settings,write_date:0
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Ultima actualización en"
 
 #. module: kinesis_athletics
 #: field:kinesis_athletics.group,group_level_id:0
@@ -922,7 +922,7 @@ msgstr "Mostrar Fecha de cumpleaños "
 #. module: partner_person
 #: help:partner.config.settings,group_person_birthdate:0
 msgid "Show Birthdate Field in Personal Information Tab"
-msgstr "Show Birthdate Field in Personal Information Tab"
+msgstr "Mostrar Fecha de Nacimiento en el Campo Información Personal "
 
 #. module: partner_person
 #: field:partner.config.settings,group_disabilities:0
@@ -967,7 +967,7 @@ msgstr "Show National Identity Field in Personal Information Tab"
 #. module: partner_person
 #: field:partner.config.settings,group_person_nationality:0
 msgid "Show Nationality"
-msgstr "Show Nationality"
+msgstr "Mostrar Nacionalidad"
 
 #. module: partner_person
 #: help:partner.config.settings,group_person_nationality:0
@@ -1050,12 +1050,12 @@ msgstr "Rango del Test"
 #. module: kinesis_athletics
 #: field:kinesis_athletics.evaluation_detail,test_selection_id:0
 msgid "Test Selection"
-msgstr "Test Selection"
+msgstr "Estado"
 
 #. module: kinesis_athletics
 #: field:kinesis_athletics.test,test_selection_ids:0
 msgid "Test Selections"
-msgstr "Test Selections"
+msgstr "Estados"
 
 #. module: kinesis_athletics_x
 #: field:kinesis_athletics.evaluation_detail,test_type:0
