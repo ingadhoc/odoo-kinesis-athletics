@@ -18,7 +18,7 @@
         <field name="domain">[]</field>
     </record>
 
-    <menuitem
+    <!-- <menuitem
         name="Companies"
         id="menu_companies"
         sequence="20"
@@ -33,8 +33,8 @@
         sequence="20"
         action="action_kinesis_athletics_x_res_user"
         parent="kinesis_athletics.menu_configuration"
-        groups="kinesis_athletics.group_configuracion"
-        />
+        groups="kinesis_athletics.group_manager"
+        /> -->
 
   </data>
 </openerp>
