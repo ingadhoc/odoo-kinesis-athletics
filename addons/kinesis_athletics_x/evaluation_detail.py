@@ -49,6 +49,8 @@ class evaluation_detail(osv.osv):
 
             evaluation = evaluation_detail.evaluation_id
             partner = evaluation_detail.evaluation_id.partner_id
+            state = False
+            age_avg = False
             if evaluation.is_template!=True and partner:
 
                 ref_min, ref_max, ref_ext_max, ref_ext_min = test_obj._get_min_max(cr, uid, test.id, partner.id, context=context)
@@ -60,12 +62,10 @@ class evaluation_detail(osv.osv):
                 if age_results:
                     age_avg = sum(age_results) / len(age_results)
 
-                res[evaluation_detail.id] = {
-                    'age_avg': age_avg,
-                    'state': state,
-                }
-            else:
-                res[evaluation_detail.id] = {}
+            res[evaluation_detail.id] = {
+                'age_avg': age_avg,
+                'state': state,
+            }
 
         return res
 

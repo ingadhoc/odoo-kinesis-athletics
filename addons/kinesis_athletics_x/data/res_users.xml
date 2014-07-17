@@ -10,7 +10,7 @@
 Roberto Uni de la Plata</field>
             <field name="company_id" ref="res_company_partner_13"/>
             <field name="company_ids" eval="[(4, ref('res_company_partner_13'))]"/>
-            <field name="groups_id" eval="[(4, ref('kinesis_athletics.group_user'))]"/>
+            <field name="groups_id" eval="[(4, ref('kinesis_athletics.group_responsable'))]"/>
         </record>   
 
         <record id="user_partner_24" model="res.users">
@@ -21,7 +21,7 @@ Roberto Uni de la Plata</field>
 María Colegio San José</field>
             <field name="company_id" ref="res_company_partner_15"/>
             <field name="company_ids" eval="[(4, ref('res_company_partner_15'))]"/>
-            <field name="groups_id" eval="[(4, ref('kinesis_athletics.group_user'))]"/>
+            <field name="groups_id" eval="[(4, ref('kinesis_athletics.group_responsable'))]"/>
         </record>   
 
         <record id="user_partner_25" model="res.users">
@@ -32,7 +32,7 @@ María Colegio San José</field>
 Juan Román Systemys</field>
             <field name="company_id" ref="res_company_partner_16"/>
             <field name="company_ids" eval="[(4, ref('res_company_partner_16'))]"/>
-            <field name="groups_id" eval="[(4, ref('kinesis_athletics.group_user'))]"/>
+            <field name="groups_id" eval="[(4, ref('kinesis_athletics.group_responsable'))]"/>
         </record>   
 
     </data>

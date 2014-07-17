@@ -48,7 +48,9 @@ class evaluation(osv.osv):
         'age': fields.function(_get_partner_age, type='integer', string="Age", store=True),
         'evaluation_detail_value_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Values', domain=[('test_type','=','value')], readonly=True),
         'evaluation_detail_selection_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Selections', domain=[('test_type','=','selection')], readonly=True),
-'has_group':fields.related('company_id','has_group',relation='res.company', type='boolean', string='Has Group', store=True),
+        'has_group':fields.related('company_id','has_group',relation='res.company', type='boolean', string='Has Group', store=True),
+        #we overwrite this field because in v8 o2m fields has copy=False by default and copy is not implemented on xmi2oerp
+        'evaluation_detail_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Evaluation Details', required=True, copy=True), 
     }
 
     _order = 'date desc'
@@ -60,7 +62,6 @@ class evaluation(osv.osv):
         if default is None:
             default = {}
 
-        default['evaluation_ids'] = []
         default['user_id'] = uid
 
         if not default.get("partner_id", False):
@@ -74,19 +75,21 @@ class evaluation(osv.osv):
         v = {}
         if context is None:
             context = {}
+        partner_list = []
+        domain_dic = {}
         if group_id:
             group_obj = self.pool['kinesis_athletics.group']
             group = group_obj.browse(cr, uid, group_id, context=context)
-            partner_list = []
-
+            
             for partner in group.partner_ids:
                 partner_list.append(partner.id)
+            domain_dic['partner_id'] = [('id','in',partner_list)]
 
-            v['partner_id'] = False
+        v['partner_id'] = False
 
         return {
             'value': v,
-            'domain': {'partner_id':[('id','in',partner_list)]}
+            'domain': domain_dic,
         }
 
 
@@ -99,6 +102,8 @@ class evaluation(osv.osv):
             company_obj = self.pool['res.company']
             company = company_obj.browse(cr, uid, company_id, context=context)
             v['has_group'] = company.has_group
+        v['group_id'] = False
+        v['partner_id'] = False
 
         return {
             'value': v,
@@ -125,10 +130,9 @@ class evaluation(osv.osv):
                                 'partner_id': current_evaluation.partner_id.id,
                                 'group_id': current_evaluation.partner_id.actual_group.id,
                                   }, context=context)
-              evaluation_detail_ids = self.browse(cr, uid, new_id, context=context).evaluation_detail_ids
 
-              for evaluation_detail in evaluation_detail_ids:
-                evaluation_detail.write({'result': False}, context=context)
+              for evaluation_detail in self.browse(cr, uid, new_id, context=context).evaluation_detail_ids:
+                evaluation_detail.write({'result': False})
 
             new_evaluations.append(new_id)
 

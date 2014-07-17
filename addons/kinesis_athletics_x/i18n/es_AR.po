@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 8.0rc1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 16:37+0000\n"
-"PO-Revision-Date: 2014-07-16 10:03-0300\n"
+"PO-Revision-Date: 2014-07-17 10:38-0300\n"
 "Last-Translator: Nicolas <nmac@ingadhoc.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -576,7 +576,7 @@ msgstr "¡Acción Invalida!"
 #: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:37
 #, python-format
 msgid "Invalid file"
-msgstr "Invalid file"
+msgstr "Archivo Invalido"
 
 #. module: kinesis_athletics
 #: field:kinesis_athletics.test,invert:0
@@ -853,7 +853,7 @@ msgstr "Persona"
 #. module: partner_person
 #: view:partner.config.settings:0
 msgid "Person - Personal Information"
-msgstr "persona - Información Personal"
+msgstr "Persona - Información Personal"
 
 #. modules: partner_person, kinesis_athletics_view_mods
 #: view:res.partner:0
@@ -1111,7 +1111,7 @@ msgstr "Tipo..."
 #: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:43
 #, python-format
 msgid "Unable to open the file. Make sure the file format is correct."
-msgstr "Unable to open the file. Make sure the file format is correct."
+msgstr "No se puede abrir el archivo. Asegúrese de que el formato del archivo es correcta."
 
 #. modules: kinesis_athletics_x, kinesis_athletics
 #: view:kinesis_athletics.test:0
