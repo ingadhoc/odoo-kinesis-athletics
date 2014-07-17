@@ -6,7 +6,7 @@ var _t = instance.web._t,
     _lt = instance.web._lt;
 var QWeb = instance.web.qweb;
 
-var color_map = {'alert': '#ff3333', 'superior': '#33ccff', 'ideal': '#66ff66'}
+var color_map = {'alert': '#ff3333', 'superior': '#33ccff', 'ideal': '#2de15c'}
 
 instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.extend({
     className: "kinesis_metric",
@@ -41,17 +41,30 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
             plotband_ext_min = this.getParent().record['plotband_ext_min'].raw_value;
         }
         tickPositions.push(plotband_ext_min);
+
         if (this.getParent().record['plotband_val_min'] != null) {
             plotband_val_min = this.getParent().record['plotband_val_min'].raw_value;
-            tickPositions.push(plotband_val_min);
+            if (plotband_val_min < plotband_ext_min) {
+                plotband_val_min = null;
+            } else {
+                tickPositions.push(plotband_val_min);    
+            }
         }
-        if (this.getParent().record['plotband_val_max'] != null) {
-            plotband_val_max = this.getParent().record['plotband_val_max'].raw_value;
-            tickPositions.push(plotband_val_max);
-        }
+        
+        
         if (this.getParent().record['plotband_ext_max'] != null) {
             plotband_ext_max = this.getParent().record['plotband_ext_max'].raw_value;
         }
+        
+        if (this.getParent().record['plotband_val_max'] != null) {
+            plotband_val_max = this.getParent().record['plotband_val_max'].raw_value;
+            if (plotband_val_max > plotband_ext_max) {
+                plotband_val_max = null;
+            } else {
+                tickPositions.push(plotband_val_max);
+            }
+        }
+        
         tickPositions.push(plotband_ext_max);
 
         var plotBands = []
@@ -128,9 +141,9 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
             yAxis: [{
                 min: plotband_ext_min,
                 max: plotband_ext_max,
-                lineColor: '#666',
-                tickColor: '#666',
-                minorTickColor: '#666',            
+                lineColor: '#666666',
+                tickColor: '#666666',
+                minorTickColor: '#666666',            
                 minorTickPosition: 'outside',
                 tickPosition: 'outside',
                 lineWidth: 1,
@@ -143,7 +156,7 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
                     rotation: 'auto',
                     distance: 25,
                     style: {
-                        color: '#000',
+                        color: '#000000',
                     },
                 },
                 plotBands: plotBands,        
@@ -166,6 +179,24 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
     }
 });
 
+instance.web_kanban.KinesisStateWidget = instance.web_kanban.AbstractField.extend({
+    className: "kinesis_state",
+    template: 'KinesisState',
+});
+
+instance.web_kanban.KinesisResultDisplayWidget = instance.web_kanban.AbstractField.extend({
+    className: "kinesis_result_display",
+    template: 'KinesisResultDisplay',
+});
+
+instance.web_kanban.KinesisAgeAvgDisplayWidget = instance.web_kanban.AbstractField.extend({
+    className: "kinesis_age_avg_display",
+    template: 'KinesisAgeAvgDisplay',
+});
+
 instance.web_kanban.fields_registry.add("kinesis_metric", "instance.web_kanban.KinesisMetricWidget");
+instance.web_kanban.fields_registry.add("kinesis_state", "instance.web_kanban.KinesisStateWidget");
+instance.web_kanban.fields_registry.add("kinesis_result_display", "instance.web_kanban.KinesisResultDisplayWidget");
+instance.web_kanban.fields_registry.add("kinesis_age_avg_display", "instance.web_kanban.KinesisAgeAvgDisplayWidget");
 
 };

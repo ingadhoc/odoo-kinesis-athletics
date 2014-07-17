@@ -24,7 +24,7 @@
         sequence="20"
         action="action_kinesis_athletics_x_res_company"
         parent="kinesis_athletics.menu_configuration"
-        groups="kinesis_athletics.group_manager"
+        groups="kinesis_athletics.group_configuracion"
         />
 
     <menuitem

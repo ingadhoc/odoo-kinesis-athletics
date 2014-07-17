@@ -12,7 +12,7 @@
 
                <sheet position="before">
                     <header>
-                        <button name="%(wizard_evaluation_person_action)d" type="action" string="Create Evaluations" groups="kinesis_athletics.group_user"/>
+                        <button name="%(wizard_evaluation_person_action)d" type="action" string="Create Evaluations" groups="kinesis_athletics.group_responsable"/>
                     </header>
                 </sheet>
 
