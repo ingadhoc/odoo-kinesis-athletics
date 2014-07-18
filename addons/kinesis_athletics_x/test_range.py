@@ -17,7 +17,7 @@ class test_range(models.Model):
     @api.one
     @api.constrains('extreme_minimum', 'val_min', 'val_max', 'extreme_maximum', 'sex', 'from_age', 'to_age')
     def _check_ranges(self):
-        if self.extreme_minimum < self.val_min < self.val_max < self.extreme_maximum:
+        if self.extreme_minimum <= self.val_min < self.val_max <= self.extreme_maximum:
             if self.from_age <= self.to_age:
                 test_ranges = self.env['kinesis_athletics.test_range'].search([('test_id', '=',self.test_id.id)])
                 if len(test_ranges) > 1:
