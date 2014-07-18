@@ -35,11 +35,6 @@ class partner(osv.osv):
         for partner in self.browse(cr, uid, ids, context=context):
             res[partner.id] = len(partner.evaluation_ids)
             
-        print res[partner.id]
-        # except:
-        #     pass
-        # for partner in self.browse(cr, uid, ids, context):
-        #     res[partner_id] = len(partner.evaluation_ids)
         return res
 
     _columns = {

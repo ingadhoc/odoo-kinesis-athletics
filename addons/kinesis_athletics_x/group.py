@@ -15,18 +15,12 @@ class group(osv.osv):
 
     def _evaluation_group_count(self, cr, uid, ids, field_name, arg, context=None):
         res ={}
-        # the user may not have access rights for opportunities or meetings
         evaluation_obj = self.pool['kinesis_athletics.evaluation']
         for group in self.browse(cr, uid, ids, context=context):
 
             res[group.id] = len(evaluation_obj.search(cr, uid, [('group_id', '=', group.id)], context=context))
         
             
-        print res
-        # except:
-        #     pass
-        # for partner in self.browse(cr, uid, ids, context):
-        #     res[partner_id] = len(partner.evaluation_ids)
         return res
 
     _columns = {
