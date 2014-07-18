@@ -29,9 +29,11 @@
                 <sheet position="replace">
                     <sheet>
                          <div class="oe_right oe_button_box" name="buttons">
-                            <button class="oe_inline" type="action" string="Evaluations"
+                            <button class="oe_stat_button"  icon="fa-pencil-square-o" type="action" 
                                     name="%(kinesis_athletics.action_kinesis_athletics_evaluation_evaluations)d"
-                                    context="{'search_default_group_id': active_id,'search_default_group_by_date': 1}"/>
+                                    context="{'search_default_group_id': active_id,'search_default_group_by_date': 1}">
+                                    <field name="eval_group_count" string="Evaluations" widget="statinfo"/>
+                                </button>
                         </div>
                         <group>
                             <field name="company_id" widget="selection" groups="base.group_multi_company"  on_change="onchange_is_school(company_id)" domain="[('has_group','=',True)]"/>
@@ -50,7 +52,7 @@
                 </sheet>
                 <header position="inside">
                     <button name="%(wizard_evaluation_action)d" type="action" string="Create Evaluations"/>
-                    <button name="%(wizard_move_year_action)d" type="action" string="Escalate to New Group"/>
+                    <button name="%(wizard_move_year_action)d" type="action"  string="Escalate to New Group"/>
                 </header>
             </field>
         </record>

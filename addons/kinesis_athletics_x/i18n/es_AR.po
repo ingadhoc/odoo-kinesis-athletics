@@ -1,24 +1,25 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* kinesis_athletics_impex_xls
-#	* partner_person
-#	* kinesis_athletics_x
-#	* kinesis_athletics
-#	* kinesis_portal
-#	* kinesis_athletics_view_mods
+# 	* kinesis_athletics_impex_xls
+# 	* partner_person
+# 	* kinesis_athletics_x
+# 	* kinesis_athletics
+# 	* kinesis_portal
+# 	* kinesis_athletics_view_mods
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 8.0rc1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-15 16:37+0000\n"
-"PO-Revision-Date: 2014-07-17 11:40-0300\n"
-"Last-Translator: Nicolas <nmac@ingadhoc.com>\n"
+"PO-Revision-Date: 2014-07-18 08:51-0300\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. module: kinesis_athletics_x
 #: view:res.partner:0
@@ -51,8 +52,7 @@ msgid "Actual Year"
 msgstr "Año actual"
 
 #. modules: partner_person, kinesis_athletics_x
-#: field:kinesis_athletics.evaluation,age:0
-#: field:res.partner,age:0
+#: field:kinesis_athletics.evaluation,age:0 field:res.partner,age:0
 msgid "Age"
 msgstr "Edad"
 
@@ -96,38 +96,28 @@ msgid "Birthdate"
 msgstr "Cumpleaños"
 
 #. modules: kinesis_athletics_x, kinesis_athletics
-#: view:kinesis_athletics.company_type:0
-#: view:kinesis_athletics.evaluation:0
-#: view:kinesis_athletics.evaluation_detail:0
-#: view:kinesis_athletics.group:0
-#: view:kinesis_athletics.level:0
-#: view:kinesis_athletics.test:0
-#: view:kinesis_athletics.test_category:0
-#: view:kinesis_athletics.test_range:0
+#: view:kinesis_athletics.company_type:0 view:kinesis_athletics.evaluation:0
+#: view:kinesis_athletics.evaluation_detail:0 view:kinesis_athletics.group:0
+#: view:kinesis_athletics.level:0 view:kinesis_athletics.test:0
+#: view:kinesis_athletics.test_category:0 view:kinesis_athletics.test_range:0
 #: view:kinesis_athletics.test_selection:0
 msgid "By Attribute"
 msgstr "Por Atributos"
 
 #. modules: kinesis_athletics_x, kinesis_athletics
-#: view:kinesis_athletics.company_type:0
-#: view:kinesis_athletics.evaluation:0
-#: view:kinesis_athletics.group:0
-#: view:kinesis_athletics.level:0
-#: view:kinesis_athletics.test:0
-#: view:kinesis_athletics.test_category:0
-#: view:kinesis_athletics.test_range:0
-#: view:kinesis_athletics.test_selection:0
+#: view:kinesis_athletics.company_type:0 view:kinesis_athletics.evaluation:0
+#: view:kinesis_athletics.group:0 view:kinesis_athletics.level:0
+#: view:kinesis_athletics.test:0 view:kinesis_athletics.test_category:0
+#: view:kinesis_athletics.test_range:0 view:kinesis_athletics.test_selection:0
 msgid "By object"
 msgstr "Por Objeto"
 
 #. modules: partner_person, kinesis_athletics_impex_xls, kinesis_athletics_x
-#: view:export.evaluation.wizard:0
-#: view:import.evaluation.wizard:0
+#: view:export.evaluation.wizard:0 view:import.evaluation.wizard:0
 #: view:kinesis_athletics.evaluation.person.wizard:0
 #: view:kinesis_athletics.evaluation.wizard:0
 #: view:kinesis_athletics.move_group_new_year.wizard:0
-#: view:kinesis_athletics.reevaluate.wizard:0
-#: view:partner.config.settings:0
+#: view:kinesis_athletics.reevaluate.wizard:0 view:partner.config.settings:0
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -151,8 +141,7 @@ msgstr "Categoria"
 #. modules: partner_person, kinesis_athletics
 #: view:kinesis_athletics.test_category:0
 #: field:kinesis_athletics.test_category,child_ids:0
-#: field:res.partner,father_child_ids:0
-#: field:res.partner,mother_child_ids:0
+#: field:res.partner,father_child_ids:0 field:res.partner,mother_child_ids:0
 msgid "Childs"
 msgstr "Hijos"
 
@@ -170,12 +159,10 @@ msgstr "Empresas"
 
 #. modules: kinesis_athletics_x, kinesis_athletics, kinesis_athletics_view_mods
 #: field:kinesis_athletics.evaluation,company_id:0
-#: view:kinesis_athletics.group:0
-#: field:kinesis_athletics.group,company_id:0
+#: view:kinesis_athletics.group:0 field:kinesis_athletics.group,company_id:0
 #: view:res.company:0
 #: model:ir.actions.act_window,name:kinesis_athletics_view_mods.action_kinesis_athletics_x_res_company
-#: view:res.partner:0
-#: view:kinesis_athletics.evaluation:0
+#: view:res.partner:0 view:kinesis_athletics.evaluation:0
 msgid "Company"
 msgstr "Empresa"
 
@@ -210,22 +197,19 @@ msgid "Confirm"
 msgstr "Confirmar"
 
 #. modules: partner_person, kinesis_athletics
-#: model:ir.ui.menu,name:kinesis_athletics.menu_contacts
-#: view:res.partner:0
+#: model:ir.ui.menu,name:kinesis_athletics.menu_contacts view:res.partner:0
 msgid "Contacts"
 msgstr "Contactos"
 
 #. module: kinesis_athletics_x
-#: view:res.company:0
-#: view:res.partner:0
+#: view:res.company:0 view:res.partner:0
 msgid "Courses/Areas"
 msgstr "Cursos/Áreas"
 
 #. modules: kinesis_athletics_impex_xls, kinesis_athletics_x
 #: view:kinesis_athletics.group:0
 #: model:ir.actions.act_window,name:kinesis_athletics_x.wizard_evaluation_action
-#: view:kinesis_athletics.evaluation.wizard:0
-#: view:res.partner:0
+#: view:kinesis_athletics.evaluation.wizard:0 view:res.partner:0
 msgid "Create Evaluations"
 msgstr "Crear Evaluaciones"
 
@@ -291,8 +275,7 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: kinesis_athletics
-#: view:kinesis_athletics.test:0
-#: field:kinesis_athletics.test,description:0
+#: view:kinesis_athletics.test:0 field:kinesis_athletics.test,description:0
 msgid "Description"
 msgstr "Descripción"
 
@@ -339,8 +322,7 @@ msgstr "Grupo del año que le sigue "
 #. modules: kinesis_athletics_x, kinesis_athletics, kinesis_portal
 #: view:kinesis_athletics.evaluation_detail:0
 #: field:kinesis_athletics.evaluation_detail,evaluation_id:0
-#: view:res.partner:0
-#: field:res.partner,evaluation_ids:0
+#: view:res.partner:0 field:res.partner,evaluation_ids:0
 #: code:addons/kinesis_athletics_x/evaluation.py:136
 #: model:ir.ui.menu,name:kinesis_portal.portal_kinesis_athletics_evaluation
 #, python-format
@@ -384,8 +366,7 @@ msgstr "Plantillas de Evaluaciones"
 #: model:ir.actions.act_window,name:kinesis_athletics.action_kinesis_athletics_evaluation_evaluations
 #: model:ir.ui.menu,name:kinesis_athletics.menu_evaluations
 #: field:kinesis_athletics.evaluation,evaluation_ids:0
-#: view:kinesis_athletics.evaluation:0
-#: view:kinesis_athletics.group:0
+#: view:kinesis_athletics.evaluation:0 view:kinesis_athletics.group:0
 #: view:res.partner:0
 msgid "Evaluations"
 msgstr "Evaluaciones"
@@ -419,8 +400,7 @@ msgid "Father"
 msgstr "Padre"
 
 #. modules: partner_person, kinesis_athletics
-#: selection:kinesis_athletics.test_range,sex:0
-#: selection:res.partner,sex:0
+#: selection:kinesis_athletics.test_range,sex:0 selection:res.partner,sex:0
 msgid "Female"
 msgstr "Femenino"
 
@@ -428,13 +408,15 @@ msgstr "Femenino"
 #: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:79
 #, python-format
 msgid ""
-"File is does not have the correct format, check that the Persons in the file belong to the underlygin Group.\n"
+"File is does not have the correct format, check that the Persons in the file "
+"belong to the underlygin Group.\n"
 "Error Details: %s"
-msgstr "El archivo no tiene el formato correcto, compruebe que las Personas en el archivo pertenezcan al Grupo subyacente"
+msgstr ""
+"El archivo no tiene el formato correcto, compruebe que las Personas en el "
+"archivo pertenezcan al Grupo subyacente"
 
 #. module: partner_person
-#: view:res.partner:0
-#: field:res.partner,firstname:0
+#: view:res.partner:0 field:res.partner,firstname:0
 msgid "First Name"
 msgstr "Primer Nombre"
 
@@ -468,8 +450,7 @@ msgstr "Graficos"
 #. modules: kinesis_athletics_x, kinesis_athletics, kinesis_athletics_view_mods
 #: view:kinesis_athletics.evaluation:0
 #: field:kinesis_athletics.evaluation,group_id:0
-#: field:kinesis_athletics.level,group_ids:0
-#: view:res.partner:0
+#: field:kinesis_athletics.level,group_ids:0 view:res.partner:0
 #: view:kinesis_athletics.evaluation_detail:0
 msgid "Group"
 msgstr "Grupo"
@@ -481,10 +462,8 @@ msgid "Group \"%s\" has no new year group defined (id:%d)."
 msgstr "Este grupo no tiene definido un año siguiente"
 
 #. modules: kinesis_athletics_x, kinesis_athletics, kinesis_athletics_view_mods
-#: view:kinesis_athletics.evaluation_detail:0
-#: view:res.partner:0
-#: view:kinesis_athletics.evaluation:0
-#: view:kinesis_athletics.group:0
+#: view:kinesis_athletics.evaluation_detail:0 view:res.partner:0
+#: view:kinesis_athletics.evaluation:0 view:kinesis_athletics.group:0
 #: view:kinesis_athletics.test:0
 msgid "Group By..."
 msgstr "Agrupado Por "
@@ -499,14 +478,12 @@ msgstr "Grupos"
 #. modules: kinesis_athletics_x, kinesis_athletics
 #: field:res.company,has_group:0
 #: field:kinesis_athletics.evaluation,has_group:0
-#: field:kinesis_athletics.group,has_group:0
-#: field:res.partner,has_group:0
+#: field:kinesis_athletics.group,has_group:0 field:res.partner,has_group:0
 msgid "Has Group"
 msgstr "Tiene Grupo"
 
 #. module: kinesis_athletics
-#: view:kinesis_athletics.test:0
-#: field:kinesis_athletics.test,has_range:0
+#: view:kinesis_athletics.test:0 field:kinesis_athletics.test,has_range:0
 msgid "Has Range"
 msgstr "Tiene rango"
 
@@ -519,14 +496,12 @@ msgstr "Esposo"
 #: field:kinesis_athletics.company_type,id:0
 #: field:kinesis_athletics.evaluation,id:0
 #: field:kinesis_athletics.evaluation_detail,id:0
-#: field:kinesis_athletics.group,id:0
-#: field:kinesis_athletics.level,id:0
+#: field:kinesis_athletics.group,id:0 field:kinesis_athletics.level,id:0
 #: field:kinesis_athletics.test,id:0
 #: field:kinesis_athletics.test_category,id:0
 #: field:kinesis_athletics.test_range,id:0
 #: field:kinesis_athletics.test_selection,id:0
-#: field:export.evaluation.wizard,id:0
-#: field:import.evaluation.wizard,id:0
+#: field:export.evaluation.wizard,id:0 field:import.evaluation.wizard,id:0
 #: field:kinesis_athletics.evaluation.person.wizard,id:0
 #: field:kinesis_athletics.evaluation.wizard,id:0
 #: field:kinesis_athletics.move_group_new_year.wizard,id:0
@@ -623,8 +598,7 @@ msgid "Kinesis Groups"
 msgstr "Grupos Kinesis"
 
 #. module: partner_person
-#: view:res.partner:0
-#: field:res.partner,lastname:0
+#: view:res.partner:0 field:res.partner,lastname:0
 msgid "Last Name"
 msgstr "Apellido"
 
@@ -679,8 +653,7 @@ msgid "M/F"
 msgstr "M/F"
 
 #. modules: partner_person, kinesis_athletics
-#: selection:kinesis_athletics.test_range,sex:0
-#: selection:res.partner,sex:0
+#: selection:kinesis_athletics.test_range,sex:0 selection:res.partner,sex:0
 msgid "Male"
 msgstr "Masculino"
 
@@ -728,12 +701,9 @@ msgid "Mother"
 msgstr "Madre"
 
 #. modules: kinesis_athletics_x, kinesis_athletics
-#: field:kinesis_athletics.evaluation,name:0
-#: view:kinesis_athletics.group:0
-#: field:kinesis_athletics.group,name:0
-#: view:kinesis_athletics.test:0
-#: field:kinesis_athletics.test,name:0
-#: view:kinesis_athletics.test_category:0
+#: field:kinesis_athletics.evaluation,name:0 view:kinesis_athletics.group:0
+#: field:kinesis_athletics.group,name:0 view:kinesis_athletics.test:0
+#: field:kinesis_athletics.test,name:0 view:kinesis_athletics.test_category:0
 #: field:kinesis_athletics.test_category,name:0
 #: field:kinesis_athletics.test_selection,name:0
 #: field:kinesis_athletics.evaluation,complete_name:0
@@ -917,52 +887,54 @@ msgstr "Sexo"
 #. module: partner_person
 #: field:partner.config.settings,group_person_birthdate:0
 msgid "Show Birthdate"
-msgstr "Mostrar Fecha de cumpleaños "
+msgstr "Mostrar Fecha de Nacimiento "
 
 #. module: partner_person
 #: help:partner.config.settings,group_person_birthdate:0
 msgid "Show Birthdate Field in Personal Information Tab"
-msgstr "Mostrar Fecha de Nacimiento en el Campo Información Personal "
+msgstr "Mostrar Fecha de Nacimiento en el Campo de  Información Personal "
 
 #. module: partner_person
 #: field:partner.config.settings,group_disabilities:0
 msgid "Show Disabilities Information"
-msgstr "Show Disabilities Information"
+msgstr "Mostrar informacion de discapacidades"
 
 #. module: partner_person
 #: help:partner.config.settings,group_disabilities:0
 msgid "Show Disabilities Information Tab"
-msgstr "Show Disabilities Information Tab"
+msgstr "Mostrar Discapacidades en el Campo de Informacion Personal"
 
 #. module: partner_person
 #: field:partner.config.settings,group_person_family:0
 msgid "Show Family Information"
-msgstr "Show Family Information"
+msgstr "Mostrar Informacion de la  Familia"
 
 #. module: partner_person
 #: field:partner.config.settings,group_person_marital_information:0
 msgid "Show Marital Information"
-msgstr "Show Marital Information"
+msgstr "Mostrar información de Estado civil"
 
 #. module: partner_person
 #: help:partner.config.settings,group_person_marital_information:0
-msgid "Show Marital Status, Husband and Wife Fields in Personal Information Tab"
-msgstr "Show Marital Status, Husband and Wife Fields in Personal Information Tab"
+msgid ""
+"Show Marital Status, Husband and Wife Fields in Personal Information Tab"
+msgstr ""
+"Mostrar Estado Civil, marido y mujer en campos de información personal "
 
 #. module: partner_person
 #: help:partner.config.settings,group_person_family:0
 msgid "Show Mother, Father and Childs Fields in Personal Information Tab"
-msgstr "Show Mother, Father and Childs Fields in Personal Information Tab"
+msgstr "Mostrar Madre, Padre y Childs Campos en Información Personal"
 
 #. module: partner_person
 #: field:partner.config.settings,group_person_ni:0
 msgid "Show National Identity"
-msgstr "Show National Identity"
+msgstr "Mostrar Documento de Identidad"
 
 #. module: partner_person
 #: help:partner.config.settings,group_person_ni:0
 msgid "Show National Identity Field in Personal Information Tab"
-msgstr "Show National Identity Field in Personal Information Tab"
+msgstr "Mostrar Documento de Identidad en el Campo de Informacion Personal"
 
 #. module: partner_person
 #: field:partner.config.settings,group_person_nationality:0
@@ -972,7 +944,7 @@ msgstr "Mostrar Nacionalidad"
 #. module: partner_person
 #: help:partner.config.settings,group_person_nationality:0
 msgid "Show Nationality Field in Personal Information Tab"
-msgstr "Show Nationality Field in Personal Information Tab"
+msgstr "Mostrar Nacionalidad en el Campo de Informacion Personal"
 
 #. module: partner_person
 #: field:partner.config.settings,group_person_passport:0
@@ -982,7 +954,7 @@ msgstr "Mostrar Pasaporte"
 #. module: partner_person
 #: help:partner.config.settings,group_person_passport:0
 msgid "Show Passport Field in Personal Information Tab"
-msgstr "Show Passport Field in Personal Information Tab"
+msgstr "Mostrar Passaporte en el Campo de Informacion Personal"
 
 #. module: partner_person
 #: selection:res.partner,marital_status:0
@@ -1111,11 +1083,12 @@ msgstr "Tipo..."
 #: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:43
 #, python-format
 msgid "Unable to open the file. Make sure the file format is correct."
-msgstr "No se puede abrir el archivo. Asegúrese de que el formato del archivo es correcta."
+msgstr ""
+"No se puede abrir el archivo. Asegúrese de que el formato del archivo es "
+"correcta."
 
 #. modules: kinesis_athletics_x, kinesis_athletics
-#: view:kinesis_athletics.test:0
-#: field:kinesis_athletics.test,uom_id:0
+#: view:kinesis_athletics.test:0 field:kinesis_athletics.test,uom_id:0
 #: field:kinesis_athletics.evaluation_detail,uom_id:0
 msgid "Unit"
 msgstr "Unidad"
@@ -1192,8 +1165,7 @@ msgid "Ya pertenece a un curso este año"
 msgstr "Ya pertenece a un curso este año"
 
 #. modules: kinesis_athletics_x, kinesis_athletics
-#: view:kinesis_athletics.group:0
-#: field:kinesis_athletics.group,year:0
+#: view:kinesis_athletics.group:0 field:kinesis_athletics.group,year:0
 msgid "Year"
 msgstr "Año"
 
@@ -1290,8 +1262,7 @@ msgstr "Nombre"
 #: view:kinesis_athletics.evaluation.person.wizard:0
 #: view:kinesis_athletics.evaluation.wizard:0
 #: view:kinesis_athletics.move_group_new_year.wizard:0
-#: view:kinesis_athletics.reevaluate.wizard:0
-#: view:partner.config.settings:0
+#: view:kinesis_athletics.reevaluate.wizard:0 view:partner.config.settings:0
 msgid "or"
 msgstr "o"
 
@@ -1376,4 +1347,3 @@ msgstr "Valor"
 #: view:res.partner:0
 msgid "{'invisible':[('is_company','=',False)]}"
 msgstr "{'invisible':[('is_company','=',False)]}"
-

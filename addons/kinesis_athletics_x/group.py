@@ -10,9 +10,30 @@ class group(osv.osv):
     """"""
     _inherit = 'kinesis_athletics.group'
 
+
+
+
+    def _evaluation_group_count(self, cr, uid, ids, field_name, arg, context=None):
+        res ={}
+        # the user may not have access rights for opportunities or meetings
+        evaluation_obj = self.pool['kinesis_athletics.evaluation']
+        for group in self.browse(cr, uid, ids, context=context):
+
+            res[group.id] = len(evaluation_obj.search(cr, uid, [('group_id', '=', group.id)], context=context))
+        
+            
+        print res
+        # except:
+        #     pass
+        # for partner in self.browse(cr, uid, ids, context):
+        #     res[partner_id] = len(partner.evaluation_ids)
+        return res
+
     _columns = {
         'is_school': fields.related('company_id', 'company_type_id', 'is_school', type='boolean', relation='kinesis_athletics.company_type', string="Is School", readonly=True),
         'has_group': fields.related('company_id', 'has_group', type='boolean', relation='res.company', string="Has Group", readonly=True),
+        'eval_group_count': fields.function(_evaluation_group_count, type="integer"), 
+    
     }
 
     _defaults = {

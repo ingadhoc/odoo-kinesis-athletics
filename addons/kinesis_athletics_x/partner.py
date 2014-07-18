@@ -28,11 +28,25 @@ class partner(osv.osv):
                             res[partner.id] = group.id
 
         return res
+    def _evaluation_count(self, cr, uid, ids, field_name, arg, context=None):
+        res ={}
+        # the user may not have access rights for opportunities or meetings
+        
+        for partner in self.browse(cr, uid, ids, context=context):
+            res[partner.id] = len(partner.evaluation_ids)
+            
+        print res[partner.id]
+        # except:
+        #     pass
+        # for partner in self.browse(cr, uid, ids, context):
+        #     res[partner_id] = len(partner.evaluation_ids)
+        return res
 
     _columns = {
         'actual_group': fields.function(_get_actual_group, type='many2one', relation='kinesis_athletics.group', string='Actual Group', store=True),
         'has_group':fields.related('company_id','has_group',relation='res.company', type='boolean', string='Has Group', store=True),
         'company_name':fields.related('company_id','company_type_id','name',relation='kinesis_athletics.company_type', type='char', string='Company name', store=True),
+        'eval_count': fields.function(_evaluation_count, type="integer"),  
     }
 
 
