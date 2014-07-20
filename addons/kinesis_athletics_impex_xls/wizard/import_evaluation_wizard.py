@@ -68,7 +68,7 @@ class import_evaluation_wizard(osv.osv_memory):
                 detail_data = []
                 
                 for test_name in record_header[2:]:
-                    if evaluation_dic.get(test_name):
+                    if evaluation_dic.get(test_name) != "":
                         eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
                         detail_data.append(eval_detail)
 
