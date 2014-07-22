@@ -37,7 +37,7 @@
                 </div>
 
                 <div name="buttons" position="inside">
-                    <button class="oe_stat_button"  icon="fa-pencil-square-o" type="action" 
+                    <button class="oe_stat_button"  icon="fa-pencil-square-o" type="action"
                             attrs="{'invisible': [('is_company', '=', True)]}" name="%(kinesis_athletics.action_kinesis_athletics_evaluation_evaluations)d" context="{'search_default_partner_id': active_id,}">
                             <field name="eval_count" string="Evaluations" widget="statinfo"/>
                         </button>
@@ -53,7 +53,7 @@
             <field name="inherit_id" ref="base.view_partner_tree"/>
             <field name="arch" type="xml">
                 <tree position="inside">
-                    <field name="actual_group" position="attributes">
+                    <field name="actual_group_id" position="attributes">
                         <attribute name="invisible">'show_actual_group' not in context</attribute>
                     </field>
                     <field name="company_id"/>

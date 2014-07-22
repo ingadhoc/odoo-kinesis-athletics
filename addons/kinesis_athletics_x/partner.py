@@ -1,48 +1,40 @@
 # -*- coding: utf-8 -*-
 
-from openerp import netsvc
-from openerp.osv import osv, fields
+from openerp import models, fields, api, _
 from datetime import date
 
 
-class partner(osv.osv):
+class partner(models.Model):
     """"""
 
     _name = 'res.partner'
     _inherit = 'res.partner'
 
 
-    def _get_actual_group(self, cr, uid, ids, fields, args, context=None):
-        res = {}
+    @api.one
+    @api.depends('partner_group_ids','partner_group_ids.year')
+    def _get_actual_group(self):
+        """
+        Checks if the partner is in a group for the actual year and stores the
+        actual group.
+        """
         actual_year = date.today().year
+        group_ids = self.env['kinesis_athletics.group'].search([('year','=',actual_year),('partner_ids','=',self.id)])
+        self.actual_group_id = group_ids.id
 
 
-        for partner in self.browse(cr, uid, ids, context=context):
-            if partner.partner_group_ids:
-                if partner.company_name=='Empresa':
-                    for group in partner.partner_group_ids:
-                        res[partner.id] = group.id
-                else:
-                    for group in partner.partner_group_ids:
-                        if group.year == actual_year:
-                            res[partner.id] = group.id
+    @api.one
+    def _evaluation_count(self):
+        """
+        Counts the number of evaluations the partner has, used for smart button.
+        """
+        self.eval_count = len(self.evaluation_ids)
 
-        return res
-    def _evaluation_count(self, cr, uid, ids, field_name, arg, context=None):
-        res ={}
-        # the user may not have access rights for opportunities or meetings
-        
-        for partner in self.browse(cr, uid, ids, context=context):
-            res[partner.id] = len(partner.evaluation_ids)
-            
-        return res
 
-    _columns = {
-        'actual_group': fields.function(_get_actual_group, type='many2one', relation='kinesis_athletics.group', string='Actual Group', store=True),
-        'has_group':fields.related('company_id','has_group',relation='res.company', type='boolean', string='Has Group', store=True),
-        'company_name':fields.related('company_id','company_type_id','name',relation='kinesis_athletics.company_type', type='char', string='Company name', store=True),
-        'eval_count': fields.function(_evaluation_count, type="integer"),  
-    }
+    actual_group_id = fields.Many2one('kinesis_athletics.group', string='Actual Group', compute='_get_actual_group')
+    has_group = fields.Boolean(related='company_id.has_group', string='Has Group', store=True)
+    company_name = fields.Char(related='company_id.company_type_id.name', string='Company Name', store=True)
+    eval_count = fields.Integer(compute='_evaluation_count')
 
 
     def _check_person_group(self, cr, uid, ids, context=None):
