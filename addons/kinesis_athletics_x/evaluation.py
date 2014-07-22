@@ -17,7 +17,7 @@ class evaluation(osv.osv):
     # evaluation_detail_value_ids= fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Values', domain=[('test_type','=','value')], readonly=True)
     # evaluation_detail_selection_ids= fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Selections', domain=[('test_type','=','selection')], readonly=True)
     # has_group=fields.Boolean(related='company_id.has_group',relation='res.company', string='Has Group', store=True)
-    # 'evaluation_detail_ids': fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Evaluation Details', required=True, copy=True), 
+    # 'evaluation_detail_ids': fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Evaluation Details', required=True, copy=True),
     def _complete_name(self, cr, uid, ids, name, args, context=None):
         """ Forms complete name of location from parent location to child location.
         @return: Dictionary of values
@@ -50,7 +50,7 @@ class evaluation(osv.osv):
         'evaluation_detail_selection_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Selections', domain=[('test_type','=','selection')], readonly=True),
         'has_group':fields.related('company_id','has_group',relation='res.company', type='boolean', string='Has Group', store=True),
         #we overwrite this field because in v8 o2m fields has copy=False by default and copy is not implemented on xmi2oerp
-        'evaluation_detail_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Evaluation Details', required=True, copy=True), 
+        'evaluation_detail_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Evaluation Details', required=True, copy=True),
     }
 
     _order = 'date desc'
@@ -80,7 +80,7 @@ class evaluation(osv.osv):
         if group_id:
             group_obj = self.pool['kinesis_athletics.group']
             group = group_obj.browse(cr, uid, group_id, context=context)
-            
+
             for partner in group.partner_ids:
                 partner_list.append(partner.id)
             domain_dic['partner_id'] = [('id','in',partner_list)]
@@ -129,7 +129,7 @@ class evaluation(osv.osv):
               new_id = self.copy(cr, uid, i, default = {
                                 'date': datetime.today(),
                                 'partner_id': current_evaluation.partner_id.id,
-                                'group_id': current_evaluation.partner_id.actual_group.id,
+                                'group_id': current_evaluation.partner_id.actual_group_id.id,
                                   }, context=context)
 
               for evaluation_detail in self.browse(cr, uid, new_id, context=context).evaluation_detail_ids:
