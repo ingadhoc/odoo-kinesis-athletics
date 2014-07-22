@@ -6,7 +6,7 @@ var _t = instance.web._t,
     _lt = instance.web._lt;
 var QWeb = instance.web.qweb;
 
-var color_map = {'alert': '#ff3333', 'superior': '#33ccff', 'ideal': '#2de15c'}
+var color_map = {'alert': '#ff3333', 'superior': '#33ccff', 'ideal': '#2de15c', 'none': '#ffffff'}
 
 instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.extend({
     className: "kinesis_metric",
@@ -19,13 +19,16 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
         var test_name = this.getParent().record['test_id'].value;
 
         var rating_below_minimum_color = color_map['alert'];
-        var rating_in_between_color = color_map['ideal'];
+        var rating_between = color_map['ideal'];
         var rating_over_maximum_color = color_map['superior'];
 
-        if (this.getParent().record['rating_below_minimum'] != null) {
+        if (this.getParent().record['rating_below_minimum'].raw_value) {
             rating_below_minimum_color = color_map[this.getParent().record['rating_below_minimum'].raw_value];
         }
-        if (this.getParent().record['rating_over_maximum'] != null) {
+        if (this.getParent().record['rating_between'].raw_value) {
+            rating_between = color_map[this.getParent().record['rating_between'].raw_value];
+        }
+        if (this.getParent().record['rating_over_maximum'].raw_value) {
             rating_over_maximum_color = color_map[this.getParent().record['rating_over_maximum'].raw_value];
         }
 
@@ -83,7 +86,7 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
             plotBands.push({
                 from: plotband_val_min,
                 to: plotband_val_max,
-                color: rating_in_between_color,
+                color: rating_between,
                 innerRadius: '100%',
                 outerRadius: '110%'
             });

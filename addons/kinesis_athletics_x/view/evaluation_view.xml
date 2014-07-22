@@ -73,6 +73,7 @@
                                         <field name='plotband_val_max'/>
                                         <field name='plotband_ext_max'/>
                                         <field name='rating_below_minimum'/>
+                                        <field name='rating_between'/>
                                         <field name='rating_over_maximum'/>
                                         <field name='age_avg'/>
                                         <templates>
