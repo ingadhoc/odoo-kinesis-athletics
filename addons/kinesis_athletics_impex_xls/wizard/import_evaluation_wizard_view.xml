@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <form string="Import Evaluation Wizard" version="7.0">
                     <group col="2">
-                        <field name="date"/>
+                        <field name="date" invisible="'eval_created' in context" required="'eval_created' not in context"/>
                         <field name="evaluation_data" filename="evaluation_fname"/>
                     </group>
                     <footer>

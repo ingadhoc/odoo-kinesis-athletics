@@ -21,6 +21,7 @@
         'wizard/import_evaluation_wizard_view.xml',
         'report/export_evaluation_report.xml',
         'group_view.xml',
+        'evaluation_view.xml',
     ],
     'version':'1.0'
 }

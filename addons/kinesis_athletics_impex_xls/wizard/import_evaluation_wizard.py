@@ -12,7 +12,7 @@ class import_evaluation_wizard(osv.osv_memory):
     _description = _('Wizard to import XLS evaluations for Kinesis groups')
 
     _columns = {
-        'date': fields.date(string=_('Date'), required=True),
+        'date': fields.date(string=_('Date')),
         'evaluation_data': fields.binary(_('Evaluation File'), required=True),
         'evaluation_fname': fields.char(_('Evaluation Filename'), size=128, required=True),
     }
@@ -27,6 +27,8 @@ class import_evaluation_wizard(osv.osv_memory):
             context = {}
 
         active_id = context.get('active_id', False)
+        eval_created = context.get('eval_created', False)
+
         group = self.pool['kinesis_athletics.group'].browse(cr, uid, active_id, context=context)
         if not active_id:
             return {'type': 'ir.actions.act_window_close'}
@@ -58,21 +60,52 @@ class import_evaluation_wizard(osv.osv_memory):
 
         try:
             for evaluation_dic in evaluation_matrix:
-                val = {
-                    'date': date,
-                    'group_id': group.id,
-                    'partner_id': int(evaluation_dic.get('partner_id'))
-                }
-                evaluation_id = evaluation_obj.create(cr, uid, val, context=context)
-                detail_fields = ['evaluation_id/.id', 'test_id', 'result']
-                detail_data = []
+                if eval_created:
+                    evaluation_id = active_id
+                    evaluation = evaluation_obj.browse(cr, uid, evaluation_id, context=context)
+                    
+                    for test in record_header[2:]:
                 
-                for test_name in record_header[2:]:
-                    if evaluation_dic.get(test_name) != "":
-                        eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
-                        detail_data.append(eval_detail)
+                        for detail in evaluation.evaluation_detail_ids:
+                            if test == detail.test_id.name:
+                                if evaluation_dic.get(test) != "":
+                                    print 'adsasdadssad'
+                                    vals={
+                                    
+                                    'result':float(evaluation_dic.get(test))
 
-                evaluation_detail_obj.load(cr, uid, detail_fields, detail_data, context=context)
+                                    }
+                                    evaluation_detail_obj.write(cr, uid, detail.id ,vals, context=None)
+                                break 
+                            else:
+                                pass
+                                # detail_fields = ['evaluation_id/.id', 'test_id', 'result']
+                                # detail_data = []
+                               
+                                # if evaluation_dic.get(test) != "":
+                                #         # Fijarte si existe un tst con ese test name,si existe 
+                                #     eval_detail = [evaluation_id, test, float(evaluation_dic.get(test))]
+                                #     detail_data.append(eval_detail)
+
+                                # evaluation_detail_obj.load(cr, uid, detail_fields, detail_data, context=context)
+
+                else:
+                    val = {
+                        'date': date,
+                        'group_id': group.id,
+                        'partner_id': int(evaluation_dic.get('partner_id'))
+                    }
+                    evaluation_id = evaluation_obj.create(cr, uid, val, context=context)
+
+                    detail_fields = ['evaluation_id/.id', 'test_id', 'result']
+                    detail_data = []
+                    
+                    for test_name in record_header[2:]:
+                        if evaluation_dic.get(test_name) != "":
+                            eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
+                            detail_data.append(eval_detail)
+
+                    evaluation_detail_obj.load(cr, uid, detail_fields, detail_data, context=context)
         except Exception as e:
             raise osv.except_osv(
                 _('Error'),
