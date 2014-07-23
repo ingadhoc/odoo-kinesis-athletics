@@ -24,7 +24,7 @@ class evaluation_in_person_wizard(osv.osv_memory):
             default = {
                 'date': wizard.date,
                 'partner_id': person.id,
-                'group_id': person.actual_group.id,
+                'group_id': person.actual_group_id.id,
                 'company_id': person.company_id.id,
                 'template_id': wizard.evaluation_id.id,
                 'is_template':False,

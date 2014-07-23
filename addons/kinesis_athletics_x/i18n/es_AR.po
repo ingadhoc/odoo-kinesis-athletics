@@ -42,7 +42,7 @@ msgid "'show_institutions' not in context"
 msgstr "Mostrar Instituciones"
 
 #. module: kinesis_athletics_x
-#: field:res.partner,actual_group:0
+#: field:res.partner,actual_group_id:0
 msgid "Actual Group"
 msgstr "Grupo Actual"
 
