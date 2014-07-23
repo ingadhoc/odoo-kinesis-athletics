@@ -18,7 +18,8 @@ class import_evaluation_wizard(osv.osv_memory):
     }
 
     _defaults = {
-        'evaluation_fname': lambda *a: 'imported_evaluation',
+        'evaluation_fname':'Imported Evaluation',
+        # 'evaluation_fname': lambda *a: 'imported_evaluation',
         'date':fields.date.context_today,
     }
 
@@ -69,7 +70,6 @@ class import_evaluation_wizard(osv.osv_memory):
                         for detail in evaluation.evaluation_detail_ids:
                             if test == detail.test_id.name:
                                 if evaluation_dic.get(test) != "":
-                                    print 'adsasdadssad'
                                     vals={
                                     
                                     'result':float(evaluation_dic.get(test))
@@ -91,7 +91,9 @@ class import_evaluation_wizard(osv.osv_memory):
 
                 else:
                     val = {
+                        'name':'Evaluation Imported',
                         'date': date,
+                        'company_id':group.company_id.id,
                         'group_id': group.id,
                         'partner_id': int(evaluation_dic.get('partner_id'))
                     }
