@@ -71,7 +71,7 @@
         <field name="secuence">20</field>
         <field name="arch" type="xml">
             <tree string="evaluation_detail" position="replace">
-                <tree string="evaluation_detail" editable="top" colors="black:result==0.0;black:state==False,blue:state=='superior';red:state=='alert';green:state=='ideal'">
+                <tree string="evaluation_detail" editable="top" colors="black:result==0.0;black:state==False;black:state=='none';blue:state=='superior';red:state=='alert';green:state=='ideal'">
                     <button type="object" string="Test Detail" icon="STOCK_JUSTIFY_LEFT" help="Test Details" name="get_test_description" context="{'readonly':True}"/>
                     <field name="test_id" on_change="onchange_test_id(test_id)"/>
                     <field name="result" attrs="{'readonly':[('test_type','!=','value')]}"/>

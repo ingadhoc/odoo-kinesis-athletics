@@ -12,10 +12,10 @@ class evaluation_detail(osv.osv):
     _inherit = 'kinesis_athletics.evaluation_detail'
 
 
-    def _get_state (self, cr, uid, val_min, val_max, evaluation_detail, context=None):
+    def _get_state (self, cr, uid, ext_min, val_min, val_max, ext_max, evaluation_detail, context=None):
         state=False
 
-        if val_min and val_max:
+        if ext_min and val_min and val_max and ext_max:
             result = evaluation_detail.result
             if result > val_max:
                 state=evaluation_detail.test_id.rating_over_maximum
@@ -23,6 +23,8 @@ class evaluation_detail(osv.osv):
                 state=evaluation_detail.test_id.rating_below_minimum
             if result >= val_min and result <= val_max:
                 state='ideal'
+            if ext_min == val_min and val_max == ext_max:
+                state='none'
 
         return state
 
@@ -54,7 +56,7 @@ class evaluation_detail(osv.osv):
             if evaluation.is_template!=True and partner:
 
                 ref_min, ref_max, ref_ext_max, ref_ext_min = test_obj._get_min_max(cr, uid, test.id, partner.id, context=context)
-                state = self._get_state(cr, uid, ref_min, ref_max, evaluation_detail, context=context)
+                state = self._get_state(cr, uid, ref_ext_min, ref_min, ref_max, ref_ext_max, evaluation_detail, context=context)
 
                 age_range = (partner.age, partner.age)
                 age_results = test_obj._get_results(cr, uid, test.id, age_range=age_range, context=context)
@@ -106,7 +108,7 @@ class evaluation_detail(osv.osv):
         'rating_below_minimum': fields.related('test_id', 'rating_below_minimum',type='selection', selection=[(u'alert', u'Alert'), (u'ideal', u'Ideal'), (u'superior', u'Superior'), (u'none', u'None')], string='rating_below_minimum'),
         'rating_between': fields.related('test_id', 'rating_between',type='selection', selection=[(u'alert', u'Alert'), (u'ideal', u'Ideal'), (u'superior', u'Superior'), (u'none', u'None')], string='rating_between'),
         'rating_over_maximum': fields.related('test_id', 'rating_over_maximum',type='selection', selection=[(u'alert', u'Alert'), (u'ideal', u'Ideal'), (u'superior', u'Superior'), (u'none', u'None')], string='rating_over_maximum'),
-        'state': fields.function(_get_test_statistics, type='selection', string='State', selection=[('alert', 'Alert'), ('ideal', 'Ideal'), ('superior', 'Superior')], method=True, store=True, multi='min_max'),
+        'state': fields.function(_get_test_statistics, type='selection', string='State', selection=[('alert', 'Alert'), ('ideal', 'Ideal'), ('superior', 'Superior'), ('none', 'None')], method=True, store=True, multi='min_max'),
         'test_type': fields.related('test_id', 'type', type='selection', selection=[(u'value', 'value'), (u'selection', 'selection')], string="Test Type", readonly=True),
         'test_description': fields.related('test_id', 'description', type='char', string="Test Description", readonly=True),
         'first_parent_id': fields.related('test_id', 'test_category_id', 'first_parent_id', relation='kinesis_athletics.test_category', type='many2one', string='Test Class', readonly=True, store=True),
@@ -135,7 +137,7 @@ class evaluation_detail(osv.osv):
             return False
 
     def _check_result(self, cr, uid, ids, context=None):
-        
+
         for obj in self.browse(cr, uid, ids, context=context):
             if not obj.evaluation_id.is_template:
                 if obj.test_id.has_range:
