@@ -25,16 +25,17 @@
     <data>
 
     
-            <record id="view_kinesis_athletics_wizard_evaluation_form" model="ir.ui.view">
-            <field name="name">kinesis_athletics.evaluation.form</field>
-            <field name="model">kinesis_athletics.evaluation</field>
-            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_evaluation_form"/>
+            <record id="view_kinesis_athletics_evaluation_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-
-                   <header position="inside">
-                    <button name="generate_eval_xls" type="object" string="Export XLS Evaluation" class="oe_highlight"/>
+                <sheet position="before">
+                   <header>
+                    <button name="%(export_evaluation_person_wizard_action)d" type="object" string="Export XLS Evaluation" class="oe_highlight"/>
                     <button name="%(import_evaluation_wizard_action)d" class="oe_highlight" type="action" string="Import XLS Evaluation" context="{'eval_created':True}"/>
                 </header>
+            </sheet>
             </field>
         </record>
 

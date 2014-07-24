@@ -20,8 +20,9 @@
         'wizard/export_evaluation_wizard_view.xml',
         'wizard/import_evaluation_wizard_view.xml',
         'report/export_evaluation_report.xml',
-        'group_view.xml',
         'evaluation_view.xml',
+        'group_view.xml',
+        'person_view.xml',
     ],
     'version':'1.0'
 }
