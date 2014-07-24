@@ -38,7 +38,7 @@
                         <field name="type" placeholder="Type..." readonly="context.get('readonly',False)" on_change="onchange_type(type)"/>
                     </div>
                     <group>
-                        <field name="has_range" attrs="{'invisible':[('type', '=','selection')]}" readonly="context.get('readonly',False)"/>
+                        <field name="has_range" attrs="{'invisible':[('type', '=','selection')]}" readonly="context.get('readonly',False)" on_change="on_change_has_range(has_range)"/>
                         <!-- <field name="invert" attrs="{'invisible':[('type', '=','selection')]}" readonly="context.get('readonly',False)"/> -->
                         <field name="rating_below_minimum" attrs="{'invisible':[('has_range','=', False)]}" readonly="context.get('readonly',False)"/>
                         <field name="rating_between" attrs="{'invisible':[('type', '=', 'selection')]}" readonly="context.get('readonly',False)"/>

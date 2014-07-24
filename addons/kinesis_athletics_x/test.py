@@ -23,6 +23,17 @@ class test(models.Model):
         return {'value': v}
 
 
+    def on_change_has_range(self, cr, uid, ids, has_range, context=None):
+        v = {}
+
+        if not has_range:
+            v['rating_below_minimum'] = 'none'
+            v['rating_between'] = 'none'
+            v['rating_over_maximum'] = 'none'
+
+        return {'value': v}
+
+
     def name_get(self, cr, uid, ids, context=None):
 
         if isinstance(ids, (list, tuple)) and not len(ids):
