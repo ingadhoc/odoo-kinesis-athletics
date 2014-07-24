@@ -140,7 +140,6 @@ class evaluation_detail(osv.osv):
 
         for obj in self.browse(cr, uid, ids, context=context):
             if not obj.evaluation_id.is_template:
-                if obj.test_id.has_range:
                     if obj.plotband_ext_min and obj.plotband_ext_max:
                         if obj.result != 0:
                             if obj.result < obj.plotband_ext_min or obj.result > obj.plotband_ext_max:
