@@ -23,7 +23,7 @@ class reevaluate_wizard(osv.osv_memory):
 
         for evaluation in evaluation_ids:
             evaluation_id = evaluation_obj.new_evaluation(cr, uid, [evaluation.id], context=context)
-            new_evaluation_ids.append(evaluation.id)
+            new_evaluation_ids.append(evaluation_id['res_id'])
 
         mod_obj = self.pool.get('ir.model.data')
         act_obj = self.pool.get('ir.actions.act_window')

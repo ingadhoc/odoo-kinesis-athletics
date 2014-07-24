@@ -5,19 +5,15 @@ from openerp.osv import osv, fields
 from openerp.tools.translate import _
 from datetime import datetime
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP, float_compare
-# from openerp import models, fields, api, _
+
+
 class evaluation(osv.osv):
     """"""
 
     _inherit = 'kinesis_athletics.evaluation'
     _rec_name = 'complete_name'
 
-    # complete_name= fields.Function(_complete_name, type='char', string="Name", store=True,)
-    # age= fields.Function(_get_partner_age, type='integer', string="Age", store=True)
-    # evaluation_detail_value_ids= fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Values', domain=[('test_type','=','value')], readonly=True)
-    # evaluation_detail_selection_ids= fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Selections', domain=[('test_type','=','selection')], readonly=True)
-    # has_group=fields.Boolean(related='company_id.has_group',relation='res.company', string='Has Group', store=True)
-    # 'evaluation_detail_ids': fields.One2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Evaluation Details', required=True, copy=True),
+
     def _complete_name(self, cr, uid, ids, name, args, context=None):
         """ Forms complete name of location from parent location to child location.
         @return: Dictionary of values
@@ -134,8 +130,7 @@ class evaluation(osv.osv):
 
               for evaluation_detail in self.browse(cr, uid, new_id, context=context).evaluation_detail_ids:
                 evaluation_detail.write({'result': False})
-
-            new_evaluations.append(new_id)
+                evaluation_detail.write({'test_selection_id': False})
 
         return {
             'name': _('Evaluation'),
@@ -143,7 +138,7 @@ class evaluation(osv.osv):
             'view_mode': 'form,tree',
             'res_model': 'kinesis_athletics.evaluation',
             'view_id': False,
-            'res_id': new_evaluations[0],
+            'res_id': new_id,
             'type': 'ir.actions.act_window',
             'nodestroy': True
         }
