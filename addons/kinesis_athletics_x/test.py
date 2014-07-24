@@ -96,3 +96,10 @@ class test(models.Model):
             results.append(evaluation_detail.result)
 
         return results
+
+
+    _defaults = {
+        'rating_below_minimum': 'none',
+        'rating_between': 'none',
+        'rating_over_maximum': 'none',
+    }

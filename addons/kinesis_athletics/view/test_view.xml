@@ -75,6 +75,12 @@
                             />
                         <field name="type"
                             />
+                        <field name="rating_below_minimum"
+                            />
+                        <field name="rating_over_maximum"
+                            />
+                        <field name="rating_between"
+                            />
                     <field name="test_category_id"
                             />
                      </group>
