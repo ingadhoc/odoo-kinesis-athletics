@@ -17,7 +17,9 @@
 
 <t t-name="KinesisState">
     <div t-att-class="'kinesis_result_state kinesis_state_' + widget.field.raw_value">
-        <t t-esc="widget.field.value"/>
+        <t t-if="widget.field.raw_value != 'none'">
+        	<t t-esc="widget.field.value"/>
+    	</t>
     </div>
 </t>
 
