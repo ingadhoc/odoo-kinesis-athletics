@@ -41,7 +41,8 @@
                         <field name="has_range" attrs="{'invisible':[('type', '=','selection')]}" readonly="context.get('readonly',False)" on_change="on_change_has_range(has_range)"/>
                         <!-- <field name="invert" attrs="{'invisible':[('type', '=','selection')]}" readonly="context.get('readonly',False)"/> -->
                         <field name="rating_below_minimum" attrs="{'invisible':[('has_range','=', False)]}" readonly="context.get('readonly',False)"/>
-                        <field name="rating_between" attrs="{'invisible':[('type', '=', 'selection')]}" readonly="context.get('readonly',False)"/>
+                        <field name="rating_between" attrs="{'invisible':[('has_range','=', False)]}" readonly="context.get('readonly',False)"/>
+                        <!--                        <field name="rating_between" attrs="{'invisible':[('type', '=', 'selection')]}" readonly="context.get('readonly',False)"/> -->
                         <field name="rating_over_maximum" attrs="{'invisible':[('has_range', '=', False)]}" readonly="context.get('readonly',False)"/>
                     </group>
                     <notebook colspan="4">
