@@ -28,5 +28,31 @@
             <field name="target">new</field>
         </record>
 
+        <record id="import_evaluation_wizard_person_view" model="ir.ui.view">
+            <field name="name">Import Evaluation Wizard</field>
+            <field name="model">import.evaluation.person.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Import Evaluation Wizard" version="7.0">
+                    <group col="2">
+                        <field name="date"/>
+                        <field name="evaluation_data" filename="evaluation_fname"/>
+                    </group>
+                    <footer>
+                        <button name="import_evaluation_person" string="_Import" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Import XLS Evaluation"
+                    src_model="res.partner"
+                    res_model="import.evaluation.person.wizard"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"
+                    id="import_evaluation_person_wizard_action"/>
+
   </data>
 </openerp>
