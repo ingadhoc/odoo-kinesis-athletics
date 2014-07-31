@@ -69,7 +69,7 @@ class import_evaluation_person_wizard(osv.osv_memory):
                         'name':'Evaluation Imported',
                         'date': date,
                         'company_id':person.company_id.id,
-                        'group_id': person.group_id.id,
+                        'group_id': person.actual_group_id.id,
                         'partner_id': person.id,
                     }
                     print val 
