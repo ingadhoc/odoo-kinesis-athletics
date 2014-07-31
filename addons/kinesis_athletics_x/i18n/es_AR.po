@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 8.0rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-18 14:46+0000\n"
-"PO-Revision-Date: 2014-07-18 11:58-0300\n"
+"POT-Creation-Date: 2014-07-31 13:02+0000\n"
+"PO-Revision-Date: 2014-07-31 10:07-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -42,11 +42,6 @@ msgid "'show_institutions' not in context"
 msgstr "Mostrar Instituciones"
 
 #. module: kinesis_athletics_x
-#: field:res.partner,actual_group_id:0
-msgid "Actual Group"
-msgstr "Grupo Actual"
-
-#. module: kinesis_athletics_x
 #: view:kinesis_athletics.group:0
 msgid "Actual Year"
 msgstr "Año actual"
@@ -63,8 +58,10 @@ msgstr "Edad Promedio"
 
 #. modules: kinesis_athletics_x, kinesis_athletics
 #: selection:kinesis_athletics.test,rating_below_minimum:0
+#: selection:kinesis_athletics.test,rating_between:0
 #: selection:kinesis_athletics.test,rating_over_maximum:0
 #: selection:kinesis_athletics.evaluation_detail,rating_below_minimum:0
+#: selection:kinesis_athletics.evaluation_detail,rating_between:0
 #: selection:kinesis_athletics.evaluation_detail,rating_over_maximum:0
 #: selection:kinesis_athletics.evaluation_detail,state:0
 msgid "Alert"
@@ -113,7 +110,8 @@ msgid "By object"
 msgstr "Por Objeto"
 
 #. modules: partner_person, kinesis_athletics_impex_xls, kinesis_athletics_x
-#: view:export.evaluation.wizard:0 view:import.evaluation.wizard:0
+#: view:export.evaluation.person.wizard:0 view:export.evaluation.wizard:0
+#: view:import.evaluation.person.wizard:0 view:import.evaluation.wizard:0
 #: view:kinesis_athletics.evaluation.person.wizard:0
 #: view:kinesis_athletics.evaluation.wizard:0
 #: view:kinesis_athletics.move_group_new_year.wizard:0
@@ -154,7 +152,7 @@ msgstr "Color Index"
 #: model:ir.model,name:kinesis_athletics.model_res_company
 #: model:ir.model,name:kinesis_athletics_x.model_res_company
 msgid "Companies"
-msgstr "Empresas"
+msgstr "Compañías"
 
 #. modules: kinesis_athletics_x, kinesis_athletics, kinesis_athletics_view_mods
 #: field:kinesis_athletics.evaluation,company_id:0
@@ -165,15 +163,15 @@ msgstr "Empresas"
 msgid "Company"
 msgstr "Empresa"
 
+#. module: kinesis_athletics_x
+#: field:res.partner,company_name:0
+msgid "Company Name"
+msgstr "Company Name"
+
 #. module: kinesis_athletics
 #: field:res.company,company_type_id:0
 msgid "Company Type"
 msgstr "Tipo "
-
-#. module: kinesis_athletics_x
-#: field:res.partner,company_name:0
-msgid "Company name"
-msgstr "Nombre de Empresa"
 
 #. module: kinesis_athletics
 #: model:res.groups,name:kinesis_athletics.group_configuracion
@@ -237,7 +235,9 @@ msgstr "Crear Evaluaciones a estos alumnos"
 #: field:kinesis_athletics.test_category,create_uid:0
 #: field:kinesis_athletics.test_range,create_uid:0
 #: field:kinesis_athletics.test_selection,create_uid:0
+#: field:export.evaluation.person.wizard,create_uid:0
 #: field:export.evaluation.wizard,create_uid:0
+#: field:import.evaluation.person.wizard,create_uid:0
 #: field:import.evaluation.wizard,create_uid:0
 #: field:kinesis_athletics.evaluation.person.wizard,create_uid:0
 #: field:kinesis_athletics.evaluation.wizard,create_uid:0
@@ -257,7 +257,9 @@ msgstr "Creado por"
 #: field:kinesis_athletics.test_category,create_date:0
 #: field:kinesis_athletics.test_range,create_date:0
 #: field:kinesis_athletics.test_selection,create_date:0
+#: field:export.evaluation.person.wizard,create_date:0
 #: field:export.evaluation.wizard,create_date:0
+#: field:import.evaluation.person.wizard,create_date:0
 #: field:import.evaluation.wizard,create_date:0
 #: field:kinesis_athletics.evaluation.person.wizard,create_date:0
 #: field:kinesis_athletics.evaluation.wizard,create_date:0
@@ -270,8 +272,11 @@ msgstr "Created on"
 #. modules: kinesis_athletics_impex_xls, kinesis_athletics_x, kinesis_athletics
 #: view:kinesis_athletics.evaluation:0
 #: field:kinesis_athletics.evaluation,date:0
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:15
 #: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:15
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:15
 #: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:15
+#: field:import.evaluation.person.wizard,date:0
 #: field:import.evaluation.wizard,date:0
 #: field:kinesis_athletics.evaluation.person.wizard,date:0
 #: field:kinesis_athletics.evaluation.wizard,date:0
@@ -300,10 +305,14 @@ msgid "Divorced"
 msgstr "Divorciado"
 
 #. module: kinesis_athletics_impex_xls
-#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:43
-#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:78
-#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:43
-#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:78
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:45
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:90
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:46
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:113
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:45
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:90
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:46
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:113
 #, python-format
 msgid "Error"
 msgstr "Error"
@@ -331,8 +340,8 @@ msgstr "Grupo del año que le sigue "
 #: view:kinesis_athletics.evaluation_detail:0
 #: field:kinesis_athletics.evaluation_detail,evaluation_id:0
 #: view:res.partner:0 field:res.partner,evaluation_ids:0
-#: code:addons/kinesis_athletics_x/evaluation.py:141
-#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_x/evaluation.py:141
+#: code:addons/kinesis_athletics_x/evaluation.py:136
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_x/evaluation.py:136
 #: model:ir.ui.menu,name:kinesis_portal.portal_kinesis_athletics_evaluation
 #, python-format
 msgid "Evaluation"
@@ -346,16 +355,22 @@ msgid "Evaluation Details"
 msgstr "Detalles de Evaluacion"
 
 #. module: kinesis_athletics_impex_xls
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:16
 #: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:16
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:16
 #: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:16
+#: field:import.evaluation.person.wizard,evaluation_data:0
 #: field:import.evaluation.wizard,evaluation_data:0
 #, python-format
 msgid "Evaluation File"
 msgstr "Archivo de Evaluacion"
 
 #. module: kinesis_athletics_impex_xls
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:17
 #: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:17
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:17
 #: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:17
+#: field:import.evaluation.person.wizard,evaluation_fname:0
 #: field:import.evaluation.wizard,evaluation_fname:0
 #, python-format
 msgid "Evaluation Filename"
@@ -383,13 +398,15 @@ msgid "Evaluations"
 msgstr "Evaluaciones"
 
 #. module: kinesis_athletics_impex_xls
-#: view:export.evaluation.wizard:0
+#: view:export.evaluation.person.wizard:0 view:export.evaluation.wizard:0
 #: model:ir.actions.act_window,name:kinesis_athletics_impex_xls.export_evaluation_wizard_action
 msgid "Export Evaluation Wizard"
 msgstr "Asistente de Exportación de evaluaciones"
 
 #. module: kinesis_athletics_impex_xls
-#: view:kinesis_athletics.group:0
+#: model:ir.actions.act_window,name:kinesis_athletics_impex_xls.export_evaluation_person_wizard_action
+#: view:kinesis_athletics.evaluation:0 view:kinesis_athletics.group:0
+#: view:res.partner:0
 msgid "Export XLS Evaluation"
 msgstr "Exportar evaluación (XLS)"
 
@@ -416,8 +433,10 @@ msgid "Female"
 msgstr "Femenino"
 
 #. module: kinesis_athletics_impex_xls
-#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:79
-#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:79
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:91
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:114
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:91
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:114
 #, python-format
 msgid ""
 "File is does not have the correct format, check that the Persons in the file "
@@ -514,7 +533,10 @@ msgstr "Esposo"
 #: field:kinesis_athletics.test_category,id:0
 #: field:kinesis_athletics.test_range,id:0
 #: field:kinesis_athletics.test_selection,id:0
-#: field:export.evaluation.wizard,id:0 field:import.evaluation.wizard,id:0
+#: field:export.evaluation.person.wizard,id:0
+#: field:export.evaluation.wizard,id:0
+#: field:import.evaluation.person.wizard,id:0
+#: field:import.evaluation.wizard,id:0
 #: field:kinesis_athletics.evaluation.person.wizard,id:0
 #: field:kinesis_athletics.evaluation.wizard,id:0
 #: field:kinesis_athletics.move_group_new_year.wizard,id:0
@@ -525,8 +547,10 @@ msgstr "ID"
 
 #. modules: kinesis_athletics_x, kinesis_athletics
 #: selection:kinesis_athletics.test,rating_below_minimum:0
+#: selection:kinesis_athletics.test,rating_between:0
 #: selection:kinesis_athletics.test,rating_over_maximum:0
 #: selection:kinesis_athletics.evaluation_detail,rating_below_minimum:0
+#: selection:kinesis_athletics.evaluation_detail,rating_between:0
 #: selection:kinesis_athletics.evaluation_detail,rating_over_maximum:0
 #: selection:kinesis_athletics.evaluation_detail,state:0
 msgid "Ideal"
@@ -539,13 +563,15 @@ msgid "Image"
 msgstr "Imagen"
 
 #. module: kinesis_athletics_impex_xls
-#: view:import.evaluation.wizard:0
+#: view:import.evaluation.person.wizard:0 view:import.evaluation.wizard:0
 #: model:ir.actions.act_window,name:kinesis_athletics_impex_xls.import_evaluation_wizard_action
 msgid "Import Evaluation Wizard"
 msgstr "Asistente para Importar Evaluación"
 
 #. module: kinesis_athletics_impex_xls
-#: view:kinesis_athletics.group:0
+#: model:ir.actions.act_window,name:kinesis_athletics_impex_xls.import_evaluation_person_wizard_action
+#: view:kinesis_athletics.evaluation:0 view:kinesis_athletics.group:0
+#: view:res.partner:0
 msgid "Import XLS Evaluation"
 msgstr "Importar Evaluación (XLS)"
 
@@ -562,8 +588,10 @@ msgid "Invalid Action!"
 msgstr "¡Acción Invalida!"
 
 #. module: kinesis_athletics_impex_xls
-#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:37
-#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:37
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:39
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:40
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:39
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:40
 #, python-format
 msgid "Invalid file"
 msgstr "Archivo Invalido"
@@ -627,7 +655,9 @@ msgstr "Apellido"
 #: field:kinesis_athletics.test_category,write_uid:0
 #: field:kinesis_athletics.test_range,write_uid:0
 #: field:kinesis_athletics.test_selection,write_uid:0
+#: field:export.evaluation.person.wizard,write_uid:0
 #: field:export.evaluation.wizard,write_uid:0
+#: field:import.evaluation.person.wizard,write_uid:0
 #: field:import.evaluation.wizard,write_uid:0
 #: field:kinesis_athletics.evaluation.person.wizard,write_uid:0
 #: field:kinesis_athletics.evaluation.wizard,write_uid:0
@@ -647,7 +677,9 @@ msgstr "Ultima actualización de"
 #: field:kinesis_athletics.test_category,write_date:0
 #: field:kinesis_athletics.test_range,write_date:0
 #: field:kinesis_athletics.test_selection,write_date:0
+#: field:export.evaluation.person.wizard,write_date:0
 #: field:export.evaluation.wizard,write_date:0
+#: field:import.evaluation.person.wizard,write_date:0
 #: field:import.evaluation.wizard,write_date:0
 #: field:kinesis_athletics.evaluation.person.wizard,write_date:0
 #: field:kinesis_athletics.evaluation.wizard,write_date:0
@@ -738,8 +770,8 @@ msgstr "Nacionalidad"
 
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.evaluation:0
-msgid "New Evaluation "
-msgstr "New Evaluation "
+msgid "New Evaluation"
+msgstr "New Evaluation"
 
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.evaluation:0
@@ -750,6 +782,17 @@ msgstr "Nueva evaluación basada en un plantilla"
 #: field:kinesis_athletics.move_group_new_year.wizard,new_year:0
 msgid "New Year"
 msgstr "Nuevo año"
+
+#. modules: kinesis_athletics_x, kinesis_athletics
+#: selection:kinesis_athletics.test,rating_below_minimum:0
+#: selection:kinesis_athletics.test,rating_between:0
+#: selection:kinesis_athletics.test,rating_over_maximum:0
+#: selection:kinesis_athletics.evaluation_detail,rating_below_minimum:0
+#: selection:kinesis_athletics.evaluation_detail,rating_between:0
+#: selection:kinesis_athletics.evaluation_detail,rating_over_maximum:0
+#: selection:kinesis_athletics.evaluation_detail,state:0
+msgid "None"
+msgstr "None"
 
 #. module: kinesis_athletics
 #: field:kinesis_athletics.evaluation,note:0
@@ -833,7 +876,7 @@ msgstr "Persona"
 #. module: partner_person
 #: view:partner.config.settings:0
 msgid "Person - Personal Information"
-msgstr "Persona - Información Personal"
+msgstr "Person - Personal Information"
 
 #. modules: partner_person, kinesis_athletics_view_mods
 #: view:res.partner:0
@@ -848,7 +891,7 @@ msgid "Persons"
 msgstr "Personas"
 
 #. module: kinesis_athletics_impex_xls
-#: view:export.evaluation.wizard:0
+#: view:export.evaluation.person.wizard:0 view:export.evaluation.wizard:0
 msgid "Print"
 msgstr "Imprimir"
 
@@ -856,6 +899,11 @@ msgstr "Imprimir"
 #: field:kinesis_athletics.test,rating_below_minimum:0
 msgid "Rating Below Minimum"
 msgstr "Rango por debajo del Minimo"
+
+#. module: kinesis_athletics
+#: field:kinesis_athletics.test,rating_between:0
+msgid "Rating Between"
+msgstr "Rango entre Minimo y Maximo "
 
 #. module: kinesis_athletics
 #: field:kinesis_athletics.test,rating_over_maximum:0
@@ -902,12 +950,12 @@ msgstr "Sexo"
 #. module: partner_person
 #: field:partner.config.settings,group_person_birthdate:0
 msgid "Show Birthdate"
-msgstr "Mostrar Fecha de cumpleaños "
+msgstr "Mostrar Fecha de Nacimiento"
 
 #. module: partner_person
 #: help:partner.config.settings,group_person_birthdate:0
 msgid "Show Birthdate Field in Personal Information Tab"
-msgstr "Mostrar Fecha de Nacimiento en el Campo Información Personal "
+msgstr "Show Birthdate Field in Personal Information Tab"
 
 #. module: partner_person
 #: field:partner.config.settings,group_disabilities:0
@@ -922,12 +970,12 @@ msgstr "Show Disabilities Information Tab"
 #. module: partner_person
 #: field:partner.config.settings,group_person_family:0
 msgid "Show Family Information"
-msgstr "Show Family Information"
+msgstr "Mostrar Informacion Familiar"
 
 #. module: partner_person
 #: field:partner.config.settings,group_person_marital_information:0
 msgid "Show Marital Information"
-msgstr "Show Marital Information"
+msgstr "Mostrar informacion de Estado Civil"
 
 #. module: partner_person
 #: help:partner.config.settings,group_person_marital_information:0
@@ -944,7 +992,7 @@ msgstr "Show Mother, Father and Childs Fields in Personal Information Tab"
 #. module: partner_person
 #: field:partner.config.settings,group_person_ni:0
 msgid "Show National Identity"
-msgstr "Show National Identity"
+msgstr "Mostrar Documento de Identidad"
 
 #. module: partner_person
 #: help:partner.config.settings,group_person_ni:0
@@ -964,7 +1012,7 @@ msgstr "Show Nationality Field in Personal Information Tab"
 #. module: partner_person
 #: field:partner.config.settings,group_person_passport:0
 msgid "Show Passport"
-msgstr "Mostrar Pasaporte"
+msgstr "Mostrar Passaporte"
 
 #. module: partner_person
 #: help:partner.config.settings,group_person_passport:0
@@ -983,8 +1031,10 @@ msgstr "Estado"
 
 #. modules: kinesis_athletics_x, kinesis_athletics
 #: selection:kinesis_athletics.test,rating_below_minimum:0
+#: selection:kinesis_athletics.test,rating_between:0
 #: selection:kinesis_athletics.test,rating_over_maximum:0
 #: selection:kinesis_athletics.evaluation_detail,rating_below_minimum:0
+#: selection:kinesis_athletics.evaluation_detail,rating_between:0
 #: selection:kinesis_athletics.evaluation_detail,rating_over_maximum:0
 #: selection:kinesis_athletics.evaluation_detail,state:0
 msgid "Superior"
@@ -992,6 +1042,7 @@ msgstr "Superior"
 
 #. modules: kinesis_athletics_impex_xls, kinesis_athletics
 #: field:kinesis_athletics.evaluation,template_id:0
+#: field:export.evaluation.person.wizard,template_id:0
 #: field:export.evaluation.wizard,template_id:0
 msgid "Template"
 msgstr "Plantilla"
@@ -1097,8 +1148,10 @@ msgid "Type..."
 msgstr "Tipo..."
 
 #. module: kinesis_athletics_impex_xls
-#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:43
-#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:43
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:45
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:46
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:45
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:46
 #, python-format
 msgid "Unable to open the file. Make sure the file format is correct."
 msgstr ""
@@ -1170,8 +1223,19 @@ msgid "Wizard to export XLS evaluations for Kinesis groups"
 msgstr "Wizard to export XLS evaluations for Kinesis groups"
 
 #. module: kinesis_athletics_impex_xls
+#: code:addons/kinesis_athletics_impex_xls/wizard/export_evaluation_person_wizard.py:8
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/export_evaluation_person_wizard.py:8
+#: model:ir.model,name:kinesis_athletics_impex_xls.model_export_evaluation_person_wizard
+#, python-format
+msgid "Wizard to export XLS evaluations for Kinesis persons"
+msgstr "Wizard to export XLS evaluations for Kinesis persons"
+
+#. module: kinesis_athletics_impex_xls
+#: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:12
 #: code:addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:12
+#: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_person_wizard.py:12
 #: code:addons/sources/odoo-kinesis-athletics/addons/kinesis_athletics_impex_xls/wizard/import_evaluation_wizard.py:12
+#: model:ir.model,name:kinesis_athletics_impex_xls.model_import_evaluation_person_wizard
 #: model:ir.model,name:kinesis_athletics_impex_xls.model_import_evaluation_wizard
 #, python-format
 msgid "Wizard to import XLS evaluations for Kinesis groups"
@@ -1200,7 +1264,7 @@ msgid "You cannot delete a group containing persons."
 msgstr "No se puede eliminar un grupo que contiene personas."
 
 #. module: kinesis_athletics_impex_xls
-#: view:import.evaluation.wizard:0
+#: view:import.evaluation.person.wizard:0 view:import.evaluation.wizard:0
 msgid "_Import"
 msgstr "Importar"
 
@@ -1225,9 +1289,10 @@ msgstr "company_type"
 msgid "dB"
 msgstr "dB"
 
-#. modules: kinesis_athletics_x, kinesis_athletics
+#. modules: kinesis_athletics_impex_xls, kinesis_athletics_x, kinesis_athletics
 #: model:ir.model,name:kinesis_athletics.model_kinesis_athletics_evaluation
 #: view:kinesis_athletics.evaluation:0
+#: model:ir.model,name:kinesis_athletics_impex_xls.model_kinesis_athletics_evaluation
 #: model:ir.model,name:kinesis_athletics_x.model_kinesis_athletics_evaluation
 msgid "evaluation"
 msgstr "Evaluacion"
@@ -1296,6 +1361,11 @@ msgid "rating_below_minimum"
 msgstr "rating_below_minimum"
 
 #. module: kinesis_athletics_x
+#: field:kinesis_athletics.evaluation_detail,rating_between:0
+msgid "rating_between"
+msgstr "rating_between"
+
+#. module: kinesis_athletics_x
 #: field:kinesis_athletics.evaluation_detail,rating_over_maximum:0
 msgid "rating_over_maximum"
 msgstr "rating_over_maximum"
@@ -1349,7 +1419,6 @@ msgstr "Tipo"
 
 #. module: kinesis_athletics_x
 #: field:kinesis_athletics.group,eval_group_count:0
-#: field:res.partner,eval_count:0
 msgid "unknown"
 msgstr "unknown"
 

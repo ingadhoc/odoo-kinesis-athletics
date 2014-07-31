@@ -66,7 +66,7 @@ class import_evaluation_person_wizard(osv.osv_memory):
             for evaluation_dic in evaluation_matrix:
                 for person in persons:
                     val = {
-                        'name':'Evaluation Imported',
+                        'name':'Evaluation',
                         'date': date,
                         'company_id':person.company_id.id,
                         'group_id': person.actual_group_id.id,
