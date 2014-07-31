@@ -9,3 +9,4 @@ import test_category
 import test_range
 import partner
 import company
+import report
