@@ -20,6 +20,33 @@
                 </search>
             </field>
         </record>
+               
+
+               <!-- GRAPH VIEW -->
+
+             <record id="view_kinesis_athletics_evaluation_graph" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation.graph</field>
+            <field name="model">kinesis_athletics.evaluation</field>
+            <field name="arch" type="xml">
+                <graph string="Evaluation" type="pivot" stacked="True">
+                    
+                </graph>
+            
+                
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- FORMVIEW -->
         <record id="view_kinesis_athletics_evaluation_form" model="ir.ui.view">

@@ -47,6 +47,8 @@
       'security/kinesis_athletics_security.xml',
       'security/ir.model.access.csv',
       'view/kinesis_athletics_x.xml',
+      # 'view/kinesis_athletics_x_menuitem.xml',
+      # 'report/kinesis_athletics_evaluation_detail_report_view.xml',
       ],
     'version':'1.0'
     }
