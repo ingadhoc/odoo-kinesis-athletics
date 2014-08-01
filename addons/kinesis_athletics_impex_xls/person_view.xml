@@ -28,14 +28,12 @@
             <record id="view_kinesis_athletics_person_form" model="ir.ui.view">
             <field name="name">kinesis_athletics.partner.form</field>
             <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="inherit_id" ref="kinesis_athletics_x.view_kinesis_athletics_partner_form"/>
             <field name="arch" type="xml">
-                <sheet position="before">
-                   <header>
+                   <header position="inside">
                     <button name="%(export_evaluation_person_wizard_action)d" type="action" string="Export XLS Evaluation" class="oe_highlight"/>
                     <button name="%(import_evaluation_person_wizard_action)d" class="oe_highlight" type="action" string="Import XLS Evaluation" context="{'eval_created':True}"/>
                 </header>
-            </sheet>
             </field>
         </record>
 
