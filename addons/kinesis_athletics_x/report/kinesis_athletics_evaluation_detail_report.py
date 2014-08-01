@@ -28,6 +28,12 @@ class kinesis_athletics_evaluation_detail_report(models.Model):
         group_operator='avg'
     )
 
+    result_sum = fields.Float(
+        string='Result Sum',
+        readonly=True,
+        group_operator='sum'
+    )
+
     result_max = fields.Float(
         string='Result Max',
         readonly=True,
@@ -57,6 +63,24 @@ class kinesis_athletics_evaluation_detail_report(models.Model):
         readonly=True
     )
 
+    template_id = fields.Many2one(
+        'kinesis_athletics.evaluation',
+        string='Template',
+        readonly=True
+    )
+
+    group_id = fields.Many2one(
+        'kinesis_athletics.evaluation',
+        string='Group',
+        readonly=True
+    )
+
+    first_parent_id = fields.Many2one(
+        'kinesis_athletics.test_category',
+        string='First Parent',
+        readonly=True
+    )
+
     def _select(self):
         select_str = """
             SELECT
@@ -65,9 +89,14 @@ class kinesis_athletics_evaluation_detail_report(models.Model):
                 ed.test_id,
                 ed.result,
                 ed.result as result_max,
+                ed.result as result_avg,
+                ed.result as result_sum,
+                tc.first_parent_id,                
+                e.template_id,
                 e.partner_id,
                 e.age,
                 e.is_template,
+                e.group_id,
                 e.date,
                 e.user_id
         """
@@ -80,6 +109,8 @@ class kinesis_athletics_evaluation_detail_report(models.Model):
                 ON (ed.evaluation_id = e.id)
             LEFT JOIN kinesis_athletics_test t
                 ON (ed.test_id = t.id)
+            LEFT JOIN kinesis_athletics_test_category tc
+                ON (t.test_category_id   = tc.id)
             """
         return from_str
 

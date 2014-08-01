@@ -7,14 +7,14 @@
             <field name="model">kinesis_athletics.evaluation_detail.report</field>
             <field name="arch" type="xml">
                 <graph string="Evaluation Details" type="pivot" stacked="True">
-                    <field name="partner_id" type="col"/>
-                    <field name="test_id" type="row"/>
-                    <field name="result" type="measure"/>
+                    <!-- <field name="partner_id" type="col"/> -->
+                    <!-- <field name="test_id" type="row"/> -->
+                    <field name="result_avg" type="measure"/>
                 </graph>
             </field>
         </record>
 
-        <record id="view_report_kinesis_athletics_evaluation_detail_graph_two" model="ir.ui.view">
+       <!--  <record id="view_report_kinesis_athletics_evaluation_detail_graph_two" model="ir.ui.view">
             <field name="name">kinesis_athletics.evaluation_detail.report.graph.two</field>
             <field name="model">kinesis_athletics.evaluation_detail.report</field>
             <field name="arch" type="xml">
@@ -51,7 +51,7 @@
                     <field name="result" type="measure"/>
                 </graph>
             </field>
-        </record>
+        </record> -->
 
         <record id="view_report_kinesis_athletics_evaluation_detail_filter" model="ir.ui.view">
             <field name="name">kinesis_athletics.evaluation_detail.report.select</field>
@@ -60,23 +60,15 @@
                 <search string="Evaluation Details">
                     <field name="test_id"/>
                     <field name="partner_id"/>
-                    <field name="company_id"/>
                     <field name="group_id"/>
-                    <group expand="1" string="Group By...">
-                        <filter string="User" icon="terp-personal" domain="[]" context="{'group_by':'user_id'}" />
-                        <filter string="Person" icon="terp-partner" context="{'group_by':'partner_id'}"/>
-                        <filter string="Test" icon="terp-check" context="{'group_by':'test_id'}" />
-                        <filter string="Company" icon="terp-partner" context="{'group_by':'company_id'}"/>
-                        <filter string="Group" icon="terp-check" context="{'group_by':'group_id'}" />
-                        <filter string="Evaluation date (day)" icon="terp-go-year"
-                            domain="[]" context="{'group_by':'date:day'}"/>
-                        <filter string="Evaluation date (week)" icon="terp-go-year"
-                            domain="[]" context="{'group_by':'date:week'}"/>
-                        <filter string="Evaluation date (month)" icon="terp-go-year"
-                            domain="[]" context="{'group_by':'date:month'}" name="month"/>
-                        <filter string="Evaluation date (year)" icon="terp-go-year"
-                            domain="[]" context="{'group_by':'date:year'}"/>
-                    </group>
+                    <field name="first_parent_id"/>
+                    <field name="template_id"/>
+                    <field name="evaluation_id"/>
+                    <field name="age"/>
+                    <field name="date" string="Fecha Desde" filter_domain="[('date','&gt;=',self)]"/>
+                    <field name="date" string="Fecha Hasta" filter_domain="[('date','&lt;=',self)]"/>
+                    <field name="age" string="Edad Desde" filter_domain="[('age','&gt;=',self)]"/>
+                    <field name="age" string="Edad Hasta" filter_domain="[('age','&lt;=',self)]"/>
                 </search>
             </field>
         </record>
@@ -96,7 +88,7 @@
        </record>
 
 
-       <record id="action_report_kinesis_athletics_evaluation_details_two" model="ir.actions.act_window">
+     <!--   <record id="action_report_kinesis_athletics_evaluation_details_two" model="ir.actions.act_window">
            <field name="name">Evaluation Details</field>
            <field name="res_model">kinesis_athletics.evaluation_detail.report</field>
            <field name="view_type">form</field>
@@ -136,8 +128,8 @@
             <field name="sequence" eval="2"/>
             <field name="view_mode">graph</field>
             <field name="view_id" ref="view_report_kinesis_athletics_evaluation_detail_graph_four"/>
-            <field name="act_window_id" ref="action_report_kinesis_athletics_evaluation_details_four"/>
-       </record>
+            <field name="act_window_id" ref="action_report_kinesis_athletics_evaluation_details_four"/> 
+        </record> -->
 
 
 
@@ -146,7 +138,7 @@
             id="menu_report"
             sequence="50"
             parent="base.menu_reporting"
-            groups="kinesis_athletics.group_user"
+            groups="kinesis_athletics.group_responsable"
             />
 
         <menuitem
@@ -157,7 +149,7 @@
             parent="menu_report"
             />
 
-        <menuitem
+       <!--  <menuitem
             name="Test by Result"
             id="menu_report_test"
             sequence="60"
@@ -180,11 +172,11 @@
             action="action_report_kinesis_athletics_evaluation_details_four"
             parent="menu_report"
             />
-
+ -->
             
 <!-- Partner Graphs -->
 
-        <record id="action_report_kinesis_partner_graphs" model="ir.actions.act_window">
+        <!-- <record id="action_report_kinesis_partner_graphs" model="ir.actions.act_window">
             <field name="name">Partner Graphs</field>
             <field name="res_model">kinesis_athletics.evaluation_detail.report</field>
             <field name="view_type">form</field>
@@ -196,33 +188,23 @@
             sequence="40"
             action="action_report_kinesis_partner_graphs"
             parent="menu_report"
-            />
-
+            /> -->
+<!-- 
         <record model="ir.ui.view" id="view_report_kinesis_partner_graphs_kanban">
             <field name="name">kinesis_athletics.evaluation_detail.report.kanban</field>
             <field name="model">kinesis_athletics.evaluation_detail.report</field>
             <field name="arch" type="xml">
                 <kanban>
-                <!-- <kanban default_group_by='state'> -->
-                    <field name='color'/>
                     <field name='evaluation_id'/>
                     <field name='test_id'/>
                     <field name='company_id'/>
-                    <field name='group_id'/>
-                    <field name='result'/>
-                    <field name='result_max'/>
+                    <field name='result_avg'/>
                     <field name='partner_id'/>
                     <field name='date'/>
                     <field name='user_id'/>
-                    <field name='val_min'/>
-                    <field name='val_max'/>
-                    <field name='uom_id'/>
-                    <!-- <field name='total'/> -->
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
-                            <!-- <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click oe_kanban_mass_mailing"> -->
-                                <div class="oe_dropdown_toggle oe_dropdown_kanban">
                                     <span class="oe_e">i</span>
                                     <ul class="oe_dropdown_menu">
                                     </ul>
@@ -237,10 +219,6 @@
                                             <field name="result" widget="gauge" style="width:120px; height: 90px;"
                                                 options="{'max_field': 'val_max','min_field': 'val_min'}"/>
                                         </div>
-<!--                                         <div style="display: inline-block; vertical-align: top;">
-                                            <strong>Opened</strong> <field name="opened_ratio"/> %<br />
-                                            <strong>Replied</strong> <field name="replied_ratio"/> %
-                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="oe_clear"></div>
@@ -249,7 +227,7 @@
                     </templates>
                 </kanban>
             </field>
-        </record>
+        </record> -->
 
     </data>
 </openerp>
