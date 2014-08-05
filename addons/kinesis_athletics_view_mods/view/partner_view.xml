@@ -8,12 +8,15 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_partner_filter"/>
             <field name="arch" type="xml">
+                <search>
+                    <!-- <field name="age" string="Edad"/> -->
                     <group position="replace">
                     <group expand="1" string="Group By...">
                     <filter string="Company" icon="terp-personal" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
                         <filter string="Group" icon="terp-personal" domain="[]" context="{'group_by':'actual_group_id'}" groups="base.group_multi_company"/>
                   </group>
                   </group>
+              </search>
             </field>
         </record>
 

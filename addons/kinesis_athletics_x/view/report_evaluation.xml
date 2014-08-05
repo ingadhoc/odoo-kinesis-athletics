@@ -2,19 +2,52 @@
 <openerp>
     <data>
         <template id="report_evaluation">
+            <t t-name="kinesis_athletics_x.report_evaluation">
             <t t-call="report.html_container">
                 <t t-call="report.external_layout">
                     <div class="page">
                         <t t-foreach="docs" t-as="o">
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <h3 t-field="o.name"/>
+                                    <h4 t-field="o.name"/>
+                                <!-- </div>
+                                <div class="col-xs-2"> -->
+                                 <p><strong>Date: </strong><span t-field="o.date"/></p>
                                 </div>
+                            
+                                 </div>
+                               <div class="row">
+                                <div class="col-xs-4">
+                                <strong>Company: </strong><span t-field="o.company_id"/>
                             </div>
-                        </t>
+                            <div class="col-xs-2">
+                            <strong>Person: </strong><span t-field="o.partner_id"/>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                <div class="col-xs-4">
+                                <strong>Group: </strong><span t-field="o.group_id"/>
+                                    </div>
+                                    <div class="col-xs-2">
+                                <strong>User: </strong><span t-field="o.user_id"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-xs-4">
+                                <span t-field="o.evaluation_detail_ids.test_id"/>
+                            </div>
+                            </div>
+                                
+
+
+                           </t>
                     </div>
                 </t>
             </t>
+        </t>
         </template>
     </data>
 </openerp>
+
+
+    

@@ -2,6 +2,11 @@
 <openerp>
     <data>
 
+
+
+       
+
+
         <!-- INHERITED FORM -->
         <record id="view_kinesis_athletics_partner_form" model="ir.ui.view">
             <field name="name">kinesis_athletics.partner.form</field>
@@ -57,6 +62,7 @@
                         <attribute name="invisible">'show_actual_group' not in context</attribute>
                     </field>
                     <field name="company_id"/>
+
                 </tree>
             </field>
         </record>
