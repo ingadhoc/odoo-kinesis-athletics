@@ -11,13 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 8.0rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-01 14:54+0000\n"
-"PO-Revision-Date: 2014-08-01 12:12-0300\n"
+"POT-Creation-Date: 2014-08-06 14:11+0000\n"
+"PO-Revision-Date: 2014-08-06 11:23-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
 "X-Generator: Poedit 1.5.4\n"
 
 #. module: kinesis_athletics_x
@@ -174,6 +175,11 @@ msgstr "Nombre de la Empresa"
 msgid "Company Type"
 msgstr "Tipo "
 
+#. module: kinesis_athletics_x
+#: view:False:0
+msgid "Company:"
+msgstr "Empresa:"
+
 #. module: kinesis_athletics
 #: model:res.groups,name:kinesis_athletics.group_configuracion
 msgid "Configuracion"
@@ -268,7 +274,7 @@ msgstr "Creado por"
 #: field:kinesis_athletics.reevaluate.wizard,create_date:0
 #: field:partner.config.settings,create_date:0
 msgid "Created on"
-msgstr "Created on"
+msgstr "Creado en"
 
 #. modules: kinesis_athletics_impex_xls, kinesis_athletics_x, kinesis_athletics
 #: view:kinesis_athletics.evaluation:0
@@ -284,6 +290,40 @@ msgstr "Created on"
 #, python-format
 msgid "Date"
 msgstr "Fecha"
+
+#. module: kinesis_athletics_x
+#: view:False:0
+msgid "Date:"
+msgstr "Fecha:"
+
+#. module: kinesis_athletics_x
+#: model:res.company,overdue_msg:kinesis_athletics_x.res_company_partner_13
+#: model:res.company,overdue_msg:kinesis_athletics_x.res_company_partner_15
+#: model:res.company,overdue_msg:kinesis_athletics_x.res_company_partner_16
+#: model:res.company,overdue_msg:kinesis_athletics_x.res_company_partner_26
+#: model:res.company,overdue_msg:kinesis_athletics_x.res_company_partner_27
+msgid ""
+"Dear Sir/Madam,\n"
+"\n"
+"Our records indicate that some payments on your account are still due. "
+"Please find details below.\n"
+"If the amount has already been paid, please disregard this notice. "
+"Otherwise, please forward us the total amount stated below.\n"
+"If you have any queries regarding your account, Please contact us.\n"
+"\n"
+"Thank you in advance for your cooperation.\n"
+"Best Regards,"
+msgstr ""
+"Estimado/a señor/señora,\n"
+"\n"
+"Nuestros registros indican que algunos pagos en nuestra cuenta están aún "
+"pendientes. Puede encontrar los detalles a continuación.\n"
+"Si la cantidad ha sido ya pagada, por favor, descarte esta notificación. En "
+"otro caso, por favor remítanos el importe total abajo indicado.\n"
+"Si tiene alguna pregunta con respecto a su cuenta, por favor contáctenos.\n"
+"\n"
+"Gracias de antemano por su colaboración.\n"
+"Saludos cordiales,"
 
 #. module: kinesis_athletics
 #: view:kinesis_athletics.test:0 field:kinesis_athletics.test,description:0
@@ -397,6 +437,11 @@ msgid "Evaluation Filename"
 msgstr "Nombre de evaluacion"
 
 #. module: kinesis_athletics_x
+#: model:ir.actions.report.xml,name:kinesis_athletics_x.action_report_evaluation
+msgid "Evaluation Report"
+msgstr "Evaluation Report"
+
+#. module: kinesis_athletics_x
 #: field:kinesis_athletics.evaluation.person.wizard,evaluation_id:0
 #: field:kinesis_athletics.evaluation.wizard,evaluation_id:0
 msgid "Evaluation Template"
@@ -412,6 +457,7 @@ msgstr "Plantillas de Evaluaciones"
 #: model:ir.actions.act_window,name:kinesis_athletics.action_kinesis_athletics_evaluation_evaluations
 #: model:ir.ui.menu,name:kinesis_athletics.menu_evaluations
 #: field:kinesis_athletics.evaluation,evaluation_ids:0
+#: model:ir.ui.menu,name:kinesis_athletics_x.menu_report_evaluation
 #: view:kinesis_athletics.evaluation:0 view:kinesis_athletics.group:0
 #: view:res.partner:0
 msgid "Evaluations"
@@ -532,6 +578,11 @@ msgstr "Este grupo no tiene definido un año siguiente"
 msgid "Group By..."
 msgstr "Agrupado Por "
 
+#. module: kinesis_athletics_x
+#: view:False:0
+msgid "Group:"
+msgstr "Grupo:"
+
 #. module: kinesis_athletics
 #: model:ir.actions.act_window,name:kinesis_athletics.action_kinesis_athletics_group_groups
 #: model:ir.ui.menu,name:kinesis_athletics.menu_groups
@@ -611,7 +662,7 @@ msgstr "Importar Evaluación (XLS)"
 #. module: kinesis_athletics
 #: field:res.partner,partner_group_ids:0
 msgid "Institution"
-msgstr "Institution"
+msgstr "Institucion"
 
 #. module: kinesis_athletics_x
 #: code:addons/kinesis_athletics_x/group.py:54
@@ -810,7 +861,7 @@ msgstr "Nacionalidad"
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.evaluation:0
 msgid "New Evaluation"
-msgstr "New Evaluation"
+msgstr "Evaluacion Nueva"
 
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.evaluation:0
@@ -918,6 +969,11 @@ msgstr "Persona"
 msgid "Person - Personal Information"
 msgstr "Person - Personal Information"
 
+#. module: kinesis_athletics_x
+#: view:False:0
+msgid "Person:"
+msgstr "Persona:"
+
 #. modules: partner_person, kinesis_athletics_view_mods
 #: view:res.partner:0
 msgid "Personal Information"
@@ -962,20 +1018,20 @@ msgstr "Reevaluar"
 msgid "Responsable"
 msgstr "Responsable"
 
-#. module: kinesis_athletics
-#: field:kinesis_athletics.evaluation_detail,result:0
+#. modules: kinesis_athletics_x, kinesis_athletics
+#: field:kinesis_athletics.evaluation_detail,result:0 view:False:0
 msgid "Result"
 msgstr "Resultado"
 
 #. module: kinesis_athletics_x
 #: field:kinesis_athletics.evaluation_detail.report,result_avg:0
 msgid "Result Average"
-msgstr "Result Average"
+msgstr "Resultado Promedio"
 
 #. module: kinesis_athletics_x
 #: field:kinesis_athletics.evaluation_detail.report,result_max:0
 msgid "Result Max"
-msgstr "Result Max"
+msgstr "Resultado Maximo"
 
 #. module: kinesis_athletics_x
 #: field:kinesis_athletics.evaluation_detail.report,result_sum:0
@@ -1005,7 +1061,7 @@ msgstr "Sexo"
 #. module: partner_person
 #: field:partner.config.settings,group_person_birthdate:0
 msgid "Show Birthdate"
-msgstr "Mostrar Fecha de Nacimiento"
+msgstr "Show Birthdate"
 
 #. module: partner_person
 #: help:partner.config.settings,group_person_birthdate:0
@@ -1105,7 +1161,7 @@ msgstr "Plantilla"
 
 #. modules: kinesis_athletics_x, kinesis_athletics
 #: view:kinesis_athletics.evaluation_detail:0
-#: field:kinesis_athletics.evaluation_detail,test_id:0
+#: field:kinesis_athletics.evaluation_detail,test_id:0 view:False:0
 #: field:kinesis_athletics.evaluation_detail.report,test_id:0
 msgid "Test"
 msgstr "Test"
@@ -1142,8 +1198,8 @@ msgstr "Rango del Test"
 msgid "Test Ranges"
 msgstr "Rango del Test"
 
-#. module: kinesis_athletics
-#: field:kinesis_athletics.evaluation_detail,test_selection_id:0
+#. modules: kinesis_athletics_x, kinesis_athletics
+#: field:kinesis_athletics.evaluation_detail,test_selection_id:0 view:False:0
 msgid "Test Selection"
 msgstr "Estado"
 
@@ -1156,11 +1212,6 @@ msgstr "Estados"
 #: field:kinesis_athletics.evaluation_detail,test_type:0
 msgid "Test Type"
 msgstr "Tipo de Test"
-
-#. module: kinesis_athletics_x
-#: model:ir.ui.menu,name:kinesis_athletics_x.menu_report_evaluation
-msgid "Test by Partner "
-msgstr "Test by Partner "
 
 #. module: kinesis_athletics
 #: model:ir.actions.act_window,name:kinesis_athletics.action_kinesis_athletics_test_tests
@@ -1247,6 +1298,11 @@ msgstr "Unidades importadas"
 #: field:kinesis_athletics.evaluation_detail.report,user_id:0
 msgid "User"
 msgstr "Usuario"
+
+#. module: kinesis_athletics_x
+#: view:False:0
+msgid "User:"
+msgstr "Usuario:"
 
 #. modules: partner_person, kinesis_athletics_view_mods
 #: model:ir.actions.act_window,name:kinesis_athletics_view_mods.action_kinesis_athletics_x_res_user
@@ -1339,7 +1395,7 @@ msgstr "base.group_multi_company"
 #. module: kinesis_athletics
 #: field:kinesis_athletics.company_type,company_id:0
 msgid "company_id"
-msgstr "company_id"
+msgstr "Company"
 
 #. module: kinesis_athletics
 #: model:ir.model,name:kinesis_athletics.model_kinesis_athletics_company_type
@@ -1381,11 +1437,6 @@ msgstr "Minimo Extremo"
 #: model:product.uom,name:kinesis_athletics_x.product_uom_3
 msgid "fc"
 msgstr "fc"
-
-#. module: kinesis_athletics
-#: view:kinesis_athletics.test_category:0
-msgid "field name=\"complete_name\"/>"
-msgstr "field name=\"complete_name\"/>"
 
 #. module: kinesis_athletics_x
 #: model:product.uom,name:kinesis_athletics_x.product_uom_4
@@ -1478,7 +1529,7 @@ msgstr "test_range_ids"
 #: model:ir.model,name:kinesis_athletics.model_kinesis_athletics_test_selection
 #: view:kinesis_athletics.test_selection:0
 msgid "test_selection"
-msgstr "test_selection"
+msgstr "Estado"
 
 #. module: kinesis_athletics
 #: field:kinesis_athletics.test,type:0
