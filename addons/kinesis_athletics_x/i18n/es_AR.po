@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 8.0rc1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-06 14:11+0000\n"
-"PO-Revision-Date: 2014-08-06 11:23-0300\n"
+"PO-Revision-Date: 2014-08-06 11:46-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -439,7 +439,7 @@ msgstr "Nombre de evaluacion"
 #. module: kinesis_athletics_x
 #: model:ir.actions.report.xml,name:kinesis_athletics_x.action_report_evaluation
 msgid "Evaluation Report"
-msgstr "Evaluation Report"
+msgstr "Reporte de Evaluacion"
 
 #. module: kinesis_athletics_x
 #: field:kinesis_athletics.evaluation.person.wizard,evaluation_id:0
