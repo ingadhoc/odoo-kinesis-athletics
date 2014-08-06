@@ -14,7 +14,7 @@
             id="action_report_evaluation"
             string="Evaluation Report"
             model="kinesis_athletics.evaluation"
-            report_type="qweb-html"
+            report_type="qweb-pdf"
             file="kinesis_athletics_x.report_evaluation"
             name="kinesis_athletics_x.report_evaluation"
         />

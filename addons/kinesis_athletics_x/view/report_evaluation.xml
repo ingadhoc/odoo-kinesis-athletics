@@ -29,22 +29,39 @@
                                 <strong>Group: </strong><span t-field="o.group_id"/>
                                     </div>
                                     <div class="col-xs-2">
-                                <strong>User: </strong><span t-field="o.user_id"/>
+                                <p><strong>User: </strong><span t-field="o.user_id"/></p>
                                     </div>
                                 </div>
-                                <div class="row">
                                 <div class="col-xs-4">
-                                <span t-field="o.evaluation_detail_ids.test_id"/>
-                            </div>
-                            </div>
+                                <p><strong>Test</strong></p>
+                                </div>
+                                <div class="col-xs-4">
+                                    <p><strong>Result</strong></p>
+                                </div>
+                                <div class="col-xs-4">
+                                    <p><strong>Test Selection</strong></p>
+                                </div>
+                                <t t-foreach="o.evaluation_detail_ids" t-as="e">
+                              <div class="row">
+                                <div class="col-xs-4">
+                                <span t-field="e.test_id"/>
+                                    </div>
+                                <div class="col-xs-4">
+                                <span t-field="e.result"/>
+                                    </div>
                                 
-
+                                <div class="col-xs-4">
+                                <span t-field="e.test_selection_id"/>
+                                    </div>
+                                </div>
+                            </t>
 
                            </t>
                     </div>
                 </t>
             </t>
         </t>
+        
         </template>
     </data>
 </openerp>
