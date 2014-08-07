@@ -3,7 +3,7 @@
     <data>
         <template id="report_evaluation_document">
             <!-- <t t-call="report.html_container"> -->
-                <t t-call="report.external_layout">
+              <t t-call="report.external_layout">  
                     <div class="page">
                         <!-- <t t-foreach="docs" t-as="o"> -->
                             <div class="row">
@@ -43,14 +43,14 @@
                                 <t t-foreach="o.evaluation_detail_ids" t-as="e">
                               <div class="row">
                                 <div class="col-xs-4">
-                                <span t-field="e.test_id"/>
+                                <p><span t-field="e.test_id"/></p>
                                     </div>
                                 <div class="col-xs-4">
-                                <span t-field="e.result"/>
+                                <p><span t-field="e.result"/></p>
                                     </div>
                                 
                                 <div class="col-xs-4">
-                                <span t-field="e.test_selection_id"/>
+                                <p><span t-field="e.test_selection_id"/></p>
                                     </div>
                                 </div>
                             </t>
@@ -58,12 +58,13 @@
                            <!-- </t> -->
                     </div>
                 </t>
-            <!-- </t> -->
+            
         
         </template>
 
         <template id="report_evaluation">
     <t t-call="report.html_container">
+        
         <t t-foreach="doc_ids" t-as="doc_id">
             <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'kinesis_athletics_x.report_evaluation_document')"/>
         </t>

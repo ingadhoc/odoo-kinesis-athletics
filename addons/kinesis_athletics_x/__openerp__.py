@@ -15,6 +15,7 @@
       'data/kinesis_athletics.test_category.csv',
       'data/kinesis_athletics.test.csv',
       'data/kinesis_athletics.test_range.csv',
+      'data/res_company.xml',
       'data/stage_2/res_company.xml',
       'data/kinesis_athletics.level.csv',
       'data/kinesis_athletics.group.csv',
