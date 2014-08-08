@@ -31,6 +31,28 @@
         <field name="perm_unlink" eval="True"/>             
         <field name="perm_write" eval="True"/>                   
     </record>
+
+    <record model="ir.rule" id="res_partner_company_edit">
+        <field name="name">res.partner_company_edit</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','child_of',[user.company_id.id]),('company_id','=',False)]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>             
+        <field name="perm_write" eval="True"/>                   
+    </record>
+
+    <record model="ir.rule" id="base.res_partner_rule">
+        <field name="name">res.partner company</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|','|',('company_id.child_ids','child_of',[user.company_id.id]),('company_id','child_of',[user.company_id.id]),('company_id','=',False)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>             
+        <field name="perm_write" eval="False"/>                   
+    </record>
     
 </data>
 </openerp>

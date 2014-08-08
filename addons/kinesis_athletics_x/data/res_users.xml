@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data noupdate="1">
+        <record id="base.user_root" model="res.users">
+            <field name="partner_id" ref="base.partner_root"/>
+            <field name="login">admin</field>
+            <field name="password">admin</field>
+            <field name="signature">--
+Administrador</field>
+            <field name="company_id" ref="res_company_partner_27"/>
+            <field name="company_ids" eval="[(4, ref('res_company_partner_27'))]"/>
+        </record>
 
         <record id="user_partner_22" model="res.users">
             <field name="partner_id" ref="partner_22"/>
