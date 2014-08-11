@@ -54,5 +54,15 @@
         <field name="perm_write" eval="False"/>                   
     </record>
     
+    <record model="ir.rule" id="base.res_users_rule">
+        <field name="name">res.user rule</field>
+        <field name="model_id" ref="base.model_res_users"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_ids','child_of',[user.company_id.id])]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>             
+        <field name="perm_write" eval="True"/>                    
+    </record>
 </data>
 </openerp>

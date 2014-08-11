@@ -11,7 +11,7 @@
                                     <h4 t-field="o.name"/>
                                 </div>
                                 <div class="col-xs-2">
-                                 <p><strong>Date: </strong><span t-field="o.date"/></p>
+                                 <strong>Date: </strong><span t-field="o.date"/>
                                 </div>
                             
                                  </div>

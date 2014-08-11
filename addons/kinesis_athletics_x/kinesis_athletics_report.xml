@@ -17,6 +17,7 @@
             report_type="qweb-pdf"
             file="kinesis_athletics_x.report_evaluation"
             name="kinesis_athletics_x.report_evaluation"
+            groups="kinesis_athletics.group_responsable"
         />
     </data>
 </openerp>
