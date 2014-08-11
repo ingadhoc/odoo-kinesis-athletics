@@ -67,6 +67,7 @@
             sequence="50"
             action="action_report_kinesis_athletics_evaluation_details"
             parent="menu_report"
+            groups="kinesis_athletics.group_responsable"
             />
 
       

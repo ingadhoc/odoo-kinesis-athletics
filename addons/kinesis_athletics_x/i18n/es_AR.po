@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 8.0rc1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-06 14:11+0000\n"
-"PO-Revision-Date: 2014-08-06 11:46-0300\n"
+"POT-Creation-Date: 2014-08-11 20:05+0000\n"
+"PO-Revision-Date: 2014-08-11 17:05-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,6 +40,11 @@ msgstr "Mostrar el Grupo actual"
 #: view:kinesis_athletics.group:0
 msgid "'show_institutions' not in context"
 msgstr "Mostrar Instituciones"
+
+#. module: kinesis_athletics_x
+#: view:res.partner:0
+msgid "Actual Group"
+msgstr "Grupo Actual"
 
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.group:0
@@ -295,35 +300,6 @@ msgstr "Fecha"
 #: view:False:0
 msgid "Date:"
 msgstr "Fecha:"
-
-#. module: kinesis_athletics_x
-#: model:res.company,overdue_msg:kinesis_athletics_x.res_company_partner_13
-#: model:res.company,overdue_msg:kinesis_athletics_x.res_company_partner_15
-#: model:res.company,overdue_msg:kinesis_athletics_x.res_company_partner_16
-#: model:res.company,overdue_msg:kinesis_athletics_x.res_company_partner_26
-#: model:res.company,overdue_msg:kinesis_athletics_x.res_company_partner_27
-msgid ""
-"Dear Sir/Madam,\n"
-"\n"
-"Our records indicate that some payments on your account are still due. "
-"Please find details below.\n"
-"If the amount has already been paid, please disregard this notice. "
-"Otherwise, please forward us the total amount stated below.\n"
-"If you have any queries regarding your account, Please contact us.\n"
-"\n"
-"Thank you in advance for your cooperation.\n"
-"Best Regards,"
-msgstr ""
-"Estimado/a señor/señora,\n"
-"\n"
-"Nuestros registros indican que algunos pagos en nuestra cuenta están aún "
-"pendientes. Puede encontrar los detalles a continuación.\n"
-"Si la cantidad ha sido ya pagada, por favor, descarte esta notificación. En "
-"otro caso, por favor remítanos el importe total abajo indicado.\n"
-"Si tiene alguna pregunta con respecto a su cuenta, por favor contáctenos.\n"
-"\n"
-"Gracias de antemano por su colaboración.\n"
-"Saludos cordiales,"
 
 #. module: kinesis_athletics
 #: view:kinesis_athletics.test:0 field:kinesis_athletics.test,description:0

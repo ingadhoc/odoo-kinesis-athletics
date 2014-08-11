@@ -58,7 +58,7 @@
             <field name="inherit_id" ref="base.view_partner_tree"/>
             <field name="arch" type="xml">
                 <tree position="inside">
-                    <field name="actual_group_id" position="attributes">
+                    <field name="actual_group_id" string="Actual Group" position="attributes">
                         <attribute name="invisible">'show_actual_group' not in context</attribute>
                     </field>
                     <field name="company_id"/>

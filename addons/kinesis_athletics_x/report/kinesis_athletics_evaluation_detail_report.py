@@ -70,7 +70,7 @@ class kinesis_athletics_evaluation_detail_report(models.Model):
     )
 
     group_id = fields.Many2one(
-        'kinesis_athletics.evaluation',
+        'kinesis_athletics.group',
         string='Group',
         readonly=True
     )
