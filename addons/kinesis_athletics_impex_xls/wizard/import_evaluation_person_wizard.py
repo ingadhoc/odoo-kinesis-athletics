@@ -29,7 +29,7 @@ class import_evaluation_person_wizard(osv.osv_memory):
 
         active_ids = context.get('active_ids', False)
 
-        persons = self.pool['res.partner'].browse(cr, uid, active_ids, context=context)
+        persons = self.pool['res.partner']
         if not active_ids:
             return {'type': 'ir.actions.act_window_close'}
 
@@ -55,7 +55,7 @@ class import_evaluation_person_wizard(osv.osv_memory):
         evaluation_matrix = []
         for line in record_list:
             evaluation_matrix.append(dict(zip(record_header, line)))
-        print evaluation_matrix[:1]
+        print evaluation_matrix
 
        
         evaluation_obj = self.pool.get('kinesis_athletics.evaluation')
@@ -64,27 +64,26 @@ class import_evaluation_person_wizard(osv.osv_memory):
 
         try:
             for evaluation_dic in evaluation_matrix:
-                for person in persons:
-                    val = {
-                        'name':'Evaluation',
-                        'date': date,
-                        'company_id':person.company_id.id,
-                        'group_id': person.actual_group_id.id,
-                        'partner_id': person.id,
-                    }
-                    print val 
-                    evaluation_id = evaluation_obj.create(cr, uid, val, context=context)
+                person_id = persons.browse(cr, uid, int(evaluation_dic.get('partner_id')), context=context)
+                val = {
+                    'name':'Evaluation',
+                    'date': date,
+                    'company_id':person_id.company_id.id,
+                    'group_id': person_id.actual_group_id.id,
+                    'partner_id': int(evaluation_dic.get('partner_id'))
+                }
+                evaluation_id = evaluation_obj.create(cr, uid, val, context=context)
 
-                    detail_fields = ['evaluation_id/.id', 'test_id', 'result']
-                    detail_data = []
-                        
-                    for test_name in record_header[2:]:
-                        print test_name
-                        if evaluation_dic.get(test_name) != "":
-                            eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
-                            detail_data.append(eval_detail)
+                detail_fields = ['evaluation_id/.id', 'test_id', 'result']
+                detail_data = []
+                            
+                for test_name in record_header[2:]:
+                    print test_name
+                    if evaluation_dic.get(test_name) != "":
+                        eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
+                        detail_data.append(eval_detail)
 
-            evaluation_detail_obj.load(cr, uid, detail_fields, detail_data, context=context)
+                evaluation_detail_obj.load(cr, uid, detail_fields, detail_data, context=context)
         except Exception as e:
             raise osv.except_osv(
                 _('Error'),

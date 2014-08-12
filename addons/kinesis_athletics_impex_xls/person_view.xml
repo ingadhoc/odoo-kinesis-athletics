@@ -31,8 +31,8 @@
             <field name="inherit_id" ref="kinesis_athletics_x.view_kinesis_athletics_partner_form"/>
             <field name="arch" type="xml">
                    <header position="inside">
-                    <button name="%(export_evaluation_person_wizard_action)d" type="action" string="Export XLS Evaluation" class="oe_highlight"/>
-                    <button name="%(import_evaluation_person_wizard_action)d" class="oe_highlight" type="action" string="Import XLS Evaluation" context="{'eval_created':True}"/>
+                    <button name="%(export_evaluation_person_wizard_action)d" type="action" string="Export XLS Evaluation" class="oe_highlight" groups="kinesis_athletics.group_responsable"/>
+                    <button name="%(import_evaluation_person_wizard_action)d" class="oe_highlight" type="action" string="Import XLS Evaluation" context="{'eval_created':True}" groups="kinesis_athletics.group_responsable"/>
                 </header>
             </field>
         </record>

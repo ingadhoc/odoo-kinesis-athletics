@@ -76,6 +76,16 @@
         <field name="perm_write" eval="True"/>                    
     </record>
 
+   <!--  <record model="ir.rule" id="report_rule">
+        <field name="name">report rule</field>
+        <field name="model_id" ref="kinesis_athletics_x.model_kinesis_athletics_evaluation_detail_report"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('id','child_of',[user.company_id.id])]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>             
+        <field name="perm_write" eval="True"/>                    
+    </record> -->
     
 </data>
 
