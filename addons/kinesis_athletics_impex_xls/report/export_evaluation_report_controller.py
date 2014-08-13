@@ -11,6 +11,7 @@ class export_evaluation_report_controller(http.Controller):
         data = simplejson.loads(data['options'])
 
         partner_information = data['partner_information']
+        template_information=data['template_id']
         tests = data['tests']
         template_id = data.get('template_id',False)
         if template_id:
@@ -27,13 +28,15 @@ class export_evaluation_report_controller(http.Controller):
             group_sheet = xls_workbook.add_sheet(sheet_name)
 
             for r in range(0, len(partner_information)):
-                group_sheet.write(r + 1, 0, partner_information[r]['id'])
-                group_sheet.write(r + 1, 1, partner_information[r]['name'])
+                group_sheet.write(r + 1, 0, template_information)
+                group_sheet.write(r + 1, 1, partner_information[r]['id'])
+                group_sheet.write(r + 1, 2, partner_information[r]['name'])
 
-            group_sheet.write(0, 0, 'partner_id')
-            group_sheet.write(0, 1, 'Name')
+            group_sheet.write(0, 0, 'Template')
+            group_sheet.write(0, 1, 'partner_id')
+            group_sheet.write(0, 2, 'Name')
             for r in range(0, len(tests)):
-                group_sheet.write(0, r + 2, tests[r])
+                group_sheet.write(0, r + 3, tests[r])
 
             xls_workbook.save(xls)
             xls.seek(0)

@@ -58,24 +58,33 @@ class import_evaluation_wizard(osv.osv_memory):
 
         evaluation_obj = self.pool.get('kinesis_athletics.evaluation')
         evaluation_detail_obj = self.pool.get('kinesis_athletics.evaluation_detail')
-
+        test_obj=self.pool.get('kinesis_athletics.test_selection')
         try:
             for evaluation_dic in evaluation_matrix:
                 if eval_created:
                     evaluation_id = active_id
                     evaluation = evaluation_obj.browse(cr, uid, evaluation_id, context=context)
                     
-                    for test in record_header[2:]:
+                    for test in record_header[3:]:
                 
                         for detail in evaluation.evaluation_detail_ids:
                             if test == detail.test_id.name:
                                 if evaluation_dic.get(test) != "":
-                                    vals={
-                                    
-                                    'result':float(evaluation_dic.get(test))
+                                    if evaluation.template_id.id == 1:
+                                        vals={
+                                        
+                                        'result':float(evaluation_dic.get(test))
 
-                                    }
-                                    evaluation_detail_obj.write(cr, uid, detail.id ,vals, context=None)
+                                        }
+                                    else:
+                                        test_selection=test_obj.search(cr, uid, [('name','=',evaluation_dic.get(test)),('test_id','=',test)], context=context)
+                                        vals={
+                                        
+                                        'test_selection_id':test_selection[0]
+
+                                        }
+                                        print vals                                    
+                                evaluation_detail_obj.write(cr, uid, detail.id ,vals, context=None)
                                 break 
                             else:
                                 pass
@@ -98,15 +107,23 @@ class import_evaluation_wizard(osv.osv_memory):
                         'partner_id': int(evaluation_dic.get('partner_id'))
                     }
                     evaluation_id = evaluation_obj.create(cr, uid, val, context=context)
-
-                    detail_fields = ['evaluation_id/.id', 'test_id', 'result']
                     detail_data = []
                     
-                    for test_name in record_header[2:]:
-                        if evaluation_dic.get(test_name) != "":
-                            eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
-                            detail_data.append(eval_detail)
-
+                    if int(evaluation_dic.get('Template')) == 1:
+                        detail_fields = ['evaluation_id/.id', 'test_id', 'result']
+                        for test_name in record_header[3:]:
+                            if evaluation_dic.get(test_name) != "":
+                                eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
+                                detail_data.append(eval_detail)
+                    else:
+                        detail_fields = ['evaluation_id/.id', 'test_id', 'test_selection_id']
+                        detail_data = []
+                        for test_name in record_header[3:]:
+                            # print test_name
+                            if evaluation_dic.get(test_name) != "":
+                                eval_detail = [evaluation_id, test_name, str(evaluation_dic.get(test_name))]
+                                detail_data.append(eval_detail)
+                
                     evaluation_detail_obj.load(cr, uid, detail_fields, detail_data, context=context)
         except Exception as e:
             raise osv.except_osv(

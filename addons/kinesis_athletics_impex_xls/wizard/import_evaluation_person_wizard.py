@@ -50,8 +50,6 @@ class import_evaluation_person_wizard(osv.osv_memory):
         record_list = [sheet.row_values(i) for i in range(sheet.nrows)]
         record_header = record_list[0]
         record_list = record_list[1:]
-        
-        
         evaluation_matrix = []
         for line in record_list:
             evaluation_matrix.append(dict(zip(record_header, line)))
@@ -73,15 +71,23 @@ class import_evaluation_person_wizard(osv.osv_memory):
                     'partner_id': int(evaluation_dic.get('partner_id'))
                 }
                 evaluation_id = evaluation_obj.create(cr, uid, val, context=context)
-
-                detail_fields = ['evaluation_id/.id', 'test_id', 'result']
                 detail_data = []
-                            
-                for test_name in record_header[2:]:
-                    print test_name
-                    if evaluation_dic.get(test_name) != "":
-                        eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
-                        detail_data.append(eval_detail)
+                if int(evaluation_dic.get('Template')) == 1:
+                    detail_fields = ['evaluation_id/.id', 'test_id', 'result']
+                    for test_name in record_header[3:]:
+                        print test_name
+                        if evaluation_dic.get(test_name) != "":
+                            eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
+                            detail_data.append(eval_detail)
+                else:
+                    detail_fields = ['evaluation_id/.id', 'test_id', 'test_selection_id']
+                    detail_data = []
+                    for test_name in record_header[3:]:
+                        # print test_name
+                        if evaluation_dic.get(test_name) != "":
+                            eval_detail = [evaluation_id, test_name, str(evaluation_dic.get(test_name))]
+                            detail_data.append(eval_detail)
+                            print detail_data
 
                 evaluation_detail_obj.load(cr, uid, detail_fields, detail_data, context=context)
         except Exception as e:
