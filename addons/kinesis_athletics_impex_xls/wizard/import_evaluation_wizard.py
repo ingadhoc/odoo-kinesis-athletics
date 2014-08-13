@@ -56,8 +56,8 @@ class import_evaluation_wizard(osv.osv_memory):
         for line in record_list:
             evaluation_matrix.append(dict(zip(record_header, line)))
 
-        evaluation_obj = self.pool.get('kinesis_athletics.evaluation')
-        evaluation_detail_obj = self.pool.get('kinesis_athletics.evaluation_detail')
+        evaluation_obj = self.pool['kinesis_athletics.evaluation']
+        evaluation_detail_obj = self.pool['kinesis_athletics.evaluation_detail']
         test_obj=self.pool.get('kinesis_athletics.test_selection')
         try:
             for evaluation_dic in evaluation_matrix:
@@ -99,8 +99,9 @@ class import_evaluation_wizard(osv.osv_memory):
                                 # evaluation_detail_obj.load(cr, uid, detail_fields, detail_data, context=context)
 
                 else:
+                    name_eval_id=evaluation_obj.browse(cr, uid, int(evaluation_dic.get('Template')), context=context)
                     val = {
-                        'name':'Evaluation Imported',
+                        'name':name_eval_id.name,
                         'date': date,
                         'company_id':group.company_id.id,
                         'group_id': group.id,

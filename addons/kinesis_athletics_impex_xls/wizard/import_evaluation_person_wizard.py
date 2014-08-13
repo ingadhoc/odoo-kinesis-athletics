@@ -56,15 +56,18 @@ class import_evaluation_person_wizard(osv.osv_memory):
         print evaluation_matrix
 
        
-        evaluation_obj = self.pool.get('kinesis_athletics.evaluation')
+        evaluation_obj = self.pool['kinesis_athletics.evaluation']
         evaluation_detail_obj = self.pool.get('kinesis_athletics.evaluation_detail')
 
 
         try:
             for evaluation_dic in evaluation_matrix:
                 person_id = persons.browse(cr, uid, int(evaluation_dic.get('partner_id')), context=context)
+                name_eval_id=evaluation_obj.browse(cr, uid, int(evaluation_dic.get('Template')), context=context)
+                print name_eval_id
+                print person_id
                 val = {
-                    'name':'Evaluation',
+                    'name':name_eval_id.name,
                     'date': date,
                     'company_id':person_id.company_id.id,
                     'group_id': person_id.actual_group_id.id,
@@ -75,7 +78,6 @@ class import_evaluation_person_wizard(osv.osv_memory):
                 if int(evaluation_dic.get('Template')) == 1:
                     detail_fields = ['evaluation_id/.id', 'test_id', 'result']
                     for test_name in record_header[3:]:
-                        print test_name
                         if evaluation_dic.get(test_name) != "":
                             eval_detail = [evaluation_id, test_name, float(evaluation_dic.get(test_name))]
                             detail_data.append(eval_detail)
@@ -87,7 +89,6 @@ class import_evaluation_person_wizard(osv.osv_memory):
                         if evaluation_dic.get(test_name) != "":
                             eval_detail = [evaluation_id, test_name, str(evaluation_dic.get(test_name))]
                             detail_data.append(eval_detail)
-                            print detail_data
 
                 evaluation_detail_obj.load(cr, uid, detail_fields, detail_data, context=context)
         except Exception as e:
