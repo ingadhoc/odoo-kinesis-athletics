@@ -35,31 +35,31 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
         var tickPositions = [];
 
         // Set plotband information.
-        var plotband_ext_min = 0;
+        var plotband_ext_min = null;
         var plotband_val_min = null;
         var plotband_val_max = null;
-        var plotband_ext_max = 200;
+        var plotband_ext_max = null;
 
-        if (this.getParent().record['plotband_ext_min'] != null) {
+        if (this.getParent().record['plotband_ext_min'] != null && this.getParent().record['result'].raw_value != 0) {
             plotband_ext_min = this.getParent().record['plotband_ext_min'].raw_value;
         }
         tickPositions.push(plotband_ext_min);
 
-        if (this.getParent().record['plotband_val_min'] != null) {
+        if (this.getParent().record['plotband_val_min'] != null && this.getParent().record['result'].raw_value != 0) {
             plotband_val_min = this.getParent().record['plotband_val_min'].raw_value;
             if (plotband_val_min < plotband_ext_min) {
                 plotband_val_min = null;
             } else {
-                tickPositions.push(plotband_val_min);    
+                tickPositions.push(plotband_val_min);
             }
         }
-        
-        
-        if (this.getParent().record['plotband_ext_max'] != null) {
+
+
+        if (this.getParent().record['plotband_ext_max'] != null && this.getParent().record['result'].raw_value != 0) {
             plotband_ext_max = this.getParent().record['plotband_ext_max'].raw_value;
         }
-        
-        if (this.getParent().record['plotband_val_max'] != null) {
+
+        if (this.getParent().record['plotband_val_max'] != null && this.getParent().record['result'].raw_value != 0) {
             plotband_val_max = this.getParent().record['plotband_val_max'].raw_value;
             if (plotband_val_max > plotband_ext_max) {
                 plotband_val_max = null;
@@ -67,7 +67,12 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
                 tickPositions.push(plotband_val_max);
             }
         }
-        
+
+        if (this.getParent().record['result'].raw_value == 0) {
+            this.getParent().record['state'].raw_value = 'none'
+            console.log(this.getParent().record['state'].raw_value)
+        }
+
         tickPositions.push(plotband_ext_max);
 
         var plotBands = []
@@ -109,7 +114,7 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
         }]
 
         // If the age_avg field is not null add this value to the series.
-        if (this.getParent().record['age_avg'] != null) {
+        if (this.getParent().record['age_avg'] != null && this.getParent().record['result'].raw_value != 0) {
             series.push({
                 data: [this.getParent().record['age_avg'].raw_value],
                 backgroundColor: '#ffffff',
@@ -128,25 +133,25 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
                 height: 130,
                 width: 390
             },
-        
+
             title: {
                 text: test_name
             },
-            
+
             pane: [{
                 startAngle: -35,
                 endAngle: 35,
                 background: null,
                 center: ['50%', '320%'],
-                size: 380    
-            }],                     
-        
+                size: 380
+            }],
+
             yAxis: [{
                 min: plotband_ext_min,
                 max: plotband_ext_max,
                 lineColor: '#666666',
                 tickColor: '#666666',
-                minorTickColor: '#666666',            
+                minorTickColor: '#666666',
                 minorTickPosition: 'outside',
                 tickPosition: 'outside',
                 lineWidth: 1,
@@ -154,7 +159,7 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
                 tickWidth: 1,
                 tickPositions: tickPositions,
                 endOnTick: false,
-                
+
                 labels: {
                     rotation: 'auto',
                     distance: 25,
@@ -162,10 +167,10 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
                         color: '#000000',
                     },
                 },
-                plotBands: plotBands,        
+                plotBands: plotBands,
                 pane: 0,
             }],
-            
+
             plotOptions: {
                 gauge: {
                     dataLabels: {
@@ -176,7 +181,7 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
                     }
                 }
             },
-                
+
             series: series
         });
     }
