@@ -10,7 +10,7 @@
                                 <div class="col-xs-4">
                                     <h4 t-field="o.name"/>
                                 </div>
-                                <div class="col-xs-2">
+                                <div class="col-xs-4">
                                  <strong>Date: </strong><span t-field="o.date"/>
                                 </div>
                             
@@ -19,7 +19,7 @@
                                 <div class="col-xs-4">
                                 <strong>Company: </strong><span t-field="o.company_id"/>
                             </div>
-                            <div class="col-xs-2">
+                            <div class="col-xs-4">
                             <strong>Person: </strong><span t-field="o.partner_id"/>
                                     </div>
                                     </div>
@@ -27,7 +27,7 @@
                                 <div class="col-xs-4">
                                 <strong>Group: </strong><span t-field="o.group_id"/>
                                     </div>
-                                    <div class="col-xs-2">
+                                    <div class="col-xs-4">
                                 <p><strong>User: </strong><span t-field="o.user_id"/></p>
                                     </div>
                                 </div>

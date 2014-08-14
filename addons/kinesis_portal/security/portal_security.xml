@@ -22,6 +22,8 @@
         <field name="perm_unlink" eval="0"/>             
         <field name="perm_write" eval="0"/>                    
     </record>
+
+
     
     </data>
 </openerp>

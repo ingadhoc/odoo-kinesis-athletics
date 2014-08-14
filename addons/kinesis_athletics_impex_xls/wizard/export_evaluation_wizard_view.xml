@@ -64,7 +64,8 @@
                     view_mode="form"
                     target="new"
                     key2="client_action_multi"
-                    id="export_evaluation_person_wizard_action"/>
+                    id="export_evaluation_person_wizard_action"
+                    groups="kinesis_athletics.group_responsable"/>
 
     
     </data>

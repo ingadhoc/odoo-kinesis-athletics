@@ -64,8 +64,6 @@ class import_evaluation_person_wizard(osv.osv_memory):
             for evaluation_dic in evaluation_matrix:
                 person_id = persons.browse(cr, uid, int(evaluation_dic.get('partner_id')), context=context)
                 name_eval_id=evaluation_obj.browse(cr, uid, int(evaluation_dic.get('Template')), context=context)
-                print name_eval_id
-                print person_id
                 val = {
                     'name':name_eval_id.name,
                     'date': date,

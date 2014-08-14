@@ -84,7 +84,8 @@
                     view_mode="form"
                     target="new"
                     key2="client_action_multi"
-                    id="wizard_evaluation_person_action"/>
+                    id="wizard_evaluation_person_action"
+                    groups="kinesis_athletics.group_responsable"/>
 
          <act_window name="Escalate to New Group"
                     src_model="kinesis_athletics.group"

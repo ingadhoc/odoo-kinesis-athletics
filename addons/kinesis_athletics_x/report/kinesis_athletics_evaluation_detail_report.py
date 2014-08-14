@@ -75,6 +75,12 @@ class kinesis_athletics_evaluation_detail_report(models.Model):
         readonly=True
     )
 
+    company_id = fields.Many2one(
+        'res.partner',
+        string='Company',
+        readonly=True
+    )
+
     first_parent_id = fields.Many2one(
         'kinesis_athletics.test_category',
         string='First Parent',
@@ -94,6 +100,7 @@ class kinesis_athletics_evaluation_detail_report(models.Model):
                 tc.first_parent_id,                
                 e.template_id,
                 e.partner_id,
+                e.company_id,
                 e.age,
                 e.is_template,
                 e.group_id,
