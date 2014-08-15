@@ -29,6 +29,19 @@ class evaluation(osv.osv):
 
         return res
 
+    def _calc_date(self, cr, uid, ids, name, args, context=None):
+        
+        res = {}
+
+        for record in self.browse(cr, uid, ids, context=context):
+            if record.date:
+                eval_year=(datetime.strptime(record.date, '%Y-%m-%d')).date()
+                res[record.id] = eval_year.year
+            else:
+                res[record.id] = False
+
+        return res
+
 
     def _get_partner_age(self, cr, uid, ids, name, arg, context=None):
         res = {}
@@ -40,6 +53,7 @@ class evaluation(osv.osv):
 
 
     _columns = {
+        'eval_year': fields.function(_calc_date, type='integer', string="Year", store=True,),
         'complete_name': fields.function(_complete_name, type='char', string="Name", store=True,),
         'age': fields.function(_get_partner_age, type='integer', string="Age", store=True),
         'evaluation_detail_value_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Values', domain=[('test_type','=','value')], readonly=True),

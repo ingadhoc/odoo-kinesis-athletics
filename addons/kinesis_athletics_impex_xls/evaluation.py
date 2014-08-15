@@ -31,11 +31,7 @@ class evaluation(osv.osv):
         datas['partner_information'] =  partner_information
         datas['tests'] =  tests
         datas['group_name'] = group.name
-        if obj.template_id:
-            datas['template_id']=obj.template_id.id
-        else:
-            datas['template_id']=False
-
+        
         return self.pool['report'].get_action(cr, uid, [], 'kinesis_athletics_export_xls.groups_xls', data=datas, context=context)
 
 

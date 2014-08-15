@@ -71,24 +71,23 @@ class import_evaluation_wizard(osv.osv_memory):
                     evaluation = evaluation_obj.browse(
                         cr, uid, evaluation_id, context=context)
 
-                    for test in record_header[3:]:
+                    for test in record_header[2:]:
 
                         for detail in evaluation.evaluation_detail_ids:
                             if test == detail.test_id.name:
                                 if evaluation_dic.get(test) != "":
-                                    if evaluation.template_id.id == 1 or evaluation.template_id.id == False :
-                                        vals = {
-
-                                            'result': float(evaluation_dic.get(test))
-
-                                        }
-                                    else:
+                                    if detail.test_id.test_selection_ids:
                                         test_selection = test_obj.search(cr, uid, [(
                                             'name', '=', evaluation_dic.get(test)), ('test_id', '=', test)], context=context)
-                                        print test_selection
                                         vals = {
 
                                             'test_selection_id': test_selection[0]
+
+                                        }
+                                    else:
+                                        vals = {
+
+                                            'result': float(evaluation_dic.get(test))
 
                                         }
                                     evaluation_detail_obj.write(cr, uid, detail.id, vals, context=None)

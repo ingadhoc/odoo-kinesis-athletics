@@ -28,7 +28,7 @@ class partner(models.Model):
         """
         Counts the number of evaluations the partner has, used for smart button.
         """
-        self.eval_count = len(self.evaluation_ids)
+        self.eval_count = len(self.sudo().evaluation_ids)
 
 
     actual_group_id = fields.Many2one('kinesis_athletics.group', string='Actual Group', compute='_get_actual_group')
