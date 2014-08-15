@@ -12,17 +12,6 @@
             <field eval="0" name="perm_create"/>
         </record>
 
-        <record model="ir.rule" id="report_rule_portal">
-        <field name="name">report rule Portal</field>
-        <field name="model_id" ref="kinesis_athletics_x.model_kinesis_athletics_evaluation_detail_report"/>
-        <field name="global" eval="True"/>
-        <field name="domain_force">[('partner_id','=', user.partner_id.id)]</field>
-        <field name="perm_read" eval="1"/>
-        <field name="perm_create" eval="0"/>
-        <field name="perm_unlink" eval="0"/>             
-        <field name="perm_write" eval="0"/>                    
-    </record>
-
 
     
     </data>
