@@ -53,7 +53,6 @@ class import_evaluation_person_wizard(osv.osv_memory):
         evaluation_matrix = []
         for line in record_list:
             evaluation_matrix.append(dict(zip(record_header, line)))
-        print evaluation_matrix
 
        
         evaluation_obj = self.pool['kinesis_athletics.evaluation']
@@ -83,7 +82,6 @@ class import_evaluation_person_wizard(osv.osv_memory):
                     detail_fields = ['evaluation_id/.id', 'test_id', 'test_selection_id']
                     detail_data = []
                     for test_name in record_header[3:]:
-                        # print test_name
                         if evaluation_dic.get(test_name) != "":
                             eval_detail = [evaluation_id, test_name, str(evaluation_dic.get(test_name))]
                             detail_data.append(eval_detail)
