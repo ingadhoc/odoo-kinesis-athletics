@@ -8,7 +8,7 @@
                         <!-- <t t-foreach="docs" t-as="o"> -->
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <h4 t-field="o.name"/>
+                                    <p><h4 t-field="o.name"/></p>
                                 </div>
                                 <div class="col-xs-4">
                                  <strong>Date: </strong><span t-field="o.date"/>
