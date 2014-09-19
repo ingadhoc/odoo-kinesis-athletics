@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields, tools
+from openerp import models, fields, tools, _
 
 
 class kinesis_athletics_evaluation_detail_report(models.Model):

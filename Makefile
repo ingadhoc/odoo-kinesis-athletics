@@ -7,8 +7,13 @@ addons: kinesis_athletics
 
 kinesis_athletics: design/kinesis_athletics.uml
 	xmi2oerp -r -i $< -t addons -v 2
+	mv addons/i18n addons/kinesis_athletics/
 
 clean:
-	rm -rf addons/kinesis_athletics/*
+	mv addons/kinesis_athletics/i18n/ addons/
 	sleep 1
 	touch design/kinesis_athletics.uml
+
+
+
+

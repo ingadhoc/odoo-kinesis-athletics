@@ -61,9 +61,14 @@
                     <field name="actual_group_id" string="Actual Group" position="attributes">
                         <attribute name="invisible">'show_actual_group' not in context</attribute>
                     </field>
+
                     <field name="company_id"/>
 
+
                 </tree>
+                <field name="phone" position="replace">
+                        <field name="mobile"/>
+                    </field>
             </field>
         </record>
 
