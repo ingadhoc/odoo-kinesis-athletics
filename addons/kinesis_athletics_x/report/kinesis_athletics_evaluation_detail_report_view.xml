@@ -32,6 +32,17 @@
                     <field name="date" string="Fecha Hasta" filter_domain="[('date','&lt;=',self)]"/>
                     <field name="age" string="Edad Desde" filter_domain="[('age','&gt;=',self)]"/>
                     <field name="age" string="Edad Hasta" filter_domain="[('age','&lt;=',self)]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Partner" context="{'group_by':'partner_id'}"/>
+                        <filter string="Group" context="{'group_by':'group_id'}"/>
+                        <filter string="First Parent" context="{'group_by':'first_parent_id'}"/>
+                        <filter string="Company" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
+                        <filter string="Template" context="{'group_by':'template_id'}"/>
+                        <filter string="Evaluation" context="{'group_by':'evaluation_id'}"/>
+                        <filter string="Evaluation Date" context="{'group_by':'date'}"/>
+                        <filter string="User" context="{'group_by':'user_id'}"/>
+                        <filter string="Test" context="{'group_by':'test_id'}"/>
+                    </group>
                 </search>
             </field>
         </record>
