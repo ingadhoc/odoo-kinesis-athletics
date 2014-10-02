@@ -19,10 +19,10 @@
     </record>
 
 
-    <record id="base.menu_management" model="ir.ui.menu">
+    <!-- <record id="base.menu_management" model="ir.ui.menu">
         <field name="groups_id"
                    eval="[(6, 0, [ref('base.group_no_one')])]"/>
-    </record>
+    </record> -->
 
     
     <!-- <menuitem
