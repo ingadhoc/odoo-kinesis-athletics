@@ -40,13 +40,13 @@
                 <div class="oe_edit_only" position="attributes">
                     <attribute name="invisible">'hide_is_company' in context</attribute>
                 </div>
-
+<!-- 
                 <div name="buttons" position="inside">
                     <button class="oe_stat_button"  icon="fa-pencil-square-o" type="action"
                             attrs="{'invisible': [('is_company', '=', True)]}" name="%(kinesis_athletics.action_kinesis_athletics_evaluation_evaluations)d" context="{'search_default_partner_id': active_id,}">
                             <field name="eval_count" string="Evaluations" widget="statinfo"/>
                         </button>
-                </div>
+                </div> -->
 
             </field>
         </record>

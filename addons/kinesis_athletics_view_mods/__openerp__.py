@@ -9,7 +9,7 @@
     ],
     'category': 'base.module_category_hidden',
     'demo': [],
-    'depends': ['kinesis_athletics_x'],
+    'depends': ['kinesis_athletics_x','partner_user'],
     'init': [],
     'installable': True,
     'license': 'AGPL-3',

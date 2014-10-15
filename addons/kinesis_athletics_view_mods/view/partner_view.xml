@@ -47,6 +47,7 @@
                             <field name="age"/>
                             <field name="national_identity" required="1"/>
                             <field name="sex" required="1"/>
+                            
                         </group>
                         <group>
                             <field name="phone"/>
@@ -58,6 +59,24 @@
                             <field name="zip" invisible="1"/>
                             <field name="state_id" invisible="1"/>
                             <field name="country_id" invisible="1"/>
+                            <label for="related_user_id" />
+                    <div class="oe_inline">
+                        <field name="login" class="oe_inline"/>
+                        
+                        <button name="open_related_user" 
+                            string="Open" 
+                            type="object" 
+                            class="oe_link oe_inline"  
+                            attrs="{'invisible':[('related_user_id','=',False)]}"/>
+                        <button name="delete_user" 
+                            string=" - Delete" 
+                            type="object" 
+                            groups="kinesis_athletics.group_configuracion"
+                            class="oe_link oe_inline"
+                            attrs="{'invisible':[('related_user_id','=',False)]}"/>
+                        <field name="related_user_id" invisible="1"/>
+                        <field name="template_user_id" invisible="1" options="{'no_open': True}"/>
+                    </div>
                         </group>
                     </group>
                 </group>
