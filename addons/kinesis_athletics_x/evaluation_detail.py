@@ -5,6 +5,7 @@ from openerp.osv import osv, fields
 from openerp.exceptions import except_orm, Warning, RedirectWarning
 
 
+
 class evaluation_detail(osv.osv):
     """"""
 

@@ -5,6 +5,7 @@ from dateutil.relativedelta import relativedelta
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP, float_compare
 import time
 from datetime import datetime
+from decimal import *
 
 
 class test(models.Model):
@@ -60,6 +61,7 @@ class test(models.Model):
         val_max = False
         extreme_maximum = False
         extreme_minimum = False
+        getcontext().prec = 4
 
         if partner_age:
             range_domain = [('test_id', '=', test_id),('from_age', '<=', partner_age), ('to_age', '>=', partner_age)]
@@ -73,8 +75,8 @@ class test(models.Model):
 
             if test_range_ids:
                 test_range = test_range_obj.browse(cr, uid, test_range_ids[0], context=context)
-                val_min = test_range.val_min
-                val_max = test_range.val_max
+                val_min = Decimal(test_range.val_min)
+                val_max = Decimal(test_range.val_max)
                 extreme_minimum = test_range.extreme_minimum
                 extreme_maximum = test_range.extreme_maximum
 
