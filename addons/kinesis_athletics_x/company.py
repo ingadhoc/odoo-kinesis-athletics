@@ -14,7 +14,7 @@ class company(models.Model):
     def _check_groups(self, cr, uid, ids, context=None):
         obj = self.browse(cr, uid, ids[0], context=context)
 
-        if obj.has_group !=True:
+        if obj.use_groups !=True:
             if obj.groups_ids:
                 return False
 

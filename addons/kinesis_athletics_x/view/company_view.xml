@@ -21,12 +21,12 @@
             <field name="arch" type="xml">
                 <group>
                     <field name="company_type_id"/>
-                    <field name="has_group"/>
+                    <field name="use_groups"/>
                     <field name="active"/>
                 </group>
 
             <page string="Configuration" position="after">
-              <page string="Courses/Areas" autofocus="autofocus" attrs="{'invisible':[('has_group','!=',True)]}">
+              <page string="Courses/Areas" autofocus="autofocus" attrs="{'invisible':[('use_groups','!=',True)]}">
                   <field name="groups_ids" />
               </page>
             </page>

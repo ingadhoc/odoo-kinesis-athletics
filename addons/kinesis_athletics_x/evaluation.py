@@ -58,7 +58,7 @@ class evaluation(osv.osv):
         'age': fields.function(_get_partner_age, type='integer', string="Age", store=True),
         'evaluation_detail_value_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Values', domain=[('test_type','=','value')], readonly=True),
         'evaluation_detail_selection_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Selections', domain=[('test_type','=','selection')], readonly=True),
-        'has_group':fields.related('company_id','has_group',relation='res.company', type='boolean', string='Has Group', store=True),
+        'use_groups':fields.related('company_id','use_groups',relation='res.company', type='boolean', string='Use Group', store=True),
         #we overwrite this field because in v8 o2m fields has copy=False by default and copy is not implemented on xmi2oerp
         'evaluation_detail_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Evaluation Details', required=True, copy=True),
     }
@@ -111,7 +111,7 @@ class evaluation(osv.osv):
         if company_id:
             company_obj = self.pool['res.company']
             company = company_obj.browse(cr, uid, company_id, context=context)
-            v['has_group'] = company.has_group
+            v['use_groups'] = company.use_groups
         v['group_id'] = False
         v['partner_id'] = False
 

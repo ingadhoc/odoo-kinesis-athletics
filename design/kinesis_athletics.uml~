@@ -63,7 +63,7 @@
 			</model>
 		</userDefined>
 </profile>
-<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Tue Oct 21 16:04:34 ART 2014'>
+<XMI xmi.version = '1.2' xmlns:UML = 'org.omg.xmi.namespace.UML' timestamp = 'Thu Jul 24 13:02:18 ART 2014'>
   <XMI.header>    <XMI.documentation>
       <XMI.exporter>ArgoUML (using Netbeans XMI Writer version 1.0)</XMI.exporter>
       <XMI.exporterVersion>0.34(6) revised on $Date: 2010-01-11 22:20:14 +0100 (Mon, 11 Jan 2010) $ </XMI.exporterVersion>
@@ -2542,7 +2542,7 @@
               </UML:GeneralizableElement.generalization>
               <UML:Classifier.feature>
                 <UML:Attribute xmi.id = '127-0-1-1--4accea9d:146810177c7:-8000:0000000000000DF2'
-                  name = 'use_groups' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
+                  name = 'has_group' visibility = 'public' isSpecification = 'false' ownerScope = 'instance'
                   changeability = 'changeable' targetScope = 'instance'>
                   <UML:StructuralFeature.multiplicity>
                     <UML:Multiplicity xmi.id = '127-0-1-1--4accea9d:146810177c7:-8000:0000000000000DF3'>
@@ -3103,7 +3103,7 @@
     </group>
   </group>
   <group name="Fig1"
-       description="org.argouml.uml.diagram.static_structure.ui.FigClass[536, 440, 369, 245]pathVisible=true;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
+       description="org.argouml.uml.diagram.static_structure.ui.FigClass[536, 440, 361, 245]pathVisible=true;stereotypeView=0;operationsVisible=true;attributesVisible=true;"
        href="127-0-1-1--616f9238:144d0775a31:-8000:0000000000001492"
        fill="1"
        fillcolor="white"
@@ -3116,7 +3116,7 @@
     <rectangle name="Fig1.0"
       x="536"
       y="440"
-      width="369"
+      width="361"
       height="245"
       fill="1"
       fillcolor="white"
@@ -3126,7 +3126,7 @@
     <text name="Fig1.1"
       x="537"
       y="441"
-      width="367"
+      width="359"
       height="22"
       fill="0"
       fillcolor="white"
@@ -3140,7 +3140,7 @@
       justification="Center"
     >kinesis_athletics::test</text>
     <group name="Fig1.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[537, 441, 367, 0]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[537, 441, 329, 0]"
          href="127-0-1-1--616f9238:144d0775a31:-8000:0000000000001492"
          fill="0"
          fillcolor="white"
@@ -3154,7 +3154,7 @@
       <rectangle name="Fig1.2.0"
         x="537"
         y="441"
-        width="367"
+        width="329"
         height="0"
         fill="0"
         fillcolor="white"
@@ -3165,7 +3165,7 @@
     <rectangle name="Fig1.3"
       x="536"
       y="463"
-      width="369"
+      width="361"
       height="1"
       fill="1"
       fillcolor="black"
@@ -3173,7 +3173,7 @@
       strokecolor="black"
     />
     <group name="Fig1.4"
-         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[537, 464, 367, 191]"
+         description="org.argouml.uml.diagram.ui.FigAttributesCompartment[537, 464, 359, 191]"
          href="127-0-1-1--616f9238:144d0775a31:-8000:0000000000001492"
          fill="0"
          fillcolor="white"
@@ -3186,7 +3186,7 @@
       <rectangle name="Fig1.4.0"
         x="537"
         y="464"
-        width="367"
+        width="359"
         height="191"
         fill="0"
         fillcolor="white"
@@ -3196,7 +3196,7 @@
       <text name="Fig1.4.1"
         x="537"
         y="464"
-        width="367"
+        width="359"
         height="16"
         fill="0"
         fillcolor="white"
@@ -3212,7 +3212,7 @@
       <text name="Fig1.4.2"
         x="537"
         y="480"
-        width="367"
+        width="359"
         height="16"
         fill="0"
         fillcolor="white"
@@ -3228,7 +3228,7 @@
       <text name="Fig1.4.3"
         x="537"
         y="496"
-        width="367"
+        width="359"
         height="16"
         fill="0"
         fillcolor="white"
@@ -3244,7 +3244,7 @@
       <text name="Fig1.4.4"
         x="537"
         y="512"
-        width="367"
+        width="359"
         height="16"
         fill="0"
         fillcolor="white"
@@ -3260,7 +3260,7 @@
       <text name="Fig1.4.5"
         x="537"
         y="528"
-        width="367"
+        width="359"
         height="16"
         fill="0"
         fillcolor="white"
@@ -3276,7 +3276,7 @@
       <text name="Fig1.4.6"
         x="537"
         y="544"
-        width="367"
+        width="359"
         height="16"
         fill="0"
         fillcolor="white"
@@ -3292,7 +3292,7 @@
       <text name="Fig1.4.7"
         x="537"
         y="560"
-        width="367"
+        width="359"
         height="16"
         fill="0"
         fillcolor="white"
@@ -3308,7 +3308,7 @@
       <text name="Fig1.4.8"
         x="537"
         y="576"
-        width="367"
+        width="359"
         height="16"
         fill="0"
         fillcolor="white"
@@ -3324,7 +3324,7 @@
       <text name="Fig1.4.9"
         x="537"
         y="592"
-        width="367"
+        width="359"
         height="16"
         fill="0"
         fillcolor="white"
@@ -3340,7 +3340,7 @@
       <text name="Fig1.4.10"
         x="537"
         y="608"
-        width="367"
+        width="359"
         height="16"
         fill="0"
         fillcolor="white"
@@ -3356,7 +3356,7 @@
       <text name="Fig1.4.11"
         x="537"
         y="624"
-        width="367"
+        width="359"
         height="22"
         fill="0"
         fillcolor="white"
@@ -3373,7 +3373,7 @@
     <rectangle name="Fig1.5"
       x="536"
       y="655"
-      width="369"
+      width="361"
       height="1"
       fill="1"
       fillcolor="black"
@@ -3381,7 +3381,7 @@
       strokecolor="black"
     />
     <group name="Fig1.6"
-         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[537, 656, 367, 28]"
+         description="org.argouml.uml.diagram.ui.FigOperationsCompartment[537, 656, 359, 28]"
          href="127-0-1-1--616f9238:144d0775a31:-8000:0000000000001492"
          fill="0"
          fillcolor="white"
@@ -3394,7 +3394,7 @@
       <rectangle name="Fig1.6.0"
         x="537"
         y="656"
-        width="367"
+        width="359"
         height="28"
         fill="0"
         fillcolor="white"
@@ -4005,7 +4005,7 @@
       stroke="1"
       strokecolor="black"
     >
-      <moveto x="904"
+      <moveto x="896"
               y="512" />
       <lineto x="1248"
               y="512" />
@@ -4552,9 +4552,9 @@
       strokecolor="black"
     />
     <text name="Fig13.1"
-      x="69"
+      x="67"
       y="396"
-      width="150"
+      width="153"
       height="41"
       fill="0"
       fillcolor="white"
@@ -4568,7 +4568,7 @@
       justification="Center"
     >kinesis_athletics::Tests</text>
     <group name="Fig13.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[69, 396, 150, 19]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[67, 396, 153, 19]"
          href="127-0-1-1-2cf3082:144d540a132:-8000:0000000000000CCE"
          fill="0"
          fillcolor="white"
@@ -4579,9 +4579,9 @@
       </private>
       
       <rectangle name="Fig13.2.0"
-        x="69"
+        x="67"
         y="396"
-        width="150"
+        width="153"
         height="19"
         fill="0"
         fillcolor="white"
@@ -4589,9 +4589,9 @@
         strokecolor="black"
       />
       <text name="Fig13.2.1"
-        x="69"
+        x="67"
         y="396"
-        width="150"
+        width="153"
         height="17"
         fill="0"
         fillcolor="white"
@@ -4722,9 +4722,9 @@
       strokecolor="black"
     />
     <text name="Fig15.1"
-      x="424"
+      x="422"
       y="758"
-      width="188"
+      width="191"
       height="41"
       fill="0"
       fillcolor="white"
@@ -4738,7 +4738,7 @@
       justification="Center"
     >kinesis_athletics::Evaluations</text>
     <group name="Fig15.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[424, 758, 188, 19]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[422, 758, 191, 19]"
          href="127-0-1-1-2cf3082:144d540a132:-8000:0000000000000CDA"
          fill="0"
          fillcolor="white"
@@ -4749,9 +4749,9 @@
       </private>
       
       <rectangle name="Fig15.2.0"
-        x="424"
+        x="422"
         y="758"
-        width="188"
+        width="191"
         height="19"
         fill="0"
         fillcolor="white"
@@ -4759,9 +4759,9 @@
         strokecolor="black"
       />
       <text name="Fig15.2.1"
-        x="424"
+        x="422"
         y="758"
-        width="188"
+        width="191"
         height="17"
         fill="0"
         fillcolor="white"
@@ -5015,9 +5015,9 @@
       strokecolor="black"
     />
     <text name="Fig18.1"
-      x="138"
+      x="136"
       y="698"
-      width="250"
+      width="253"
       height="41"
       fill="0"
       fillcolor="white"
@@ -5031,7 +5031,7 @@
       justification="Center"
     >kinesis_athletics::Evaluation Templates</text>
     <group name="Fig18.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[138, 698, 250, 19]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[136, 698, 253, 19]"
          href="127-0-1-1-2cf3082:144d540a132:-8000:0000000000000CDB"
          fill="0"
          fillcolor="white"
@@ -5042,9 +5042,9 @@
       </private>
       
       <rectangle name="Fig18.2.0"
-        x="138"
+        x="136"
         y="698"
-        width="250"
+        width="253"
         height="19"
         fill="0"
         fillcolor="white"
@@ -5052,9 +5052,9 @@
         strokecolor="black"
       />
       <text name="Fig18.2.1"
-        x="138"
+        x="136"
         y="698"
-        width="250"
+        width="253"
         height="17"
         fill="0"
         fillcolor="white"
@@ -5851,9 +5851,9 @@
       strokecolor="black"
     />
     <text name="Fig26.1"
-      x="86"
+      x="84"
       y="194"
-      width="166"
+      width="170"
       height="41"
       fill="0"
       fillcolor="white"
@@ -5867,7 +5867,7 @@
       justification="Center"
     >kinesis_athletics::Persons</text>
     <group name="Fig26.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[86, 194, 166, 19]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[84, 194, 170, 19]"
          href="127-0-1-1-739884e8:14503bf259c:-8000:0000000000000D9E"
          fill="0"
          fillcolor="white"
@@ -5878,9 +5878,9 @@
       </private>
       
       <rectangle name="Fig26.2.0"
-        x="86"
+        x="84"
         y="194"
-        width="166"
+        width="170"
         height="19"
         fill="0"
         fillcolor="white"
@@ -5888,9 +5888,9 @@
         strokecolor="black"
       />
       <text name="Fig26.2.1"
-        x="86"
+        x="84"
         y="194"
-        width="166"
+        width="170"
         height="17"
         fill="0"
         fillcolor="white"
@@ -6084,9 +6084,9 @@
       strokecolor="black"
     />
     <text name="Fig29.1"
-      x="1558"
+      x="1557"
       y="58"
-      width="162"
+      width="164"
       height="41"
       fill="0"
       fillcolor="white"
@@ -6100,7 +6100,7 @@
       justification="Center"
     >kinesis_athletics::Groups</text>
     <group name="Fig29.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[1558, 58, 162, 19]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[1557, 58, 164, 19]"
          href="127-0-1-1--673bce6a:1452cb934ab:-8000:0000000000000D75"
          fill="0"
          fillcolor="white"
@@ -6111,9 +6111,9 @@
       </private>
       
       <rectangle name="Fig29.2.0"
-        x="1558"
+        x="1557"
         y="58"
-        width="162"
+        width="164"
         height="19"
         fill="0"
         fillcolor="white"
@@ -6121,9 +6121,9 @@
         strokecolor="black"
       />
       <text name="Fig29.2.1"
-        x="1558"
+        x="1557"
         y="58"
-        width="162"
+        width="164"
         height="17"
         fill="0"
         fillcolor="white"
@@ -7417,7 +7417,7 @@
       stroke="1"
       strokecolor="51 51 153"
     >
-      <moveto x="904"
+      <moveto x="896"
               y="584" />
       <lineto x="1024"
               y="584" />
@@ -7735,7 +7735,7 @@
         bold="false"
         textsize="12"
         justification="Left"
-      >use_groups : Boolean</text>
+      >has_group : Boolean</text>
     </group>
     <rectangle name="Fig41.5"
       x="664"
@@ -7945,9 +7945,9 @@
       strokecolor="black"
     />
     <text name="Fig0.1"
-      x="38"
+      x="39"
       y="447"
-      width="96"
+      width="94"
       height="23"
       fill="0"
       fillcolor="white"
@@ -8523,9 +8523,9 @@
       strokecolor="black"
     />
     <text name="Fig5.1"
-      x="732"
+      x="731"
       y="679"
-      width="140"
+      width="142"
       height="41"
       fill="0"
       fillcolor="white"
@@ -8539,7 +8539,7 @@
       justification="Center"
     >Evaluation Templates</text>
     <group name="Fig5.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[732, 679, 140, 19]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[731, 679, 142, 19]"
          href="127-0-1-1-2cf3082:144d540a132:-8000:0000000000000CDB"
          fill="0"
          fillcolor="white"
@@ -8550,9 +8550,9 @@
       </private>
       
       <rectangle name="Fig5.2.0"
-        x="732"
+        x="731"
         y="679"
-        width="140"
+        width="142"
         height="19"
         fill="0"
         fillcolor="white"
@@ -8560,9 +8560,9 @@
         strokecolor="black"
       />
       <text name="Fig5.2.1"
-        x="732"
+        x="731"
         y="679"
-        width="140"
+        width="142"
         height="17"
         fill="0"
         fillcolor="white"
@@ -8862,9 +8862,9 @@
       strokecolor="black"
     />
     <text name="Fig10.1"
-      x="388"
+      x="389"
       y="474"
-      width="94"
+      width="92"
       height="41"
       fill="0"
       fillcolor="white"
@@ -8878,7 +8878,7 @@
       justification="Center"
     >Configuration</text>
     <group name="Fig10.2"
-         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[388, 474, 94, 19]"
+         description="org.argouml.uml.diagram.ui.FigStereotypesGroup[389, 474, 92, 19]"
          href="127-0-1-1-56476b0e:144e5566bca:-8000:0000000000000D02"
          fill="0"
          fillcolor="white"
@@ -8889,9 +8889,9 @@
       </private>
       
       <rectangle name="Fig10.2.0"
-        x="388"
+        x="389"
         y="474"
-        width="94"
+        width="92"
         height="19"
         fill="0"
         fillcolor="white"
@@ -8899,9 +8899,9 @@
         strokecolor="black"
       />
       <text name="Fig10.2.1"
-        x="388"
+        x="389"
         y="474"
-        width="94"
+        width="92"
         height="17"
         fill="0"
         fillcolor="white"
@@ -9870,9 +9870,9 @@
       strokecolor="black"
     />
     <text name="Fig22.1"
-      x="52"
+      x="50"
       y="271"
-      width="85"
+      width="89"
       height="23"
       fill="0"
       fillcolor="white"

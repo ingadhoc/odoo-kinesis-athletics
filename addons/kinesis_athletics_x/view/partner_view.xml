@@ -8,11 +8,12 @@
 
 
         <!-- INHERITED FORM -->
+        
         <record id="view_kinesis_athletics_partner_form" model="ir.ui.view">
             <field name="name">kinesis_athletics.partner.form</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
-            <field eval="80" name="priority"/>
+            <field eval="90" name="priority"/>
             <field name="arch" type="xml">
 
                <sheet position="before">
@@ -23,7 +24,7 @@
 
                 <div class="oe_edit_only" position="replace">
                     <field name="is_company" invisible="1"/>
-                    <field name="has_group" invisible="1"/>
+                    <field name="use_groups" invisible="1"/>
                 </div>
 
                 <field name="parent_id" position="replace">
@@ -31,22 +32,19 @@
                   <field name="parent_id" invisible="1"/>
                 </field>
 
-                <xpath expr="//page[@name='sales_purchases']" position="before" >
-                    <page string="Courses/Areas" autofocus="autofocus" attrs="{'invisible': [('has_group', '=', False)]}">
+                <xpath expr="//page[@name='sales_purchases']" position="after" >
+                    <page string="Courses/Areas" autofocus="autofocus" attrs="{'invisible': [('use_groups', '=', False)]}">
                           <field name="partner_group_ids" domain="[('company_id','=',company_id)]"/>
                     </page>
                 </xpath>
 
+               <!--  <page string="Personal Information" position="replace">
+                </page>
+     -->
                 <div class="oe_edit_only" position="attributes">
                     <attribute name="invisible">'hide_is_company' in context</attribute>
                 </div>
-<!-- 
-                <div name="buttons" position="inside">
-                    <button class="oe_stat_button"  icon="fa-pencil-square-o" type="action"
-                            attrs="{'invisible': [('is_company', '=', True)]}" name="%(kinesis_athletics.action_kinesis_athletics_evaluation_evaluations)d" context="{'search_default_partner_id': active_id,}">
-                            <field name="eval_count" string="Evaluations" widget="statinfo"/>
-                        </button>
-                </div> -->
+
 
             </field>
         </record>

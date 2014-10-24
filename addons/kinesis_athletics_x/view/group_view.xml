@@ -3,6 +3,7 @@
     <data>
 
         <!-- SEARCH VIEW -->
+    
         <record id="view_kinesis_athletics_group_filter" model="ir.ui.view">
             <field name="name">kinesis_athletics.group.select</field>
             <field name="model">kinesis_athletics.group</field>
@@ -36,7 +37,7 @@
                                 </button>
                         </div>
                         <group>
-                            <field name="company_id" widget="selection" groups="base.group_multi_company"  on_change="onchange_is_school(company_id)" domain="[('has_group','=',True)]"/>
+                            <field name="company_id" widget="selection" groups="base.group_multi_company"  on_change="onchange_is_school(company_id)" domain="[('use_groups','=',True)]"/>
                             <field name="year"/>
                             <field name="name"/>
                             <field name="new_year_group_id" />

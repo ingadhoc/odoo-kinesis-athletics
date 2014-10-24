@@ -1,4 +1,4 @@
-id,is_template,name,date,group_id/id,has_group,partner_id/id,company_id/id
+id,is_template,name,date,group_id/id,use_groups,partner_id/id,company_id/id
 kinesis_athletics_x.evaluation_1,True,Evaluación Física,,,,,
 kinesis_athletics_x.evaluation_2,True,Evaluación Atlética,,,,,
 kinesis_athletics_x.evaluation_3,False,Evaluación Física,2014-06-30,kinesis_athletics_x.group_1,True,kinesis_athletics_x.partner_1,kinesis_athletics_x.res_company_partner_13

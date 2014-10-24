@@ -32,7 +32,7 @@ class partner(models.Model):
 
 
     actual_group_id = fields.Many2one('kinesis_athletics.group', string='Actual Group', compute='_get_actual_group')
-    has_group = fields.Boolean(related='company_id.has_group', string='Has Group', store=True)
+    use_groups = fields.Boolean(related='company_id.use_groups', string='Use Group', store=True)
     company_name = fields.Char(related='company_id.company_type_id.name', string='Company Name', store=True)
     eval_count = fields.Integer(compute='_evaluation_count')
 
@@ -56,7 +56,7 @@ class partner(models.Model):
         if company_id:
             company_obj = self.pool.get('res.company')
             company = company_obj.browse(cr, uid, company_id, context=context)
-            v['has_group']=company.has_group
+            v['use_groups']=company.use_groups
 
         return {'value': v,}
 

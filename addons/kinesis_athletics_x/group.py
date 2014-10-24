@@ -25,7 +25,7 @@ class group(osv.osv):
 
     _columns = {
         'is_school': fields.related('company_id', 'company_type_id', 'is_school', type='boolean', relation='kinesis_athletics.company_type', string="Is School", readonly=True),
-        'has_group': fields.related('company_id', 'has_group', type='boolean', relation='res.company', string="Has Group", readonly=True),
+        'use_groups': fields.related('company_id', 'use_groups', type='boolean', relation='res.company', string="Has Group", readonly=True),
         'eval_group_count': fields.function(_evaluation_group_count, type="integer"), 
     
     }

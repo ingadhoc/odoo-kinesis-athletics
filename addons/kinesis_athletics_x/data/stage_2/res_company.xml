@@ -46,7 +46,7 @@
             <field name="parent_id" ref="res_company_partner_26"/>
             <field name="currency_id" ref="base.ARS"/>
             <field name="company_type_id" ref="kinesis_athletics_x.company_type_03"/>
-            <field name="has_group">True</field>
+            <field name="use_groups">True</field>
         </record>     
 
         <record id="res_company_partner_15" model="res.company">
@@ -55,7 +55,7 @@
             <field name="parent_id" ref="res_company_partner_26"/>
             <field name="currency_id" ref="base.ARS"/>
             <field name="company_type_id" ref="kinesis_athletics_x.company_type_01"/>
-            <field name="has_group">True</field>
+            <field name="use_groups">True</field>
         </record>     
 
         <record id="res_company_partner_16" model="res.company">
@@ -64,7 +64,7 @@
             <field name="parent_id" ref="res_company_partner_26"/>
             <field name="currency_id" ref="base.ARS"/>
             <field name="company_type_id" ref="kinesis_athletics_x.company_type_02"/>
-            <field name="has_group">True</field>
+            <field name="use_groups">True</field>
         </record>        
 
     </data>

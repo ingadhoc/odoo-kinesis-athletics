@@ -62,7 +62,7 @@
                 <sheet string="evaluation" position="replace">
                     <sheet>
                         <field name="is_template" invisible="1"/>
-                        <field name="has_group" invisible="1"/>
+                        <field name="use_groups" invisible="1"/>
                         <field name="eval_year" invisible="1"/>
                         <h2>
                             <field name="name" attrs="{'required':['|',('is_template','=',True),('template_id','=',False)],'invisible':[('is_template','=',False),('template_id','!=',False)]}" placeholder="Name..."/>
@@ -71,7 +71,7 @@
                         <group>
                             <group>
                                 <field name="company_id" attrs="{'invisible':[('is_template','=',True)]}"  groups="base.group_multi_company" on_change="on_change_company(company_id)"/>
-                                <field name="group_id" attrs="{'required':[('is_template','=',False),('has_group','=',True)],'invisible':['|',('is_template','=',True),('has_group','!=',True)]}" domain="[('company_id','=',company_id),('year','=',eval_year)]" on_change="on_change_group(group_id)"/>
+                                <field name="group_id" attrs="{'required':[('is_template','=',False),('use_groups','=',True)],'invisible':['|',('is_template','=',True),('use_groups','!=',True)]}" domain="[('company_id','=',company_id),('year','=',eval_year)]" on_change="on_change_group(group_id)"/>
                                 <field name="partner_id" attrs="{'required':[('is_template','=',False)],'invisible':[('is_template','=',True)]}" domain="[('company_id','=',company_id)]" />
                             </group>
                             <group>

@@ -25,7 +25,6 @@
             <field name="name">kinesis_athletics.partner.form</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="kinesis_athletics_x.view_kinesis_athletics_partner_form"/>
-            <field eval="90" name="priority"/>
             <field name="arch" type="xml">
 
                 <xpath expr="//field[@name='partner_group_ids']" position="after">
@@ -33,9 +32,8 @@
                     <field name="customer" invisible="1"/>
                 </xpath>
 
-                <xpath expr="//page[@name='sales_purchases']" position="replace">
-                </xpath>
-
+                <page name="sales_purchases" position="replace">
+                </page>
                 <page string="Personal Information" position="replace">
                 </page>
 
