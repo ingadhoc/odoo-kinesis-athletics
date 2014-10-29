@@ -90,11 +90,12 @@ class evaluation_detail(osv.osv):
                 plotband_val_min, plotband_val_max, plotband_ext_max, plotband_ext_min = test_obj._get_min_max(cr, uid, test.id, partner.id, context=None)
 
             res[evaluation_detail.id] = {
-            'plotband_val_min': plotband_val_min,
-            'plotband_val_max': plotband_val_max,
-            'plotband_ext_max': plotband_ext_max,
-            'plotband_ext_min': plotband_ext_min,
+            'plotband_val_min': format(plotband_val_min, '.2f'),
+            'plotband_val_max': format(plotband_val_max, '.2f'),
+            'plotband_ext_max': format(plotband_ext_max, '.2f'),
+            'plotband_ext_min': format(plotband_ext_min, '.2f'),
             }
+        print res
 
         return res
 

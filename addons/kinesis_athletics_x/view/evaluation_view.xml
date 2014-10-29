@@ -142,12 +142,14 @@
                                         <templates>
                                             <t t-name="kanban-box">
                                                 <div t-attf-class="oe_kanban_card">
-                                                                                                                        <div>                                                                                                                      <h2 style="text-align:center;font-weight:300;font-size:18px;"><field name="test_id"/></h2>
-                                                        </div>
-                                                        <div>
-                                                              <img t-att-src="kanban_image('kinesis_athletics.test_selection', 'image', record.test_selection_id.raw_value)" class="oe_kanban_avatar" t-if="record.test_selection_id.value" style="width: 187px; height: 200px; margin: 0 auto;"/>
-                                                              <h4 style="text-align: center;text-transform: uppercase;"><field name="test_selection_id"/></h4>
-                                                        </div>
+                                                    <div>
+                                                        <h2 style="text-align:center;font-weight:300;font-size:18px;"><field name="test_id"/>
+                                                        </h2>
+                                                    </div>
+                                                    <div>
+                                                          <img t-att-src="kanban_image('kinesis_athletics.test_selection', 'image', record.test_selection_id.raw_value)" class="oe_kanban_avatar" t-if="record.test_selection_id.value" style="width: 187px; height: 200px; margin: 0 auto;"/>
+                                                          <h4 style="text-align: center;text-transform: uppercase;"><field name="test_selection_id"/></h4>
+                                                    </div>
                                                     <div class="oe_clear"></div>
                                                 </div>
                                             </t>
