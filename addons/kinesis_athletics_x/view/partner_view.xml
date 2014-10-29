@@ -21,6 +21,13 @@
                         <button name="%(wizard_evaluation_person_action)d" type="action" string="Create Evaluations" groups="kinesis_athletics.group_responsable"/>
                     </header>
                 </sheet>
+                <div class="oe_right oe_button_box" name="buttons">
+                            <button class="oe_stat_button"  icon="fa-pencil-square-o" type="action" 
+                                    name="%(kinesis_athletics.action_kinesis_athletics_evaluation_evaluations)d"
+                                    context="{'search_default_partner_id': active_id,'search_default_group_by_date': 1}">
+                                    <field name="eval_count" string="Evaluations" widget="statinfo"/>
+                                </button>
+                        </div>
 
                 <div class="oe_edit_only" position="replace">
                     <field name="is_company" invisible="1"/>
