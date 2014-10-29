@@ -43,14 +43,20 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
         if (this.getParent().record['plotband_ext_min'] != null && this.getParent().record['result'].raw_value != 0) {
             plotband_ext_min = this.getParent().record['plotband_ext_min'].raw_value;
         }
-        tickPositions.push(plotband_ext_min);
+        num = plotband_ext_min
+                if (num != null) {
+                    tickPositions.push(parseFloat(num.toFixed(2)));
+                }
 
         if (this.getParent().record['plotband_val_min'] != null && this.getParent().record['result'].raw_value != 0) {
             plotband_val_min = this.getParent().record['plotband_val_min'].raw_value;
             if (plotband_val_min < plotband_ext_min) {
                 plotband_val_min = null;
             } else {
-                tickPositions.push(plotband_val_min);
+                num = plotband_val_min
+                if (num != null) {
+                    tickPositions.push(parseFloat(num.toFixed(2)));
+                }
             }
         }
 
@@ -64,7 +70,10 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
             if (plotband_val_max > plotband_ext_max) {
                 plotband_val_max = null;
             } else {
-                tickPositions.push(plotband_val_max);
+                num = plotband_val_max
+                if (num != null) {
+                    tickPositions.push(parseFloat(num.toFixed(2)));
+                }
             }
         }
 
@@ -72,15 +81,19 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
             this.getParent().record['state'].raw_value = 'none'
             console.log(this.getParent().record['state'].raw_value)
         }
+        
+        num = plotband_ext_max
+        if (num != null) {
+            tickPositions.push(parseFloat(num.toFixed(2)));
+        }
 
-        tickPositions.push(plotband_ext_max);
 
         var plotBands = []
 
         if (plotband_ext_min != null && plotband_val_min != null) {
             plotBands.push({
-                from: plotband_ext_min,
-                to: plotband_val_min,
+                from: parseFloat(plotband_ext_min.toFixed(2)),
+                to: parseFloat(plotband_val_min.toFixed(2)),
                 color: rating_below_minimum_color,
                 innerRadius: '100%',
                 outerRadius: '110%',
@@ -89,8 +102,8 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
 
         if (plotband_val_min != null && plotband_val_max != null) {
             plotBands.push({
-                from: plotband_val_min,
-                to: plotband_val_max,
+                from: parseFloat(plotband_val_min.toFixed(2)),
+                to: parseFloat(plotband_val_max.toFixed(2)),
                 color: rating_between,
                 innerRadius: '100%',
                 outerRadius: '110%'
@@ -99,8 +112,8 @@ instance.web_kanban.KinesisMetricWidget = instance.web_kanban.AbstractField.exte
 
         if (plotband_val_max != null && plotband_ext_max != null) {
             plotBands.push({
-                from: plotband_val_max,
-                to: plotband_ext_max,
+                from: parseFloat(plotband_val_max.toFixed(2)),
+                to: parseFloat(plotband_ext_max.toFixed(2)),
                 color: rating_over_maximum_color,
                 innerRadius: '100%',
                 outerRadius: '110%'
