@@ -60,7 +60,7 @@ class evaluation_detail(osv.osv):
                 state = self._get_state(cr, uid, ref_ext_min, ref_min, ref_max, ref_ext_max, evaluation_detail, context=context)
 
                 age_range = (partner.age, partner.age)
-                age_results = test_obj._get_results(cr, uid, test.id, age_range=age_range, context=context)
+                age_results = test_obj._get_results(cr, uid, test.id, sex=partner.sex, age_range=age_range, context=context)
                 age_avg = False
                 if age_results:
                     age_avg = sum(age_results) / len(age_results)

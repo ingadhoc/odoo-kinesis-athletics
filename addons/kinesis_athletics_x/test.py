@@ -81,7 +81,7 @@ class test(models.Model):
        
         return (val_min, val_max, extreme_maximum, extreme_minimum)
 
-    def _get_results(self, cr, uid, test_id, partner_id=False, group_id=False, level_id=False, age_range=None, company_id=False, context=None):
+    def _get_results(self, cr, uid, test_id, sex=False, partner_id=False, group_id=False, level_id=False, age_range=None, company_id=False, context=None):
         """"""
         if age_range:
             (age_from, age_to) = age_range
@@ -93,6 +93,9 @@ class test(models.Model):
 
         if partner_id:
             domain.append(('evaluation_id.partner_id','=',partner_id))
+
+        if sex:
+            domain.append(('evaluation_id.partner_id.sex','=',sex))
 
         if test_id:
             domain.append(('test_id','=',test_id))
