@@ -1,155 +1,205 @@
 # -*- coding: utf-8 -*-
-
-from openerp import netsvc
-from openerp.osv import osv, fields
-from openerp.exceptions import except_orm, Warning, RedirectWarning
+from openerp import models, fields, api, _
+from openerp.exceptions import Warning
 
 
+class evaluation_detail(models.Model):
 
-class evaluation_detail(osv.osv):
     """"""
 
-    _name = 'kinesis_athletics.evaluation_detail'
     _inherit = 'kinesis_athletics.evaluation_detail'
 
-
-    def _get_state (self, cr, uid, ext_min, val_min, val_max, ext_max, evaluation_detail, context=None):
-        state=False
-
-        if ext_min and val_min and val_max and ext_max:
-            result = evaluation_detail.result
-            if result > val_max:
-                state=evaluation_detail.test_id.rating_over_maximum
-            if result < val_min:
-                state=evaluation_detail.test_id.rating_below_minimum
-            if result >= val_min and result <= val_max:
-                state='ideal'
-            if ext_min == val_min and val_max == ext_max:
-                state='none'
-
-        return state
-
-    def get_test_description(self, cr, uid, ids, context=None):
-        if context is None:
-            context={}
-        test_id = self.browse(cr, uid, ids[0], context).test_id.id
-
+    @api.multi
+    def get_test_description(self):
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'kinesis_athletics.test',
             'view_mode': 'form',
-            'res_id': test_id,
+            'res_id': self.test_id.id,
             'target': 'new'
         }
 
-    def _get_test_statistics(self, cr, uid, ids, fields, arg, context=None):
-        res = {}
-        test_obj = self.pool['kinesis_athletics.test']
-        test_ids = test_obj.search(cr, uid, [('type','=','value')], context=context)
+    @api.one
+    @api.depends(
+        'result',
+        'test_id',
+        'test_id.type',
+        'test_id.test_range_ids',
+        'test_id.test_range_ids.from_age',
+        'test_id.test_range_ids.to_age',
+        'test_id.test_range_ids.sex',
+        'test_id.test_range_ids.val_max',
+        'test_id.test_range_ids.val_min',
+        'test_id.test_range_ids.extreme_minimum',
+        'test_id.test_range_ids.extreme_maximum',
+        'evaluation_id',
+        'evaluation_id.is_template',
+        'evaluation_id.partner_id',
+        )
+    def _get_state(self):
+        test = self.test_id
+        evaluation = self.evaluation_id
+        partner = self.evaluation_id.partner_id
+        result = self.result
 
-        for evaluation_detail in self.browse(cr, uid, ids, context=context):
-            test = evaluation_detail.test_id
+        state = False
+        if not evaluation.is_template and partner:
+            ref_min, ref_max, ref_ext_max, ref_ext_min = test._get_min_max(
+                test.id, partner.id)
+            if result > ref_max:
+                state = self.test_id.rating_over_maximum
+            if result < ref_min:
+                state = self.test_id.rating_below_minimum
+            if result >= ref_min and result <= ref_max:
+                state = 'ideal'
+            if ref_ext_min == ref_min and ref_max == ref_ext_max:
+                state = 'none'
+        self.state = state
 
-            evaluation = evaluation_detail.evaluation_id
-            partner = evaluation_detail.evaluation_id.partner_id
-            state = False
+    @api.one
+    @api.depends(
+        'test_id',
+        'test_id.type',
+        'test_id.test_range_ids',
+        'test_id.test_range_ids.from_age',
+        'test_id.test_range_ids.to_age',
+        'test_id.test_range_ids.sex',
+        'test_id.test_range_ids.val_max',
+        'test_id.test_range_ids.val_min',
+        'test_id.test_range_ids.extreme_minimum',
+        'test_id.test_range_ids.extreme_maximum',
+        'evaluation_id',
+        'evaluation_id.is_template',
+        'evaluation_id.partner_id',
+        )
+    def _get_age_avg(self):
+        test = self.test_id
+        evaluation = self.evaluation_id
+        partner = self.evaluation_id.partner_id
+
+        age_avg = False
+        if not evaluation.is_template and partner:
+            age_range = (partner.age, partner.age)
+            age_results = test._get_results(
+                test.id, sex=partner.sex, age_range=age_range)
             age_avg = False
-            if evaluation.is_template!=True and partner:
+            if age_results:
+                age_avg = sum(age_results) / len(age_results)
 
-                ref_min, ref_max, ref_ext_max, ref_ext_min = test_obj._get_min_max(cr, uid, test.id, partner.id, context=context)
-                state = self._get_state(cr, uid, ref_ext_min, ref_min, ref_max, ref_ext_max, evaluation_detail, context=context)
+        self.age_avg = age_avg
 
-                age_range = (partner.age, partner.age)
-                age_results = test_obj._get_results(cr, uid, test.id, sex=partner.sex, age_range=age_range, context=context)
-                age_avg = False
-                if age_results:
-                    age_avg = sum(age_results) / len(age_results)
-
-            res[evaluation_detail.id] = {
-                'age_avg': age_avg,
-                'state': state,
-            }
-
-        return res
-
-    def _get_plotbands_values(self, cr, uid, ids, fields, arg, context=None):
-        res = {}
-        test_range_obj = self.pool['kinesis_athletics.test_range']
-        test_obj = self.pool['kinesis_athletics.test']
+    @api.one
+    @api.depends(
+        'test_id',
+        'test_id.type',
+        'test_id.test_range_ids',
+        'test_id.test_range_ids.from_age',
+        'test_id.test_range_ids.to_age',
+        'test_id.test_range_ids.sex',
+        'test_id.test_range_ids.val_max',
+        'test_id.test_range_ids.val_min',
+        'test_id.test_range_ids.extreme_minimum',
+        'test_id.test_range_ids.extreme_maximum',
+        'evaluation_id',
+        'evaluation_id.partner_id',
+        )
+    def _get_plotbands_values(self):
+        test_ranges = self.env['kinesis_athletics.test_range']
+        test = self.test_id
+        partner = self.evaluation_id.partner_id
 
         plotband_ext_min = False
         plotband_val_min = False
         plotband_val_max = False
         plotband_ext_max = False
 
-        for evaluation_detail in self.browse(cr, uid, ids, context=context):
-            test = evaluation_detail.test_id
-            partner = evaluation_detail.evaluation_id.partner_id
-            test_range_ids = test_range_obj.search(cr, uid, [('test_id', '=', test.id)], context=context)
-            if test_range_ids and partner:
-                plotband_val_min, plotband_val_max, plotband_ext_max, plotband_ext_min = test_obj._get_min_max(cr, uid, test.id, partner.id, context=None)
+        test_ranges = test_ranges.search(
+            [('test_id', '=', test.id)])
+        if test_ranges and partner:
+            plotband_val_min, plotband_val_max, plotband_ext_max, plotband_ext_min = test._get_min_max(
+                test.id, partner.id)
 
-            res[evaluation_detail.id] = {
-            'plotband_val_min': format(plotband_val_min, '.2f'),
-            'plotband_val_max': format(plotband_val_max, '.2f'),
-            'plotband_ext_max': format(plotband_ext_max, '.2f'),
-            'plotband_ext_min': format(plotband_ext_min, '.2f'),
-            }
-        print res
+        self.plotband_val_min = format(plotband_val_min, '.2f')
+        self.plotband_val_max = format(plotband_val_max, '.2f')
+        self.plotband_ext_max = format(plotband_ext_max, '.2f')
+        self.plotband_ext_min = format(plotband_ext_min, '.2f')
 
-        return res
+    partner_id = fields.Many2one(
+        'res.partner',
+        'Partner',
+        related='evaluation_id.partner_id',
+        readonly=True,)
+    uom_id = fields.Many2one(
+        'product.uom',
+        'Unit',
+        related='test_id.uom_id',
+        readonly=True)
+    age_avg = fields.Float(
+        compute='_get_age_avg',
+        string='Age Average',)
+    plotband_ext_min = fields.Float(
+        compute='_get_plotbands_values',
+        store=True,
+        string='ext_min',)
+    plotband_val_min = fields.Float(
+        compute='_get_plotbands_values',
+        store=True,
+        string="val_min",)
+    plotband_val_max = fields.Float(
+        compute='_get_plotbands_values',
+        store=True,
+        string="val_max",)
+    plotband_ext_max = fields.Float(
+        compute='_get_plotbands_values',
+        store=True,
+        string="ext_max",)
+    rating_below_minimum = fields.Selection(
+        related='test_id.rating_below_minimum',
+        string='rating_below_minimum')
+    rating_between = fields.Selection(
+        related='test_id.rating_between',
+        string='rating_between')
+    rating_over_maximum = fields.Selection(
+        related='test_id.rating_over_maximum',
+        string='rating_over_maximum')
+    state = fields.Selection(
+        [('alert', 'Alert'), ('ideal', 'Ideal'),
+         ('superior', 'Superior'), ('none', 'None')],
+        compute='_get_state',
+        string='State',
+        store=True,)
+    test_type = fields.Selection(
+        related='test_id.type',
+        string="Test Type",
+        readonly=True)
+    test_description = fields.Char(
+        related='test_id.description',
+        string="Test Description",
+        readonly=True)
+    first_parent_id = fields.Many2one(
+        'kinesis_athletics.test_category',
+        related='test_id.test_category_id.first_parent_id',
+        string='Test Class',
+        readonly=True,
+        store=True)
 
-    _columns = {
-        'partner_id': fields.related('evaluation_id', 'partner_id', relation='res.partner', type='many2one', string='Partner', readonly=True,),
-        'uom_id': fields.related('test_id', 'uom_id', type='many2one', relation='product.uom', string="Unit", readonly=True),
-        'age_avg': fields.function(_get_test_statistics, type='float', string='Age Average', multi='min_max'),
-        'plotband_ext_min': fields.function(_get_plotbands_values, type="float", string="ext_min", multi='plotband_values'),
-        'plotband_val_min': fields.function(_get_plotbands_values, type="float", string="val_min", multi='plotband_values'),
-        'plotband_val_max': fields.function(_get_plotbands_values, type="float", string="val_max", multi='plotband_values'),
-        'plotband_ext_max': fields.function(_get_plotbands_values, type="float", string="ext_max", multi='plotband_values'),
-        'rating_below_minimum': fields.related('test_id', 'rating_below_minimum',type='selection', selection=[(u'alert', u'Alert'), (u'ideal', u'Ideal'), (u'superior', u'Superior'), (u'none', u'None')], string='rating_below_minimum'),
-        'rating_between': fields.related('test_id', 'rating_between',type='selection', selection=[(u'alert', u'Alert'), (u'ideal', u'Ideal'), (u'superior', u'Superior'), (u'none', u'None')], string='rating_between'),
-        'rating_over_maximum': fields.related('test_id', 'rating_over_maximum',type='selection', selection=[(u'alert', u'Alert'), (u'ideal', u'Ideal'), (u'superior', u'Superior'), (u'none', u'None')], string='rating_over_maximum'),
-        'state': fields.function(_get_test_statistics, type='selection', string='State', selection=[('alert', 'Alert'), ('ideal', 'Ideal'), ('superior', 'Superior'), ('none', 'None')], method=True, store=True, multi='min_max'),
-        'test_type': fields.related('test_id', 'type', type='selection', selection=[(u'value', 'value'), (u'selection', 'selection')], string="Test Type", readonly=True),
-        'test_description': fields.related('test_id', 'description', type='char', string="Test Description", readonly=True),
-        'first_parent_id': fields.related('test_id', 'test_category_id', 'first_parent_id', relation='kinesis_athletics.test_category', type='many2one', string='Test Class', readonly=True, store=True),
-    }
+    @api.one
+    @api.constrains('test_id', 'evaluation_id')
+    def _check_duplicate_test(self):
+        tests = self.search([
+            ('test_id', '=', self.test_id.id),
+            ('evaluation_id', '=', self.evaluation_id.id)])
+        if len(tests) > 1:
+            raise Warning(_('Already loaded the test'))
 
-    def onchange_test_id(self, cr, uid, ids, test_id, context=None):
-        v = {}
-
-        if test_id:
-            test_obj = self.pool.get('kinesis_athletics.test')
-            test = test_obj.browse(cr, uid, test_id, context=None)
-            v['uom_id'] = test.uom_id.id
-            v['test_type']=test.type
-        else:
-            v['test_type']=False
-            v['uom_id'] = False
-
-        return {'value': v}
-
-    def _check_duplicate_test(self, cr, uid, ids, context=None):
-        obj =self.browse(cr, uid, ids, context=context)
-        test = self.search(cr, uid, [('test_id', '=',obj.test_id.id),('evaluation_id', '=',obj.evaluation_id.id)], context=context)
-        if len(test) ==1:
-            return True
-        else:
-            return False
-
-    def _check_result(self, cr, uid, ids, context=None):
-
-        for obj in self.browse(cr, uid, ids, context=context):
-            if not obj.evaluation_id.is_template:
-                    if obj.plotband_ext_min and obj.plotband_ext_max:
-                        if obj.result != 0:
-                            if obj.result < obj.plotband_ext_min or obj.result > obj.plotband_ext_max:
-                                return False
-        return True
-
-
-    _constraints = [(_check_result, 'Result out of range', ['result']),(_check_duplicate_test, 'Already loaded the test',['test_id'])]
-
-
-evaluation_detail()
+    @api.one
+    @api.constrains(
+        'evaluation_id', 'plotband_ext_min', 'plotband_ext_max', 'result')
+    @api.onchange(
+        'evaluation_id', 'plotband_ext_min', 'plotband_ext_max', 'result')
+    def _check_result(self):
+        if not self.evaluation_id.is_template:
+            if self.plotband_ext_min and self.plotband_ext_max:
+                if self.result != 0:
+                    if self.result < self.plotband_ext_min or self.result > self.plotband_ext_max:
+                        raise Warning(_('Result out of range'))
