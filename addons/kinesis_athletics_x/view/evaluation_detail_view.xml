@@ -77,7 +77,7 @@
                     <field name="result" attrs="{'readonly':[('test_type','!=','value')]}"/>
                     <field name="test_type" invisible="1"/>
                     <field name="test_selection_id" domain="[('test_id','=', test_id)]" attrs="{'readonly':[('test_type','!=','selection')]}"/>
-                    <field name="state" invisible="0"/>
+                    <field name="state" invisible="1"/>
                 </tree>
             </tree>
         </field>

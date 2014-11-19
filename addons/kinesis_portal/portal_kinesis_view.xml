@@ -8,16 +8,13 @@
         <menuitem name="Person" id="portal_kinesis_athletics_person" parent="portal_kinesis_athletics" action="kinesis_athletics.action_kinesis_athletics_partner_persons" sequence="20"/>
 
 
-<!-- <act_window id="portal.partner_wizard_action"
-            name="Portal Access Management"
-            src_model="res.partner"
-            res_model="portal.wizard"
-            view_type="form" view_mode="form"
-            key2="client_action_multi" target="new"
-            groups="base.group_partner_manager"/> -->
 
     <record id="portal.partner_wizard_action" model="ir.actions.act_window">
         <field name="groups_id" eval="[(4, ref('base.group_system'))]"/>
+        </record>
+
+    <record id="base.menu_reporting" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('base.group_portal'))]"/>
         </record>
     </data>
 </openerp>
