@@ -18,30 +18,40 @@
         <field name="domain">[]</field>
     </record>
 
+    <record id="action_kinesis_athletics_x_tables" model="ir.actions.act_window">
+        <field name="name">Management Boards</field>
+        <field name="res_model">ir.ui.menu</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('parent_id.name','=','Tableros')]</field>
+    </record>
+
 
     <record id="base.menu_management" model="ir.ui.menu">
         <field name="groups_id"
                    eval="[(6, 0, [ref('base.group_no_one')])]"/>
     </record>
 
-    
-    <!-- <menuitem
-        name="Companies"
-        id="menu_companies"
-        sequence="20"
-        action="action_kinesis_athletics_x_res_company"
-        parent="kinesis_athletics.menu_configuration"
-        groups="kinesis_athletics.group_configuracion"
-        />
+    <record id="base.menu_reporting_config" model="ir.ui.menu">
+        <field name="groups_id"
+                   eval="[(4,ref('kinesis_athletics.group_responsable'))]"/>
+    </record>
+
+    <record id="board.menu_board_create" model="ir.ui.menu">
+        <field name="groups_id"
+                   eval="[(4,ref('kinesis_athletics.group_responsable'))]"/>
+    </record>
 
     <menuitem
-        name="Users"
-        id="menu_users"
+        name="Management Boards"
+        id="menu_tableros"
         sequence="20"
-        action="action_kinesis_athletics_x_res_user"
-        parent="kinesis_athletics.menu_configuration"
-        groups="kinesis_athletics.group_manager"
-        /> -->
+        action="action_kinesis_athletics_x_tables"
+        parent="base.menu_reporting_config"
+        groups="kinesis_athletics.group_responsable"
+        />
+
+    
 
   </data>
 </openerp>

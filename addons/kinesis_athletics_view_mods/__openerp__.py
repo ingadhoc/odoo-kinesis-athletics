@@ -17,6 +17,7 @@
     'data': [
         u'view/menuitem.xml',
         u'view/partner_view.xml',
+        u'security/responsable_security.xml',
         ],
     'version':'1.0'
 }
