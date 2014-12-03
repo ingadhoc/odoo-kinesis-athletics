@@ -42,11 +42,12 @@ class test(models.Model):
             ids = [ids]
         reads = self.read(cr, uid, ids, ['name','uom_id'], context=context)
         res = []
-
+        name_with_unit = context.get('name_with_unit', False)
         for record in reads:
             name = record['name']
-            if record['uom_id']:
-                name = name +' ('+record['uom_id'][1]+')'
+            if name_with_unit:
+                if record['uom_id']:
+                    name = name +' ('+record['uom_id'][1]+')'
             res.append((record['id'], name))
 
         return res

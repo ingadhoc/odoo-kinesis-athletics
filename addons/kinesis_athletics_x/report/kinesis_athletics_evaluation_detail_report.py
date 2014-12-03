@@ -19,7 +19,7 @@ class kinesis_athletics_evaluation_detail_report(models.Model):
     test_id = fields.Many2one(
         'kinesis_athletics.test',
         string='Test',
-        readonly=True
+        readonly=True,
     )
 
     result_avg = fields.Float(
