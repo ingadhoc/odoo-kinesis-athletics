@@ -19,8 +19,7 @@ class partner(models.Model):
         actual_year = date.today().year
         group_ids = self.env['kinesis_athletics.group'].search(
             [('year', '=', actual_year), ('partner_ids', '=', self.id)])
-        self.actual_group_id = group_ids.id
-
+        self.actual_group_id = group_ids and group_ids[0].id or False
     @api.one
     def _evaluation_count(self):
         """
