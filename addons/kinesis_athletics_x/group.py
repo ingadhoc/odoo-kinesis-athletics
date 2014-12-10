@@ -49,6 +49,3 @@ class group(osv.osv):
                     _('Invalid Action!'), _('You cannot delete a group containing persons.'))
             else:
                 return super(group, self).unlink(cr, uid, ids, context=context)
-
-
-group()
