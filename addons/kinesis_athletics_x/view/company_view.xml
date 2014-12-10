@@ -22,7 +22,6 @@
                 <group>
                     <field name="company_type_id"/>
                     <field name="use_groups"/>
-                    <field name="active"/>
                 </group>
 
             <page string="Configuration" position="after">
