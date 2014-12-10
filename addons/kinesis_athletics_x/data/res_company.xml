@@ -29,17 +29,14 @@
         </record>
 
 
-        <!-- Clients Companies  -->
 
         <record id="res_company_partner_26" model="res.company">
             <field name="name">Kinesis Clients</field>
             <field name="partner_id" ref="partner_26"/>
             <field name="parent_id" ref="res_company_partner_27"/>
             <field name="currency_id" ref="base.ARS"/>
-            <!-- <field name="company_type_id" ref="kinesis_athletics_x.company_type_03"/> -->
         </record>             
 
-        <!-- Institution Companies  -->
 
         <record id="res_company_partner_13" model="res.company">
             <field name="name">Universidad de la Plata</field>
@@ -47,17 +44,14 @@
             <field name="parent_id" ref="res_company_partner_26"/>
             <field name="currency_id" ref="base.ARS"/>
             <field name="image" type="base64" file="kinesis_athletics_x/static/img/univ.jpg"/>
-            <!-- <field name="company_type_id" ref="kinesis_athletics_x.company_type_03"/> -->
-            
-        </record>     
-
+     </record>
+          
         <record id="res_company_partner_15" model="res.company">
             <field name="name">Colegio San José</field>
             <field name="partner_id" ref="partner_15"/>
             <field name="parent_id" ref="res_company_partner_26"/>
             <field name="currency_id" ref="base.ARS"/>
             <field name="image" type="base64" file="kinesis_athletics_x/static/img/nuestrocentro.png"/>
-            <!-- <field name="company_type_id" ref="kinesis_athletics_x.company_type_01"/> -->
             
         </record>     
 
@@ -66,9 +60,8 @@
             <field name="partner_id" ref="partner_16"/>
             <field name="parent_id" ref="res_company_partner_26"/>
             <field name="currency_id" ref="base.ARS"/>
-            <!-- <field name="company_type_id" ref="kinesis_athletics_x.company_type_02"/> -->
             
-        </record>        
+        </record>       
 
     </data>
 </openerp>

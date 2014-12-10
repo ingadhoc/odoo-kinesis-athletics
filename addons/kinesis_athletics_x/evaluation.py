@@ -2,46 +2,48 @@
 
 from openerp import netsvc
 from openerp.osv import osv, fields
+from openerp import models, api
+from openerp import fields as fields_new
 from openerp.tools.translate import _
 from datetime import datetime
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP, float_compare
 
 
-class evaluation(osv.osv):
+class evaluation(models.Model):
     """"""
 
     _inherit = 'kinesis_athletics.evaluation'
     _rec_name = 'complete_name'
 
-
-    def _complete_name(self, cr, uid, ids, name, args, context=None):
+    @api.one
+    @api.depends('template_id', 'name')
+    def _complete_name(self):
         """ Forms complete name of location from parent location to child location.
         @return: Dictionary of values
         """
-        res = {}
+        if self.template_id.name:
+            self.complete_name = self.template_id.name
+        else:
+            self.complete_name = self.name
 
-        for record in self.browse(cr, uid, ids, context=context):
-          if not record.template_id.name:
-            name = record.name
-          else:
-            name = record.template_id.name
-          res[record.id] = name
-
-        return res
-
-    def _calc_date(self, cr, uid, ids, name, args, context=None):
+    @api.one
+    @api.depends('company_id', 'date')
+    def _calc_date(self):
+        if self.date:
+            eval_year_id=(datetime.strptime(self.date, '%Y-%m-%d')).date()
+            self.eval_year= eval_year_id.year
+        else:
+            self.eval_year = False
         
-        res = {}
 
-        for record in self.browse(cr, uid, ids, context=context):
-            if record.date:
-                eval_year=(datetime.strptime(record.date, '%Y-%m-%d')).date()
-                res[record.id] = eval_year.year
-            else:
-                res[record.id] = False
-
-        return res
-
+    eval_year = fields_new.Integer(
+        compute='_calc_date',
+        string="Year",
+        store=True)
+    complete_name = fields_new.Char(
+        compute='_complete_name',
+        string="Name",
+        store=True)
 
     def _get_partner_age(self, cr, uid, ids, name, arg, context=None):
         res = {}
@@ -53,8 +55,6 @@ class evaluation(osv.osv):
 
 
     _columns = {
-        'eval_year': fields.function(_calc_date, type='integer', string="Year", store=True,),
-        'complete_name': fields.function(_complete_name, type='char', string="Name", store=True,),
         'age': fields.function(_get_partner_age, type='integer', string="Age", store=True),
         'evaluation_detail_value_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Values', domain=[('test_type','=','value')], readonly=True),
         'evaluation_detail_selection_ids': fields.one2many('kinesis_athletics.evaluation_detail', 'evaluation_id', string='Selections', domain=[('test_type','=','selection')], readonly=True),
@@ -66,7 +66,8 @@ class evaluation(osv.osv):
     _order = 'date desc'
 
 
-    def copy(self, cr, uid, id, default=None, context=None):
+
+    def copy(self, cr, uid, id, default, context=None):
         if context is None:
             context = {}
         if default is None:
@@ -76,8 +77,7 @@ class evaluation(osv.osv):
 
         if not default.get("partner_id", False):
             default['partner_id'] = False
-
-        res = super(evaluation, self).copy(cr, uid, id, default, context)
+        res = super(evaluation, self).copy(cr, uid, id, default=default, context=None)
         return res
 
 
