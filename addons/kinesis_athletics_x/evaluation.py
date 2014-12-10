@@ -64,8 +64,11 @@ class evaluation(models.Model):
     use_groups = fields.Boolean(
         related='company_id.use_groups',
         string='Use Group',
+        readonly=True,
+        copy=False,
         store=True)
     evaluation_detail_ids = fields.One2many(copy=True)
+    # evaluation_detail_ids = fields.One2many(copy=True, readonly=True)
     # we overwrite this field because in v8 o2m fields has copy=False by
     # default and copy is not implemented on xmi2oerp
 

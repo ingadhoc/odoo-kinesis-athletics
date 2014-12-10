@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-from openerp import netsvc
 from openerp.osv import osv, fields
 
 
@@ -27,9 +25,9 @@ class evaluation_wizard(osv.osv_memory):
                     'group_id': group.id,
                     'company_id': group.company_id.id,
                     'template_id': wizard.evaluation_id.id,
-                    'is_template':False,
+                    'is_template': False,
                   }
-                evaluation_id = evaluation_obj.copy(cr, uid, wizard.evaluation_id.id, default = default, context=context)
+                evaluation_id = evaluation_obj.copy(cr, 1, wizard.evaluation_id.id, default = default)
 
                 evaluation_ids.append(evaluation_id)
 

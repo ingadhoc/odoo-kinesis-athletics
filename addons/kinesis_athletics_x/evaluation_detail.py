@@ -19,23 +19,25 @@ class evaluation_detail(models.Model):
             'target': 'new'
         }
 
+    # Lo sacamos total no interesa que se actualice en tiempo real y sacamos el
+    # store por un tema de performance  
+    # @api.depends(
+    #     'result',
+    #     'test_id',
+    #     'test_id.type',
+    #     'test_id.test_range_ids',
+    #     'test_id.test_range_ids.from_age',
+    #     'test_id.test_range_ids.to_age',
+    #     'test_id.test_range_ids.sex',
+    #     'test_id.test_range_ids.val_max',
+    #     'test_id.test_range_ids.val_min',
+    #     'test_id.test_range_ids.extreme_minimum',
+    #     'test_id.test_range_ids.extreme_maximum',
+    #     'evaluation_id',
+    #     'evaluation_id.is_template',
+    #     'evaluation_id.partner_id',
+    #     )
     @api.one
-    @api.depends(
-        'result',
-        'test_id',
-        'test_id.type',
-        'test_id.test_range_ids',
-        'test_id.test_range_ids.from_age',
-        'test_id.test_range_ids.to_age',
-        'test_id.test_range_ids.sex',
-        'test_id.test_range_ids.val_max',
-        'test_id.test_range_ids.val_min',
-        'test_id.test_range_ids.extreme_minimum',
-        'test_id.test_range_ids.extreme_maximum',
-        'evaluation_id',
-        'evaluation_id.is_template',
-        'evaluation_id.partner_id',
-        )
     def _get_state(self):
         test = self.test_id
         evaluation = self.evaluation_id
@@ -56,22 +58,24 @@ class evaluation_detail(models.Model):
                 state = 'none'
         self.state = state
 
+    # Lo sacamos total no interesa que se actualice en tiempo real y sacamos el
+    # store por un tema de performance    
+    # @api.depends(
+    #     'test_id',
+    #     'test_id.type',
+    #     'test_id.test_range_ids',
+    #     'test_id.test_range_ids.from_age',
+    #     'test_id.test_range_ids.to_age',
+    #     'test_id.test_range_ids.sex',
+    #     'test_id.test_range_ids.val_max',
+    #     'test_id.test_range_ids.val_min',
+    #     'test_id.test_range_ids.extreme_minimum',
+    #     'test_id.test_range_ids.extreme_maximum',
+    #     'evaluation_id',
+    #     'evaluation_id.is_template',
+    #     'evaluation_id.partner_id',
+    #     )
     @api.one
-    @api.depends(
-        'test_id',
-        'test_id.type',
-        'test_id.test_range_ids',
-        'test_id.test_range_ids.from_age',
-        'test_id.test_range_ids.to_age',
-        'test_id.test_range_ids.sex',
-        'test_id.test_range_ids.val_max',
-        'test_id.test_range_ids.val_min',
-        'test_id.test_range_ids.extreme_minimum',
-        'test_id.test_range_ids.extreme_maximum',
-        'evaluation_id',
-        'evaluation_id.is_template',
-        'evaluation_id.partner_id',
-        )
     def _get_age_avg(self):
         test = self.test_id
         evaluation = self.evaluation_id
@@ -88,21 +92,23 @@ class evaluation_detail(models.Model):
 
         self.age_avg = age_avg
 
+    # Lo sacamos total no interesa que se actualice en tiempo real y sacamos el
+    # store por un tema de performance
+    # @api.depends(
+    #     'test_id',
+    #     'test_id.type',
+    #     'test_id.test_range_ids',
+    #     'test_id.test_range_ids.from_age',
+    #     'test_id.test_range_ids.to_age',
+    #     'test_id.test_range_ids.sex',
+    #     'test_id.test_range_ids.val_max',
+    #     'test_id.test_range_ids.val_min',
+    #     'test_id.test_range_ids.extreme_minimum',
+    #     'test_id.test_range_ids.extreme_maximum',
+    #     'evaluation_id',
+    #     'evaluation_id.partner_id',
+    #     )
     @api.one
-    @api.depends(
-        'test_id',
-        'test_id.type',
-        'test_id.test_range_ids',
-        'test_id.test_range_ids.from_age',
-        'test_id.test_range_ids.to_age',
-        'test_id.test_range_ids.sex',
-        'test_id.test_range_ids.val_max',
-        'test_id.test_range_ids.val_min',
-        'test_id.test_range_ids.extreme_minimum',
-        'test_id.test_range_ids.extreme_maximum',
-        'evaluation_id',
-        'evaluation_id.partner_id',
-        )
     def _get_plotbands_values(self):
         test_ranges = self.env['kinesis_athletics.test_range']
         test = self.test_id
@@ -128,39 +134,46 @@ class evaluation_detail(models.Model):
         'res.partner',
         'Partner',
         related='evaluation_id.partner_id',
+        copy=False,
         readonly=True,)
     uom_id = fields.Many2one(
         'product.uom',
         'Unit',
         related='test_id.uom_id',
+        copy=False,
         readonly=True)
     age_avg = fields.Float(
         compute='_get_age_avg',
         string='Age Average',)
     plotband_ext_min = fields.Float(
         compute='_get_plotbands_values',
-        store=True,
+        # store=True,
         string='ext_min',)
     plotband_val_min = fields.Float(
         compute='_get_plotbands_values',
-        store=True,
+        # store=True,
         string="val_min",)
     plotband_val_max = fields.Float(
         compute='_get_plotbands_values',
-        store=True,
+        # store=True,
         string="val_max",)
     plotband_ext_max = fields.Float(
         compute='_get_plotbands_values',
-        store=True,
+        # store=True,
         string="ext_max",)
     rating_below_minimum = fields.Selection(
         related='test_id.rating_below_minimum',
+        copy=False,
+        readonly=True,
         string='rating_below_minimum')
     rating_between = fields.Selection(
         related='test_id.rating_between',
+        copy=False,
+        readonly=True,
         string='rating_between')
     rating_over_maximum = fields.Selection(
         related='test_id.rating_over_maximum',
+        readonly=True,
         string='rating_over_maximum')
     state = fields.Selection(
         [('alert', 'Alert'), ('ideal', 'Ideal'),
@@ -170,15 +183,18 @@ class evaluation_detail(models.Model):
         store=True,)
     test_type = fields.Selection(
         related='test_id.type',
+        copy=False,
         string="Test Type",
         readonly=True)
     test_description = fields.Char(
         related='test_id.description',
+        copy=False,
         string="Test Description",
         readonly=True)
     first_parent_id = fields.Many2one(
         'kinesis_athletics.test_category',
         related='test_id.test_category_id.first_parent_id',
+        copy=False,
         string='Test Class',
         readonly=True,
         store=True)

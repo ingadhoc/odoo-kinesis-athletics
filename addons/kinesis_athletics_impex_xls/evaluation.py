@@ -26,7 +26,6 @@ class evaluation(osv.osv):
         tests = [x.test_id.name for x in obj.evaluation_detail_ids]
 
         partner_information = [{'id': obj.partner_id.id, 'name': obj.partner_id.name}]
-        print partner_information
 
         datas['partner_information'] =  partner_information
         datas['tests'] =  tests

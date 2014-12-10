@@ -32,8 +32,6 @@ class kinesis_athletics_group_evaluation_export_wizard(osv.osv_memory):
         datas['partner_information'] =  partner_information
         datas['tests'] =  tests
         datas['group_name'] = group_information
-        datas['template_id'] = wizard.template_id.id
-        print datas 
-            
+        datas['template_id'] = wizard.template_id.id            
 
         return self.pool['report'].get_action(cr, uid, [], 'kinesis_athletics_export_xls.groups_xls', data=datas, context=context)

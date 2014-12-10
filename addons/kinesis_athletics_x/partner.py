@@ -35,10 +35,6 @@ class partner(models.Model):
         related='company_id.use_groups',
         string='Use Group',
         store=True)
-    company_name = fields.Char(
-        related='company_id.company_type_id.name',
-        string='Company Name',
-        store=True)
     eval_count = fields.Integer(compute='_evaluation_count')
 
     def _check_person_group(self, cr, uid, ids, context=None):
