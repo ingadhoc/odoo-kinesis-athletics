@@ -50,6 +50,7 @@ class import_evaluation_person_wizard(osv.osv_memory):
         record_list = [sheet.row_values(i) for i in range(sheet.nrows)]
         record_header = record_list[0]
         record_list = record_list[1:]
+        evaluation_ids = []
         evaluation_matrix = []
         for line in record_list:
             evaluation_matrix.append(dict(zip(record_header, line)))
@@ -71,6 +72,7 @@ class import_evaluation_person_wizard(osv.osv_memory):
                     'partner_id': int(evaluation_dic.get('partner_id'))
                 }
                 evaluation_id = evaluation_obj.create(cr, uid, val, context=context)
+                evaluation_ids.append(evaluation_id)
                 detail_data = []
                 if int(evaluation_dic.get('Template')) == 1:
                     detail_fields = ['evaluation_id/.id', 'test_id', 'result']
@@ -93,4 +95,12 @@ class import_evaluation_person_wizard(osv.osv_memory):
                 _('File is does not have the correct format, check that the Persons in the file belong to the underlygin Group.\nError Details: %s') % e)
             return False
 
-        return True
+        mod_obj = self.pool.get('ir.model.data')
+        act_obj = self.pool.get('ir.actions.act_window')
+
+        action_evaluation = mod_obj.get_object_reference(cr, uid, 'kinesis_athletics', 'action_kinesis_athletics_evaluation_evaluations')
+        action_evaluation_id = action_evaluation and action_evaluation[1] or False
+        action_evaluation = act_obj.read(cr, uid, [action_evaluation_id], context=context)[0]
+        action_evaluation['domain'] = [('id','in',evaluation_ids)]
+
+        return action_evaluation
