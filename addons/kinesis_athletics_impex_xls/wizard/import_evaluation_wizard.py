@@ -119,24 +119,15 @@ class import_evaluation_wizard(osv.osv_memory):
                     detail_data = []
                     evaluation_ids.append(evaluation_id)
 
-                    if int(evaluation_dic.get('Template')) == 1:
-                        detail_fields = [
-                            'evaluation_id/.id', 'test_id', 'result']
-                        for test_name in record_header[3:]:
-                            if evaluation_dic.get(test_name) != "":
-                                eval_detail = [
-                                    evaluation_id, test_name, float(evaluation_dic.get(test_name))]
-                                detail_data.append(eval_detail)
-                    else:
-                        detail_fields = [
-                            'evaluation_id/.id', 'test_id', 'test_selection_id']
-                        detail_data = []
-                        for test_name in record_header[3:]:
-                            # print test_name
-                            if evaluation_dic.get(test_name) != "":
-                                eval_detail = [
-                                    evaluation_id, test_name, str(evaluation_dic.get(test_name))]
-                                detail_data.append(eval_detail)
+                    
+                    detail_fields = [
+                        'evaluation_id/.id', 'test_id', 'result']
+                    for test_name in record_header[3:]:
+                        if evaluation_dic.get(test_name) != "":
+                            eval_detail = [
+                                evaluation_id, test_name, float(evaluation_dic.get(test_name))]
+                            detail_data.append(eval_detail)
+                    
 
                     evaluation_detail_obj.load(
                         cr, uid, detail_fields, detail_data, context=context)
