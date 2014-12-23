@@ -21,22 +21,22 @@ class evaluation_detail(models.Model):
 
     # Lo sacamos total no interesa que se actualice en tiempo real y sacamos el
     # store por un tema de performance  
-    # @api.depends(
-    #     'result',
-    #     'test_id',
-    #     'test_id.type',
-    #     'test_id.test_range_ids',
-    #     'test_id.test_range_ids.from_age',
-    #     'test_id.test_range_ids.to_age',
-    #     'test_id.test_range_ids.sex',
-    #     'test_id.test_range_ids.val_max',
-    #     'test_id.test_range_ids.val_min',
-    #     'test_id.test_range_ids.extreme_minimum',
-    #     'test_id.test_range_ids.extreme_maximum',
-    #     'evaluation_id',
-    #     'evaluation_id.is_template',
-    #     'evaluation_id.partner_id',
-    #     )
+    @api.depends(
+        'result',
+        # 'test_id',
+        # 'test_id.type',
+        # 'test_id.test_range_ids',
+        # 'test_id.test_range_ids.from_age',
+        # 'test_id.test_range_ids.to_age',
+        # 'test_id.test_range_ids.sex',
+        # 'test_id.test_range_ids.val_max',
+        # 'test_id.test_range_ids.val_min',
+        # 'test_id.test_range_ids.extreme_minimum',
+        # 'test_id.test_range_ids.extreme_maximum',
+        # 'evaluation_id',
+        # 'evaluation_id.is_template',
+        # 'evaluation_id.partner_id',
+        )
     @api.one
     def _get_state(self):
         test = self.test_id
