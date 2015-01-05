@@ -30,10 +30,9 @@
             <field name="model">kinesis_athletics.evaluation</field>
             <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_evaluation_form"/>
             <field name="arch" type="xml">
-
                    <header position="inside">
                     <button name="generate_eval_xls" type="object" string="Export XLS Evaluation" class="oe_highlight" groups="kinesis_athletics.group_responsable"/>
-                    <button name="%(import_evaluation_wizard_action)d" class="oe_highlight" type="action" string="Import XLS Evaluation" context="{'eval_created':True}" groups="kinesis_athletics.group_responsable"/>
+                    <button name="%(import_evaluation_wizard_action)d" class="oe_highlight" type="action" string="Import XLS Evaluation" groups="kinesis_athletics.group_responsable"/>
                 </header>
             </field>
         </record>
