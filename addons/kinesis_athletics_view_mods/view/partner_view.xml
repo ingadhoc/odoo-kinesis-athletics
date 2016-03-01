@@ -49,7 +49,7 @@
                     <group>
                         <group>
                             <field name="active"/>
-                            <field name="birthdate" required="1"/>
+                            <field name="birthdate_date" required="1"/>
                             <field name="age"/>
                             <field name="national_identity" required="1"/>
                             <field name="sex" required="1"/>

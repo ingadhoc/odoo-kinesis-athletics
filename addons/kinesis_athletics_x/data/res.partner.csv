@@ -1,4 +1,4 @@
-id,name,sex,phone,email,is_company,firstname,lastname,birthdate
+id,name,sex,phone,email,is_company,firstname,lastname,birthdate_date
 partner_1,Federico Klasdo,Male,4257304,fklasdo@hotmail.com,False,Federico,Klasdo,2008-04-06
 partner_2,Jessica Mercer,Female,4545421,jmercer@gmail.com,False,Jessica,Mercer,2008-04-05
 partner_3,Josefina Ciri,Female,4477444,jciri@yahoo.com,False,Josefina,Ciri,2008-04-04
