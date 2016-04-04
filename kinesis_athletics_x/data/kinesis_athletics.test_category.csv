@@ -1,0 +1,19 @@
+id,name,parent_id/id
+test_category_0,Físico,
+test_category_1,Atletico,
+test_category_2,Velocidad,test_category_1
+test_category_3,Resistencia,test_category_1
+test_category_4,Potencia,test_category_1
+test_category_5,Lanzamiento,test_category_1
+test_category_6,Salto,test_category_4
+test_category_7,Constitución,test_category_0
+test_category_8,Cardíaco,test_category_0
+test_category_9,Datos Ideales,test_category_0
+test_category_10,Composición Interna,test_category_0
+test_category_11,Evaluación Postural,test_category_0
+test_category_12,Superior,test_category_11
+test_category_13,Medio,test_category_11
+test_category_14,Inferior,test_category_11
+test_category_15,Visión,test_category_0
+test_category_16,Audición,test_category_0
+test_category_17,Química Sanguínea,test_category_0

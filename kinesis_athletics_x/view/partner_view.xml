@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+
+       
+
+
+        <!-- INHERITED FORM -->
+        
+        <record id="view_kinesis_athletics_partner_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field eval="90" name="priority"/>
+            <field name="arch" type="xml">
+
+               <sheet position="before">
+                    <header>
+                        <button name="%(wizard_evaluation_person_action)d" type="action" string="Create Evaluations" groups="kinesis_athletics.group_responsable"/>
+                    </header>
+                </sheet>
+                <div class="oe_right oe_button_box" name="buttons">
+                            <button class="oe_stat_button"  icon="fa-pencil-square-o" type="action" 
+                                    name="%(kinesis_athletics.action_kinesis_athletics_evaluation_evaluations)d"
+                                    context="{'search_default_partner_id': active_id,'search_default_group_by_date': 1}">
+                                    <field name="eval_count" string="Evaluations" widget="statinfo"/>
+                                </button>
+                        </div>
+
+                <div class="oe_edit_only" position="replace">
+                    <field name="is_company" invisible="1"/>
+                    <field name="use_groups" invisible="1"/>
+                </div>
+
+                <field name="parent_id" position="replace">
+                  <field name="company_id" placeholder="Company" required="1" on_change="on_change_company(company_id)"/>
+                  <field name="parent_id" invisible="1"/>
+                </field>
+
+                <xpath expr="//page[@name='sales_purchases']" position="after" >
+                    <page string="Courses/Areas" autofocus="autofocus" attrs="{'invisible': [('use_groups', '=', False)]}">
+                          <field name="partner_group_ids" domain="[('company_id','=',company_id)]"/>
+                    </page>
+                </xpath>
+
+               <!--  <page string="Personal Information" position="replace">
+                </page>
+     -->
+                <div class="oe_edit_only" position="attributes">
+                    <attribute name="invisible">'hide_is_company' in context</attribute>
+                </div>
+
+
+            </field>
+        </record>
+
+        <!-- INHERITED TREE -->
+        <record id="view_kinesis_athletics_partner_tree" model="ir.ui.view">
+            <field name="name">kinesis_athletics.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <tree position="inside">
+                    <field name="actual_group_id" string="Actual Group" position="attributes">
+                        <attribute name="invisible">'show_actual_group' not in context</attribute>
+                    </field>
+
+                    <field name="company_id"/>
+
+
+                </tree>
+                <field name="phone" position="replace">
+                        <field name="mobile"/>
+                    </field>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

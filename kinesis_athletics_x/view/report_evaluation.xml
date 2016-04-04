@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <template id="report_evaluation_document">
+            <!-- <t t-call="report.html_container"> -->
+              <t t-call="report.external_layout">  
+                    <div class="page">
+                        <!-- <t t-foreach="docs" t-as="o"> -->
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <p><h4 t-field="o.name"/></p>
+                                </div>
+                                <div class="col-xs-4">
+                                 <strong>Date: </strong><span t-field="o.date"/>
+                                </div>
+                            
+                                 </div>
+                               <div class="row">
+                                <div class="col-xs-4">
+                                <strong>Company: </strong><span t-field="o.company_id"/>
+                            </div>
+                            <div class="col-xs-4">
+                            <strong>Person: </strong><span t-field="o.partner_id"/>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                <div class="col-xs-4">
+                                <strong>Group: </strong><span t-field="o.group_id"/>
+                                    </div>
+                                    <div class="col-xs-4">
+                                <p><strong>User: </strong><span t-field="o.user_id"/></p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                <p><strong>Test</strong></p>
+                                </div>
+                                <div class="col-xs-4">
+                                    <p><strong>Result</strong></p>
+                                </div>
+                                <div class="col-xs-4">
+                                    <p><strong>Test Selection</strong></p>
+                                </div>
+                                <t t-foreach="o.evaluation_detail_ids" t-as="e">
+                              <div class="row">
+                                <div class="col-xs-4">
+                                <p><span t-field="e.test_id"/></p>
+                                    </div>
+                                <div class="col-xs-4">
+                                <p><span t-field="e.result"/></p>
+                                    </div>
+                                
+                                <div class="col-xs-4">
+                                <p><span t-field="e.test_selection_id"/></p>
+                                    </div>
+                                </div>
+                            </t>
+
+                           <!-- </t> -->
+                    </div>
+                </t>
+            
+        
+        </template>
+
+        <template id="report_evaluation">
+    <t t-call="report.html_container">
+        
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'user_id.lang', 'kinesis_athletics_x.report_evaluation_document')"/>
+        </t>
+    </t>
+</template>
+    </data>
+</openerp>
+
+
+    

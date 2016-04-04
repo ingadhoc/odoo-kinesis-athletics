@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_kinesis_athletics_evaluation_filter" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation.select</field>
+            <field name="model">kinesis_athletics.evaluation</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_evaluation_filter"/>
+            <field name="arch" type="xml">
+                <search position="inside">
+                    <field name="complete_name"/>
+                    <field name="date"/>
+                    <group expand="1" string="Group By...">
+                        <filter string="Date" icon="terp-partner" name="group_by_date" context="{'group_by':'date'}"/>
+                        <filter string="Group" icon="terp-personal" domain="[]" context="{'group_by':'group_id'}" groups="base.group_multi_company"/>
+                        <filter string="Person" icon="terp-partner" context="{'group_by':'partner_id'}"/>
+                        <filter string="Company" icon="terp-partner" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+               
+
+               <!-- GRAPH VIEW -->
+
+             <record id="view_kinesis_athletics_evaluation_graph" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation.graph</field>
+            <field name="model">kinesis_athletics.evaluation</field>
+            <field name="arch" type="xml">
+                <graph string="Evaluation" type="pivot" stacked="True">
+                    
+                </graph>
+            
+                
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- FORMVIEW -->
+        <record id="view_kinesis_athletics_evaluation_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation.form</field>
+            <field name="model">kinesis_athletics.evaluation</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_evaluation_form"/>
+            <field name="arch" type="xml">
+                <header position="inside">
+                    
+                    <button name="new_evaluation" type="object" string="New Evaluation" help="New Evaluation Based On Current Template" class="oe_inline" attrs="{'invisible':[('is_template','=',False)]}" groups="kinesis_athletics.group_responsable"/>
+                    <button name="new_evaluation" type="object" class="oe_inline" string="Reevaluate"  attrs="{'invisible':[('is_template','=',True)]}" groups="kinesis_athletics.group_responsable"/>
+                </header>
+                <sheet string="evaluation" position="replace">
+                    <sheet>
+                        <field name="is_template" invisible="1"/>
+                        <field name="use_groups" invisible="1"/>
+                        <field name="eval_year" invisible="1"/>
+                        <h2>
+                            <field name="name" attrs="{'required':['|',('is_template','=',True),('template_id','=',False)],'invisible':[('is_template','=',False),('template_id','!=',False)]}" placeholder="Name..."/>
+                            <field name="template_id" attrs="{'invisible':['|',('is_template','=',True),('template_id','=',False)]}"/>
+                        </h2>
+                        <group>
+                            <group>
+                                <field name="company_id" groups="base.group_multi_company" on_change="on_change_company(company_id)"/>
+                                <field name="group_id" attrs="{'required':[('is_template','=',False),('use_groups','=',True)],'invisible':['|',('is_template','=',True),('use_groups','!=',True)]}" domain="[('company_id','=',company_id),('year','=',eval_year)]" on_change="on_change_group(group_id)"/>
+                                <field name="partner_id" attrs="{'required':[('is_template','=',False)],'invisible':[('is_template','=',True)]}" domain="[('company_id','=',company_id)]" />
+                            </group>
+                            <group>
+                                <field name="date" attrs="{'required':[('is_template','=',False)],'invisible':[('is_template','=',True)],'readonly':[('is_template','!=',True)]}"/>
+                                <field name="user_id" attrs="{'required':[('is_template','=',False)],'invisible':[('is_template','=',True)]}" groups="base.group_multi_company"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Evaluation Details" >
+                                <field name="evaluation_detail_ids" context="{'name_with_unit':True}"/>
+                            </page>
+                            <page string="Graphs" attrs="{'invisible':[('is_template','=',True)]}">
+                                <label for="evaluation_detail_value_ids"/>
+                                <field name="evaluation_detail_value_ids" mode="kanban"/>
+                                <label for="evaluation_detail_selection_ids"/>
+                                <field name="evaluation_detail_selection_ids" mode="kanban"/>
+                            </page>
+                            <page string="Observations" autofocus="autofocus">
+                                <field name="note"/>
+                            </page>
+                            <page string="Evaluations" attrs="{'invisible':[('is_template','=',False)]}">
+                                <field name="evaluation_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </sheet>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+        <record id="view_kinesis_athletics_evaluation_tree" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation.tree</field>
+            <field name="model">kinesis_athletics.evaluation</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_evaluation_tree"/>
+            <field name="arch" type="xml">
+                <field name="group_id" position="before">
+                    <field name="complete_name"/>
+                </field>
+                <tree>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>

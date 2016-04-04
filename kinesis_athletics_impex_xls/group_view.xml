@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+-->
+<openerp>
+    <data>
+
+        <record id="view_kinesis_athletics_group_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.group.form</field>
+            <field name="model">kinesis_athletics.group</field>
+            <field name="inherit_id" ref="kinesis_athletics_x.view_kinesis_athletics_group_form"/>
+            <field name="arch" type="xml">
+                <button string="Create Evaluations" position="before">
+                    <button name="%(export_evaluation_wizard_action)d" class="oe_highlight" type="action" string="Export XLS Evaluation"/>
+                    <button name="%(import_evaluation_wizard_action)d" class="oe_highlight" type="action" string="Import XLS Evaluation"/>
+                </button>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

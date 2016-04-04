@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+    
+        <record id="view_kinesis_athletics_group_filter" model="ir.ui.view">
+            <field name="name">kinesis_athletics.group.select</field>
+            <field name="model">kinesis_athletics.group</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_group_filter"/>
+            <field name="arch" type="xml">
+                <group string="By Attribute">
+                    <filter name="actual_year" string="Actual Year" context="{'hide_year':True}" domain="[('year','=',context_today().year)]"/>
+                </group>
+                <group string="By object" position="replace">
+                <group expand="1" string="Group By...">
+                    <filter string="Year" icon="terp-personal" domain="[]" context="{'group_by':'year'}" />
+                    <filter string="Company" icon="terp-personal" domain="[]" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                </group>
+                </group>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_kinesis_athletics_group_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.group.form</field>
+            <field name="model">kinesis_athletics.group</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_group_form"/>
+            <field name="arch" type="xml">
+                <sheet position="replace">
+                    <sheet>
+                         <div class="oe_right oe_button_box" name="buttons">
+                            <button class="oe_stat_button"  icon="fa-pencil-square-o" type="action" 
+                                    name="%(kinesis_athletics.action_kinesis_athletics_evaluation_evaluations)d"
+                                    context="{'search_default_group_id': active_id,'search_default_group_by_date': 1}">
+                                    <field name="eval_group_count" string="Evaluations" widget="statinfo"/>
+                                </button>
+                        </div>
+                        <group>
+                            <field name="company_id" widget="selection" groups="base.group_multi_company"  on_change="onchange_is_school(company_id)" domain="[('use_groups','=',True)]"/>
+                            <field name="year"/>
+                            <field name="name"/>
+                            <field name="new_year_group_id" />
+                            <field name="group_level_id" attrs="{'invisible':[('is_school','!=',True)],'required':[('is_school','=',True)]}"/>
+                            <field name="is_school" invisible="1"/>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Persons" autofocus="autofocus">
+                                <field name="partner_ids" domain="[('company_id','=',company_id)]"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </sheet>
+                <header position="inside">
+                    <button name="%(wizard_evaluation_action)d" type="action" string="Create Evaluations"/>
+                    <button name="%(wizard_move_year_action)d" type="action"  string="Escalate to New Group"/>
+                </header>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+        <record id="view_kinesis_athletics_group_tree" model="ir.ui.view">
+            <field name="name">kinesis_athletics.group.tree</field>
+            <field name="model">kinesis_athletics.group</field>
+            <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_group_tree"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="attributes">
+                    <attribute name="invisible">'show_institutions' not in context</attribute>
+                    <attribute name="groups">base.group_multi_company</attribute>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

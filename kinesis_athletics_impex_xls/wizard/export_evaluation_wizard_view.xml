@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <record id="export_evaluation_wizard_view" model="ir.ui.view">
+            <field name="name">Export Evaluation Wizard</field>
+            <field name="model">export.evaluation.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Export Evaluation Wizard" version="7.0">
+                    <group>
+                        <field name="template_id"/>
+                    </group>
+                    <footer>
+                        <button name="generate_xls" string="Print" type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="evaluation_person_wizard_view" model="ir.ui.view">
+            <field name="name">Export Evaluation Person Wizard</field>
+            <field name="model">export.evaluation.person.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Export Evaluation Wizard" version="7.0">
+                    <group>
+                        <field name="template_id"/>
+                    </group>
+                    <footer>
+                        <button name="generate_person_xls" string="Print" type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="export_evaluation_wizard_action" model="ir.actions.act_window">
+            <field name="name">Export Evaluation Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">export.evaluation.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+
+
+<!--         <record id="export_evaluation_person_wizard_action" model="ir.actions.act_window">
+            <field name="name">Export Evaluation Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">export.evaluation.person.wizard</field>
+            <field name="src_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record> -->
+
+
+        <act_window name="Export XLS Evaluation"
+                    src_model="res.partner"
+                    res_model="export.evaluation.person.wizard"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"
+                    id="export_evaluation_person_wizard_action"
+                    groups="kinesis_athletics.group_responsable"/>
+
+    
+    </data>
+</openerp>

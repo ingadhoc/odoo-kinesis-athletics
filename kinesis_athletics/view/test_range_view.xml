@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    Kinesis Athletics
+#    Copyright (C) 2014 Ingenieria Adhoc
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<!-- kinesis_athletics.test_range -->
+<!-- kinesis_athletics.test_range -->
+<!-- kinesis_athletics.test_range -->
+<openerp>
+    <data>
+
+        <!-- SEARCH VIEW -->
+        <record id="view_kinesis_athletics_test_range_filter" model="ir.ui.view">
+            <field name="name">kinesis_athletics.test_range.select</field>
+            <field name="model">kinesis_athletics.test_range</field>
+            <field name="arch" type="xml">
+                <search string="test_range" version="7.0">
+                    <group string="By Attribute">
+                    <field name="from_age" string="From Age"
+                            />
+                    <field name="to_age" string="To Age"
+                            />
+                    <field name="sex" string="Gender"
+                            />
+                    <field name="val_max" string="Maximum Value"
+                            />
+                    <field name="val_min" string="Minimum Value"
+                            />
+                    <field name="extreme_minimum" string="Extreme Minimum"
+                            />
+                    <field name="extreme_maximum" string="Extreme Maximum"
+                            />
+                    </group>
+                    <group string="By object">
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- FORMVIEW -->
+        <record id="view_kinesis_athletics_test_range_form" model="ir.ui.view">
+            <field name="name">kinesis_athletics.test_range.form</field>
+            <field name="model">kinesis_athletics.test_range</field>
+            <field name="arch" type="xml">
+                <form string="test_range" version="7.0">
+                    <header>
+                    </header>
+                    <sheet string="test_range">
+                     <group>
+                        <field name="from_age"
+                            />
+                        <field name="to_age"
+                            />
+                        <field name="sex"
+                            />
+                        <field name="val_max"
+                            />
+                        <field name="val_min"
+                            />
+                        <field name="extreme_minimum"
+                            />
+                        <field name="extreme_maximum"
+                            />
+                     </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- TREEVIEW -->
+
+        <record id="view_kinesis_athletics_test_range_tree" model="ir.ui.view">
+            <field name="name">kinesis_athletics.test_range.tree</field>
+            <field name="model">kinesis_athletics.test_range</field>
+            <field name="arch" type="xml">
+                <tree string="test_range"
+                    >
+                    <field name="from_age"
+                        />
+                    <field name="to_age"
+                        />
+                    <field name="sex"
+                        />
+                    <field name="val_max"
+                        />
+                    <field name="val_min"
+                        />
+                    <field name="extreme_minimum"
+                        />
+                    <field name="extreme_maximum"
+                        />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

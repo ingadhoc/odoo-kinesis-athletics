@@ -1,0 +1,33 @@
+id,name,sex,phone,email,is_company,firstname,lastname,birthdate_date
+partner_1,Federico Klasdo,Male,4257304,fklasdo@hotmail.com,False,Federico,Klasdo,2008-04-06
+partner_2,Jessica Mercer,Female,4545421,jmercer@gmail.com,False,Jessica,Mercer,2008-04-05
+partner_3,Josefina Ciri,Female,4477444,jciri@yahoo.com,False,Josefina,Ciri,2008-04-04
+partner_4,Juan Lopez,Male,4125440,jlopez@hotmail.com,False,Juan,Lopez,2009-10-11
+partner_5,Julia Campos,Female,4844421,jcampos@gmail.com,False,Julia,Campos,2009-10-10
+partner_6,Leandro Peres,Male,1142642145,lperes@yahoo.com,False,Leandro,Peres,2009-10-9
+partner_7,Luis Terson,Male,4987788,lterson@hotmail.com,False,Luis,Terson,2009-10-8
+partner_8,Marcelo Jalos,Male,4441122,mjalos@yahoo.com,False,Marcelo,Jalos,2007-10-11
+partner_9,Maria Malese,Female,4985141,mmalese@gmail.com,False,Maria,Malese,2007-10-10
+partner_10,Julia Peres,Female,4253564,jperes@yahoo.com,False,Julia,Peres,2007-10-9
+partner_11,Mariana Rivas,Female,4360025,mrivas@gmail.com,False,Mariana,Rivas,2007-10-8
+partner_13,Universidad de la Plata,,8102554588,info@universidaddlp.edu.ar,True,,,
+partner_15,Colegio San José,,4403080,info@colegiosanjose.com.ar,True,,,
+partner_16,Systemys,,4685510,systemsy@styemsys.com.ar,True,,,
+partner_17,Nicolas Rodriguez,Male,2445544,systemsy@styemsys.com.ar,False,Nicolas,Rodriguez,1990-10-10
+partner_18,Fernanda Lopez,Female,4622200,systemsy@styemsys.com.ar,False,Fernanda,Lopez,1990-10-9
+partner_19,Santiago Martin,Male,4877552,systemsy@styemsys.com.ar,False,Santiago,Martin,1990-10-8
+partner_20,Mariana Ramirez,Female,2445545,systemsy@styemsys.com.ar,False,Mariana,Ramirez,1980-10-10
+partner_22,Roberto Uni de la Plata,Male,4877553,mail@mail.com,False,Roberto,Uni de la Plata,1980-10-9
+partner_24,María Colegio San José,Female,4622202,mail@mail.com,False,María,Colegio San José,1980-10-8
+partner_25,Juan Román Systemys,Male,4877554,mail@mail.com,False,Juan Román,Systemys,1980-10-7
+partner_26,Clients,,4622202,mail@mail.com,False,,,1993-08-09
+partner_27,Kinesis Group,,4877554,mail@mail.com,False,,,1993-08-08
+partner_28,Martha Jassed,Female,4877555,mail@mail.com,False,Martha,Jaseed,1993-08-07
+partner_29,Alfredo Volt,Male,4877556,mail@mail.com,False,Alfredo,Volt,1999-10-10
+partner_30,Leandro Mase,Male,4877557,mail@mail.com,False,Leandro,Mase,1999-10-9
+partner_31,Osvaldo Luserno,Male,4877558,mail@mail.com,False,Osvaldo,Luserno,1999-10-8
+partner_32,Matias Michen,Male,4877559,mail@mail.com,False,Matias,Michen,1999-10-7
+partner_33,Josefina Sparten,Female,4877560,mail@mail.com,False,Josefina,Sparten,1999-10-6
+partner_34,Cecilia Marson,Female,4877561,mail@mail.com,False,Cecilia,Marson,1999-10-5
+partner_35,Marcela More,Female,4877562,mail@mail.com,False,Marcela,More,1999-10-4
+base.partner_root,Administrador,Male,4545325,mail@mail.com,False,Señor,Kinesis,1999-10-3

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    Kinesis Athletics
+#    Copyright (C) 2014 Ingenieria Adhoc
+#    No email
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+
+-->
+<openerp>
+    <data>
+
+        <menuitem
+            name="Kinesis"
+            id="menu_kinesis"
+            sequence="100"
+            groups="group_responsable"
+            />
+
+
+        <menuitem
+            name="Athletics"
+            id="menu_athletics"
+            sequence="20"
+            parent="menu_kinesis"
+            groups="group_responsable"
+            />
+
+
+        <menuitem
+            name="Configuration"
+            id="menu_configuration"
+            sequence="30"
+            parent="menu_kinesis"
+            groups="group_configuracion"
+            />
+
+
+        <menuitem
+            name="Contacts"
+            id="menu_contacts"
+            sequence="10"
+            parent="menu_kinesis"
+            groups="group_responsable"
+            />
+
+        <record id="action_kinesis_athletics_test_category_categories" model="ir.actions.act_window">
+            <field name="name">Categories</field>
+            <field name="res_model">kinesis_athletics.test_category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_kinesis_athletics_test_category_tree"/>
+            <field name="search_view_id" ref="view_kinesis_athletics_test_category_filter"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem
+            name="Categories"
+            id="menu_categories"
+            sequence="20"
+            action="action_kinesis_athletics_test_category_categories"
+            parent="menu_configuration"
+            groups="group_configuracion"
+            />
+
+        <record id="action_kinesis_athletics_evaluation_evaluation_templates" model="ir.actions.act_window">
+            <field name="name">Evaluation Templates</field>
+            <field name="res_model">kinesis_athletics.evaluation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_kinesis_athletics_evaluation_tree"/>
+            <field name="search_view_id" ref="view_kinesis_athletics_evaluation_filter"/>
+            <field name="context">{'default_is_template':True}</field>
+            <field name="domain">[('is_template','=',True)]</field>
+        </record>
+
+        <menuitem
+            name="Evaluation Templates"
+            id="menu_evaluation_templates"
+            sequence="40"
+            action="action_kinesis_athletics_evaluation_evaluation_templates"
+            parent="menu_athletics"
+            groups="group_configuracion"
+            />
+
+        <record id="action_kinesis_athletics_evaluation_evaluations" model="ir.actions.act_window">
+            <field name="name">Evaluations</field>
+            <field name="res_model">kinesis_athletics.evaluation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_kinesis_athletics_evaluation_tree"/>
+            <field name="search_view_id" ref="view_kinesis_athletics_evaluation_filter"/>
+            <field name="domain">[('is_template','=',False)]</field>
+        </record>
+
+        <menuitem
+            name="Evaluations"
+            id="menu_evaluations"
+            sequence="30"
+            action="action_kinesis_athletics_evaluation_evaluations"
+            parent="menu_athletics"
+            groups="group_responsable"
+            />
+
+        <record id="action_kinesis_athletics_group_groups" model="ir.actions.act_window">
+            <field name="name">Groups</field>
+            <field name="res_model">kinesis_athletics.group</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_kinesis_athletics_group_tree"/>
+            <field name="search_view_id" ref="view_kinesis_athletics_group_filter"/>
+            <field name="context">{'show_institutions':True,'default_actual_year':1, 'search_default_actual_year':1}</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem
+            name="Groups"
+            id="menu_groups"
+            sequence="100"
+            action="action_kinesis_athletics_group_groups"
+            parent="menu_contacts"
+            groups="group_responsable"
+            />
+
+        <record id="action_kinesis_athletics_partner_persons" model="ir.actions.act_window">
+            <field name="name">Persons</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_kinesis_athletics_partner_tree"/>
+            <field name="search_view_id" ref="view_kinesis_athletics_partner_filter"/>
+            <field name="context">{'show_actual_group':True, 'default_is_company':False}</field>
+            <field name="domain">[('is_company','=', False)]</field>
+        </record>
+
+        <menuitem
+            name="Persons"
+            id="menu_persons"
+            sequence="20"
+            action="action_kinesis_athletics_partner_persons"
+            parent="menu_contacts"
+            groups="group_responsable"
+            />
+
+        <record id="action_kinesis_athletics_test_tests" model="ir.actions.act_window">
+            <field name="name">Tests</field>
+            <field name="res_model">kinesis_athletics.test</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_kinesis_athletics_test_tree"/>
+            <field name="search_view_id" ref="view_kinesis_athletics_test_filter"/>
+            <field name="domain">[]</field>
+        </record>
+
+        <menuitem
+            name="Tests"
+            id="menu_tests"
+            sequence="20"
+            action="action_kinesis_athletics_test_tests"
+            parent="menu_athletics"
+            groups="group_configuracion"
+            />
+
+
+        <menuitem
+            name="Units"
+            id="menu_units"
+            sequence="10"
+            action="product.product_uom_form_action"
+            parent="menu_configuration"
+            groups="group_configuracion"
+            />
+
+    </data>
+</openerp>
+<!-- vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4
+     -->

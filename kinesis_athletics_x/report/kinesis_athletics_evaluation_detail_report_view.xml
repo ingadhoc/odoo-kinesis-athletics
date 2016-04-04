@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_report_kinesis_athletics_evaluation_detail_graph" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation_detail.report.graph</field>
+            <field name="model">kinesis_athletics.evaluation_detail.report</field>
+            <field name="arch" type="xml">
+                <graph string="Evaluation Details" type="pivot" stacked="True">
+                    <!-- <field name="partner_id" type="col"/> -->
+                    <!-- <field name="test_id" type="row"/> -->
+                    <field name="result_avg" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+    
+
+        <record id="view_report_kinesis_athletics_evaluation_detail_filter" model="ir.ui.view">
+            <field name="name">kinesis_athletics.evaluation_detail.report.select</field>
+            <field name="model">kinesis_athletics.evaluation_detail.report</field>
+            <field name="arch" type="xml">
+                <search string="Evaluation Details">
+                    <field name="test_id"/>
+                    <field name="partner_id"/>
+                    <field name="group_id"/>
+                    <field name="first_parent_id"/>
+                    <field name="template_id"/>
+                    <field name="evaluation_id"/>
+                    <field name="age"/>
+                    <field name="date" string="Fecha Desde" filter_domain="[('date','&gt;=',self)]"/>
+                    <field name="date" string="Fecha Hasta" filter_domain="[('date','&lt;=',self)]"/>
+                    <field name="age" string="Edad Desde" filter_domain="[('age','&gt;=',self)]"/>
+                    <field name="age" string="Edad Hasta" filter_domain="[('age','&lt;=',self)]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Person" context="{'group_by':'partner_id'}"/>
+                        <filter string="Group" context="{'group_by':'group_id'}"/>
+                        <filter string="First Parent" context="{'group_by':'first_parent_id'}"/>
+                        <filter string="Company" groups="base.group_multi_company" context="{'group_by':'company_id'}"/>
+                        <filter string="Template" context="{'group_by':'template_id'}"/>
+                        <filter string="Evaluation" context="{'group_by':'evaluation_id'}"/>
+                        <filter string="Evaluation Date" context="{'group_by':'date'}"/>
+                        <filter string="User" context="{'group_by':'user_id'}"/>
+                        <filter string="Test" context="{'group_by':'test_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="action_report_kinesis_athletics_evaluation_details" model="ir.actions.act_window">
+           <field name="name">Evaluation Details</field>
+           <field name="res_model">kinesis_athletics.evaluation_detail.report</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">graph</field>
+       </record>
+
+       <record model="ir.actions.act_window.view" id="action_report_kinesis_athletics_evaluation_details_graph">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_report_kinesis_athletics_evaluation_detail_graph"/>
+            <field name="act_window_id" ref="action_report_kinesis_athletics_evaluation_details"/>
+       </record>
+
+
+    
+
+        <menuitem
+            name="Kinesis"
+            id="menu_report"
+            sequence="50"
+            parent="base.menu_reporting"
+            />
+
+        <menuitem
+            name="Evaluations"
+            id="menu_report_evaluation"
+            sequence="50"
+            action="action_report_kinesis_athletics_evaluation_details"
+            parent="menu_report"
+            />
+
+      
+
+    </data>
+</openerp>

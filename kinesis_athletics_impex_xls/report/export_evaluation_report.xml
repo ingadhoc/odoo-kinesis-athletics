@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+    <report
+        id="kinesis_athletics_export_xls"
+        model="kinesis_athletics.group"
+        report_type="qweb-html"
+        string="Kinesis Export XLS"
+        name="kinesis_athletics_export_xls.groups_xls"
+        file="kinesis_athletics_export_xls.groups_xls"
+    />
+
+    <record id="kinesis_athletics_export_xls" model="ir.actions.report.xml">
+        <field name="report_type">controller</field>
+        <field name="report_rml">/report/kinesis_athletics_export_evaluation</field>
+    </record>
+
+</data>
+</openerp>

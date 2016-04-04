@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <menuitem name="Kinesis" id="portal_kinesis_athletics" parent="portal.portal_menu"
+            sequence="10"/>
+        <menuitem name="Evaluation" id="portal_kinesis_athletics_evaluation" parent="portal_kinesis_athletics" action="kinesis_athletics.action_kinesis_athletics_evaluation_evaluations" sequence="20"/>
+        <menuitem name="Person" id="portal_kinesis_athletics_person" parent="portal_kinesis_athletics" action="kinesis_athletics.action_kinesis_athletics_partner_persons" sequence="10"/>
+
+
+
+    <record id="portal.partner_wizard_action" model="ir.actions.act_window">
+        <field name="groups_id" eval="[(4, ref('base.group_system'))]"/>
+        </record>
+
+    <record id="base.menu_reporting" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4, ref('base.group_portal'))]"/>
+        </record>
+    </data>
+</openerp>
