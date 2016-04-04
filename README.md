@@ -1,4 +1,4 @@
-[![Runbot Status](http://runbot.adhoc.com.ar/runbot/badge/flat/129/8.0.svg)](http://runbot.adhoc.com.ar/runbot/repo/github-com-ingadhoc-odoo-kinesis-athletics-129)
+[![Runbot Status](http://runbot.adhoc.com.ar/runbot/badge/flat/46/8.0.svg)](http://runbot.adhoc.com.ar/runbot/repo/github-com-ingadhoc-odoo-kinesis-athletics-46)
 [![Build Status](https://travis-ci.org/ingadhoc/odoo-kinesis-athletics.svg?branch=8.0)](https://travis-ci.org/ingadhoc/odoo-kinesis-athletics)
 [![Coverage Status](https://coveralls.io/repos/ingadhoc/odoo-kinesis-athletics/badge.png?branch=8.0)](https://coveralls.io/r/ingadhoc/odoo-kinesis-athletics?branch=8.0)
 [![Code Climate](https://codeclimate.com/github/ingadhoc/odoo-kinesis-athletics/badges/gpa.svg)](https://codeclimate.com/github/ingadhoc/odoo-kinesis-athletics)
