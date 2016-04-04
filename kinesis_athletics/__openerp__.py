@@ -32,7 +32,7 @@
     'license': 'AGPL-3',
     'name': u'Kinesis Athletics',
     'test': [],
-    'update_xml': [   u'security/kinesis_athletics_group.xml',
+    'data': [   u'security/kinesis_athletics_group.xml',
                       u'view/evaluation_detail_view.xml',
                       u'view/group_view.xml',
                       u'view/level_view.xml',

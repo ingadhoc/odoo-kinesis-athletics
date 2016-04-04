@@ -16,7 +16,7 @@
     'installable': True,
     'license': 'AGPL-3',
     'test': [],
-    'update_xml': [
+    'data': [
         'wizard/export_evaluation_wizard_view.xml',
         'wizard/import_evaluation_wizard_view.xml',
         'report/export_evaluation_report.xml',
