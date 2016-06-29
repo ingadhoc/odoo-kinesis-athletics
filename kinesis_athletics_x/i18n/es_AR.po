@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-02 12:45+0000\n"
-"PO-Revision-Date: 2014-10-02 09:46-0300\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2016-06-29 15:44+0000\n"
+"PO-Revision-Date: 2016-06-29 12:47-0300\n"
+"Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,22 +48,15 @@ msgid "Age"
 msgstr "Edad"
 
 #. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,age_avg:0
-msgid "Age Average"
-msgstr "Edad Promedio"
-
-#. module: kinesis_athletics_x
-#: selection:kinesis_athletics.evaluation_detail,rating_below_minimum:0
-#: selection:kinesis_athletics.evaluation_detail,rating_between:0
-#: selection:kinesis_athletics.evaluation_detail,rating_over_maximum:0
 #: selection:kinesis_athletics.evaluation_detail,state:0
 msgid "Alert"
 msgstr "Alerta"
 
 #. module: kinesis_athletics_x
-#: constraint:kinesis_athletics.evaluation_detail:0
+#: code:addons/kinesis_athletics_x/evaluation_detail.py:230
+#, python-format
 msgid "Already loaded the test"
-msgstr "El test ya fue cargado "
+msgstr "Already loaded the test"
 
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.reevaluate.wizard:kinesis_athletics_x.wizard_reevaluate_form_view
@@ -105,17 +98,13 @@ msgstr "Compañías"
 
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.evaluation:kinesis_athletics_x.view_kinesis_athletics_evaluation_filter
+#: field:kinesis_athletics.evaluation_detail,company_id:0
 #: view:kinesis_athletics.evaluation_detail.report:kinesis_athletics_x.view_report_kinesis_athletics_evaluation_detail_filter
 #: field:kinesis_athletics.evaluation_detail.report,company_id:0
 #: view:kinesis_athletics.group:kinesis_athletics_x.view_kinesis_athletics_group_filter
 #: view:res.partner:kinesis_athletics_x.view_kinesis_athletics_partner_form
 msgid "Company"
 msgstr "Empresa"
-
-#. module: kinesis_athletics_x
-#: field:res.partner,company_name:0
-msgid "Company Name"
-msgstr "Nombre de la Empresa"
 
 #. module: kinesis_athletics_x
 #: view:website:kinesis_athletics_x.report_evaluation_document
@@ -179,6 +168,7 @@ msgstr "Creado en"
 #: view:kinesis_athletics.evaluation:kinesis_athletics_x.view_kinesis_athletics_evaluation_filter
 #: field:kinesis_athletics.evaluation.person.wizard,date:0
 #: field:kinesis_athletics.evaluation.wizard,date:0
+#: field:kinesis_athletics.evaluation_detail,date:0
 msgid "Date"
 msgstr "Fecha"
 
@@ -216,7 +206,7 @@ msgid "Escalate to New Group"
 msgstr "Subir de año al grupo"
 
 #. module: kinesis_athletics_x
-#: code:addons/kinesis_athletics_x/evaluation.py:150
+#: code:addons/kinesis_athletics_x/evaluation.py:154
 #: view:kinesis_athletics.evaluation:kinesis_athletics_x.view_kinesis_athletics_evaluation_graph
 #: view:kinesis_athletics.evaluation_detail.report:kinesis_athletics_x.view_report_kinesis_athletics_evaluation_detail_filter
 #: field:kinesis_athletics.evaluation_detail.report,evaluation_id:0
@@ -250,12 +240,18 @@ msgid "Evaluation Template"
 msgstr "Plantillas de Evaluaciones"
 
 #. module: kinesis_athletics_x
+#: model:ir.actions.act_window,name:kinesis_athletics_x.action_kinesis_athletics_evaluation_datail
 #: model:ir.ui.menu,name:kinesis_athletics_x.menu_report_evaluation
 #: view:kinesis_athletics.evaluation:kinesis_athletics_x.view_kinesis_athletics_evaluation_form
 #: view:kinesis_athletics.group:kinesis_athletics_x.view_kinesis_athletics_group_form
 #: view:res.partner:kinesis_athletics_x.view_kinesis_athletics_partner_form
 msgid "Evaluations"
 msgstr "Evaluaciones"
+
+#. module: kinesis_athletics_x
+#: model:ir.ui.menu,name:kinesis_athletics_x.menu_evaluations_detail
+msgid "Evaluations Details"
+msgstr "Detalles de Evaluaciones"
 
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.evaluation_detail.report:kinesis_athletics_x.view_report_kinesis_athletics_evaluation_detail_filter
@@ -286,7 +282,7 @@ msgstr "Graficos"
 
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.evaluation:kinesis_athletics_x.view_kinesis_athletics_evaluation_filter
-#: view:kinesis_athletics.evaluation_detail:kinesis_athletics_x.view_kinesis_athletics_evaluation_detail_kanban
+#: field:kinesis_athletics.evaluation_detail,group_id:0
 #: view:kinesis_athletics.evaluation_detail.report:kinesis_athletics_x.view_report_kinesis_athletics_evaluation_detail_filter
 #: field:kinesis_athletics.evaluation_detail.report,group_id:0
 msgid "Group"
@@ -316,10 +312,9 @@ msgid "Group:"
 msgstr "Grupo:"
 
 #. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation,has_group:0
-#: field:kinesis_athletics.group,has_group:0 field:res.partner,has_group:0
+#: field:kinesis_athletics.group,use_groups:0
 msgid "Has Group"
-msgstr "Tiene Grupo"
+msgstr "Has Group"
 
 #. module: kinesis_athletics_x
 #: field:kinesis_athletics.evaluation.person.wizard,id:0
@@ -331,15 +326,12 @@ msgid "ID"
 msgstr "ID"
 
 #. module: kinesis_athletics_x
-#: selection:kinesis_athletics.evaluation_detail,rating_below_minimum:0
-#: selection:kinesis_athletics.evaluation_detail,rating_between:0
-#: selection:kinesis_athletics.evaluation_detail,rating_over_maximum:0
 #: selection:kinesis_athletics.evaluation_detail,state:0
 msgid "Ideal"
 msgstr "Ideal"
 
 #. module: kinesis_athletics_x
-#: code:addons/kinesis_athletics_x/group.py:54
+#: code:addons/kinesis_athletics_x/group.py:49
 #, python-format
 msgid "Invalid Action!"
 msgstr "¡Acción Invalida!"
@@ -386,6 +378,11 @@ msgid "Measure Description"
 msgstr "Descripción de la Medida"
 
 #. module: kinesis_athletics_x
+#: model:ir.actions.report.xml,name:kinesis_athletics_x.kinesis_medical_report
+msgid "Medical Report"
+msgstr "Reporte Médico"
+
+#. module: kinesis_athletics_x
 #: field:kinesis_athletics.evaluation,complete_name:0
 #: view:kinesis_athletics.test:kinesis_athletics_x.view_kinesis_athletics_test_form
 #: view:kinesis_athletics.test_selection:kinesis_athletics_x.view_kinesis_athletics_test_selection_form
@@ -413,9 +410,6 @@ msgid "New Year"
 msgstr "Nuevo año"
 
 #. module: kinesis_athletics_x
-#: selection:kinesis_athletics.evaluation_detail,rating_below_minimum:0
-#: selection:kinesis_athletics.evaluation_detail,rating_between:0
-#: selection:kinesis_athletics.evaluation_detail,rating_over_maximum:0
 #: selection:kinesis_athletics.evaluation_detail,state:0
 msgid "None"
 msgstr "Ninguno"
@@ -429,7 +423,7 @@ msgstr "Observaciones"
 #: model:ir.model,name:kinesis_athletics_x.model_res_partner
 #: field:kinesis_athletics.evaluation_detail,partner_id:0
 msgid "Partner"
-msgstr "Persona"
+msgstr "Socio"
 
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.evaluation:kinesis_athletics_x.view_kinesis_athletics_evaluation_filter
@@ -476,9 +470,10 @@ msgid "Result Sum"
 msgstr "Resultado Sumado"
 
 #. module: kinesis_athletics_x
-#: constraint:kinesis_athletics.evaluation_detail:0
+#: code:addons/kinesis_athletics_x/evaluation_detail.py:242
+#, python-format
 msgid "Result out of range"
-msgstr "Resultado fuera de rango"
+msgstr "Result out of range"
 
 #. module: kinesis_athletics_x
 #: field:kinesis_athletics.evaluation,evaluation_detail_selection_ids:0
@@ -491,9 +486,6 @@ msgid "State"
 msgstr "Estado"
 
 #. module: kinesis_athletics_x
-#: selection:kinesis_athletics.evaluation_detail,rating_below_minimum:0
-#: selection:kinesis_athletics.evaluation_detail,rating_between:0
-#: selection:kinesis_athletics.evaluation_detail,rating_over_maximum:0
 #: selection:kinesis_athletics.evaluation_detail,state:0
 msgid "Superior"
 msgstr "Superior"
@@ -517,18 +509,13 @@ msgid "Test Class"
 msgstr "Clase del test"
 
 #. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,test_description:0
-msgid "Test Description"
-msgstr "Descripción del Test"
-
-#. module: kinesis_athletics_x
-#: view:kinesis_athletics.evaluation_detail:kinesis_athletics_x.view_kinesis_athletics_evaluation_detail_tree
+#: view:kinesis_athletics.evaluation:kinesis_athletics_x.view_kinesis_athletics_evaluation_form
 msgid "Test Detail"
 msgstr "Detalle del Test"
 
 #. module: kinesis_athletics_x
 #: model:ir.actions.act_window,name:kinesis_athletics_x.action_kinesis_athletics_test_details
-#: view:kinesis_athletics.evaluation_detail:kinesis_athletics_x.view_kinesis_athletics_evaluation_detail_tree
+#: view:kinesis_athletics.evaluation:kinesis_athletics_x.view_kinesis_athletics_evaluation_form
 msgid "Test Details"
 msgstr "Detalles del Test"
 
@@ -548,11 +535,6 @@ msgid "Test Selection"
 msgstr "Selección de Test"
 
 #. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,test_type:0
-msgid "Test Type"
-msgstr "Tipo de Test"
-
-#. module: kinesis_athletics_x
 #: code:addons/kinesis_athletics_x/test_range.py:29
 #, python-format
 msgid "There are ranges in conflict"
@@ -563,11 +545,6 @@ msgstr "Existen rangos en conflicto"
 #, python-format
 msgid "There are values in conflict"
 msgstr "Existen valores en conflicto"
-
-#. module: kinesis_athletics_x
-#: constraint:res.company:0
-msgid "Tiene cursos/areas cargadas"
-msgstr "Tiene cursos/áreas cargadas"
 
 #. module: kinesis_athletics_x
 #: model:product.uom.categ,name:kinesis_athletics_x.product_uom_categ_2
@@ -585,11 +562,6 @@ msgid "Type..."
 msgstr "Tipo..."
 
 #. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,uom_id:0
-msgid "Unit"
-msgstr "Unidad"
-
-#. module: kinesis_athletics_x
 #: view:kinesis_athletics.test:kinesis_athletics_x.view_kinesis_athletics_test_form
 msgid "Unit of measure..."
 msgstr "Unidad de Medida..."
@@ -598,6 +570,12 @@ msgstr "Unidad de Medida..."
 #: model:product.uom.categ,name:kinesis_athletics_x.product_uom_categ_1
 msgid "Unsorted/Imported Units"
 msgstr "Unidades importadas"
+
+#. module: kinesis_athletics_x
+#: field:kinesis_athletics.evaluation,use_groups:0
+#: field:res.partner,use_groups:0
+msgid "Use Group"
+msgstr "Use Group"
 
 #. module: kinesis_athletics_x
 #: view:kinesis_athletics.evaluation_detail.report:kinesis_athletics_x.view_report_kinesis_athletics_evaluation_detail_filter
@@ -635,7 +613,7 @@ msgid "Year"
 msgstr "Año"
 
 #. module: kinesis_athletics_x
-#: code:addons/kinesis_athletics_x/group.py:54
+#: code:addons/kinesis_athletics_x/group.py:49
 #, python-format
 msgid "You cannot delete a group containing persons."
 msgstr "No se puede eliminar un grupo que contiene personas."
@@ -658,19 +636,9 @@ msgstr "Evaluacion"
 
 #. module: kinesis_athletics_x
 #: model:ir.model,name:kinesis_athletics_x.model_kinesis_athletics_evaluation_detail
-#: view:kinesis_athletics.evaluation_detail:kinesis_athletics_x.view_kinesis_athletics_evaluation_detail_tree
+#: view:kinesis_athletics.evaluation_detail:kinesis_athletics_x.view_kinesis_athletics_evaluation_detail_normal_tree
 msgid "evaluation_detail"
 msgstr "Detalles de  Evaluación"
-
-#. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,plotband_ext_max:0
-msgid "ext_max"
-msgstr "Maximo Extremo"
-
-#. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,plotband_ext_min:0
-msgid "ext_min"
-msgstr "Minimo Extremo"
 
 #. module: kinesis_athletics_x
 #: model:product.uom,name:kinesis_athletics_x.product_uom_3
@@ -688,24 +656,12 @@ msgid "mmHg"
 msgstr "mmHg"
 
 #. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,rating_below_minimum:0
-msgid "rating_below_minimum"
-msgstr "rating_below_minimum"
-
-#. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,rating_between:0
-msgid "rating_between"
-msgstr "rating_between"
-
-#. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,rating_over_maximum:0
-msgid "rating_over_maximum"
-msgstr "rating_over_maximum"
-
-#. module: kinesis_athletics_x
-#: selection:kinesis_athletics.evaluation_detail,test_type:0
-msgid "selection"
-msgstr "Seleccionable "
+#: view:kinesis_athletics.evaluation.person.wizard:kinesis_athletics_x.wizard_evaluation_person_form_view
+#: view:kinesis_athletics.evaluation.wizard:kinesis_athletics_x.wizard_evaluation_form_view
+#: view:kinesis_athletics.move_group_new_year.wizard:kinesis_athletics_x.wizard_move_year_form_view
+#: view:kinesis_athletics.reevaluate.wizard:kinesis_athletics_x.wizard_reevaluate_form_view
+msgid "or"
+msgstr "or"
 
 #. module: kinesis_athletics_x
 #: model:ir.model,name:kinesis_athletics_x.model_kinesis_athletics_test
@@ -726,18 +682,3 @@ msgstr "Rango del Test"
 #: field:kinesis_athletics.group,eval_group_count:0
 msgid "unknown"
 msgstr "Indefinido"
-
-#. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,plotband_val_max:0
-msgid "val_max"
-msgstr "Valor Maximo"
-
-#. module: kinesis_athletics_x
-#: field:kinesis_athletics.evaluation_detail,plotband_val_min:0
-msgid "val_min"
-msgstr "Valor Minimo"
-
-#. module: kinesis_athletics_x
-#: selection:kinesis_athletics.evaluation_detail,test_type:0
-msgid "value"
-msgstr "Valor"
