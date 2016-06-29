@@ -10,7 +10,10 @@
             <field name="arch" type="xml">
                 <search string="evaluation_detail" version="7.0">
                     <group string="By Attribute">
-                        <field name="partner_id" string="Partner"/>
+                        <field name="partner_id" string="Person"/>
+                        <field name="company_id" string="Company"/>
+                        <field name="group_id" string="Group"/>
+                        <field name="date" string="Date"/>
                         <field name="evaluation_id" string="Evaluation"/>
                         <field name="test_id" string="Test"/>
                         <field name="first_parent_id" string="Test Class"/>
@@ -18,8 +21,10 @@
                     <group expand="1" string="Group By...">
                         <filter string="Test" icon="terp-personal" domain="[]" context="{'group_by':'test_id'}" />
                         <filter string="Person" icon="terp-partner" context="{'group_by':'partner_id'}"/>
+                        <filter string="Company" icon="terp-partner" context="{'group_by':'company_id'}"/>
+                        <filter string="Group" icon="terp-partner" context="{'group_by':'group_id'}"/>
                         <filter string="Evaluation" icon="terp-partner" context="{'group_by':'evaluation_id'}"/>
-                        <filter string="Test Class" icon="terp-partner" context="{'group_by':'first_parent_id'}"/>
+                        <filter string="Date" icon="terp-partner" context="{'group_by':'date'}"/>
                     </group>
                 </search>
             </field>
@@ -108,23 +113,44 @@
             </field>
         </record>
 
-        <!-- TREEVIEW -->
-         <record id="view_kinesis_athletics_evaluation_detail_tree" model="ir.ui.view">
-        <field name="name">kinesis_athletics.evaluation_detail.tree</field>
+     
+
+    <record id="view_kinesis_athletics_evaluation_detail_normal_tree" model="ir.ui.view">
+        <field name="name">kinesis_athletics.evaluation_detail.normal.tree</field>
         <field name="model">kinesis_athletics.evaluation_detail</field>
         <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_evaluation_detail_tree"/>
-        <field name="secuence">20</field>
         <field name="arch" type="xml">
             <tree string="evaluation_detail" position="replace">
-                <tree string="evaluation_detail" editable="top" colors="black:result==0.0;black:state==False;black:state=='none';blue:state=='superior';red:state=='alert';green:state=='ideal'">
-                    <button type="object" string="Test Detail" icon="STOCK_JUSTIFY_LEFT" help="Test Details" name="get_test_description" context="{'readonly':True}"/>
-                    <field name="test_id"/>
-                    <field name="result" attrs="{'readonly':[('test_type','!=','value')]}"/>
-                    <field name="test_type" invisible="1"/>
-                    <field name="test_selection_id" domain="[('test_id','=', test_id)]" attrs="{'readonly':[('test_type','!=','selection')]}"/>
+                <tree string="evaluation_detail" create="false" colors="black:result==0.0;black:state==False;black:state=='none';blue:state=='superior';red:state=='alert';green:state=='ideal'">
                     <field name="state" invisible="1"/>
+                    <field name="partner_id"/>
+                    <field name="test_id"/>
+                    <field name="result"/>
+                    <field name="date"/>
+                    <field name="company_id"/>
+                    <field name="group_id"/>
                 </tree>
             </tree>
+        </field>
+    </record>
+
+    <record id="view_kinesis_athletics_evaluation_detail_normal_form" model="ir.ui.view">
+        <field name="name">kinesis_athletics.evaluation_detail.normal.form</field>
+        <field name="model">kinesis_athletics.evaluation_detail</field>
+        <field name="inherit_id" ref="kinesis_athletics.view_kinesis_athletics_evaluation_detail_form"/>
+        <field name="arch" type="xml">
+            <group position="replace">
+                <group>
+                    <field name="partner_id"/>
+                    <field name="test_id"/>
+                    <field name="result"/>
+                </group>
+                <group>
+                    <field name="date"/>
+                    <field name="company_id"/>
+                    <field name="group_id"/>
+                </group>
+            </group>
         </field>
     </record>
 

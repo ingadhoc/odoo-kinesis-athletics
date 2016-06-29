@@ -20,7 +20,7 @@ class evaluation_detail(models.Model):
         }
 
     # Lo sacamos total no interesa que se actualice en tiempo real y sacamos el
-    # store por un tema de performance  
+    # store por un tema de performance
     @api.depends(
         'result',
         # 'test_id',
@@ -36,7 +36,7 @@ class evaluation_detail(models.Model):
         # 'evaluation_id',
         # 'evaluation_id.is_template',
         # 'evaluation_id.partner_id',
-        )
+    )
     @api.one
     def _get_state(self):
         test = self.test_id
@@ -59,7 +59,7 @@ class evaluation_detail(models.Model):
         self.state = state
 
     # Lo sacamos total no interesa que se actualice en tiempo real y sacamos el
-    # store por un tema de performance    
+    # store por un tema de performance
     # @api.depends(
     #     'test_id',
     #     'test_id.type',
@@ -135,7 +135,8 @@ class evaluation_detail(models.Model):
         'Partner',
         related='evaluation_id.partner_id',
         copy=False,
-        readonly=True,)
+        readonly=True,
+        store=True)
     uom_id = fields.Many2one(
         'product.uom',
         'Unit',
@@ -196,6 +197,26 @@ class evaluation_detail(models.Model):
         related='test_id.test_category_id.first_parent_id',
         copy=False,
         string='Test Class',
+        readonly=True,
+        store=True)
+    group_id = fields.Many2one(
+        'kinesis_athletics.group',
+        related='evaluation_id.group_id',
+        string="Group",
+        copy=False,
+        readonly=True,
+        store=True)
+    date = fields.Date(
+        related='evaluation_id.date',
+        string="Date",
+        copy=False,
+        readonly=True,
+        store=True)
+    company_id = fields.Many2one(
+        'res.company',
+        related='evaluation_id.company_id',
+        string="Company",
+        copy=False,
         readonly=True,
         store=True)
 
