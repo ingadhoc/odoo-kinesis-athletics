@@ -1,2 +1,3 @@
 oca_web https://github.com/oca/web.git
 adhoc_partner https://github.com/ingadhoc/partner.git
+aeroo_reports https://github.com/ingadhoc/aeroo_reports.git
