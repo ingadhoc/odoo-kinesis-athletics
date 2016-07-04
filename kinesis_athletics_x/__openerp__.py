@@ -2,7 +2,7 @@
 
 {
     'name': 'Kinesis Athletics X',
-    'version': '8.0.0.0.0',
+    'version': '8.0.0.1.0',
     'author': 'ADHOC SA',
     'description': 'Kinesis Athletics X. xlrd should be installed.',
     'website': 'www.adhoc.com.ar',
