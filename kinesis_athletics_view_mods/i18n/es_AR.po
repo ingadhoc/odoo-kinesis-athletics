@@ -1,20 +1,21 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* kinesis_athletics_view_mods
-#
+# * kinesis_athletics_view_mods
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: odoo-kinesis-athletics (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-26 15:04+0000\n"
-"PO-Revision-Date: 2014-11-26 12:05-0300\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2016-07-04 19:57+0000\n"
+"PO-Revision-Date: 2016-04-04 14:49+0000\n"
+"Last-Translator: Juan José Scarafía <scarafia.juanjose@gmail.com>\n"
+"Language-Team: Spanish (Argentina) (http://www.transifex.com/adhoc/ingadhoc-odoo-kinesis-athletics-8-0/language/es_AR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 1.5.4\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_AR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: kinesis_athletics_view_mods
 #: view:res.partner:kinesis_athletics_view_mods.view_kinesis_athletics_partner_form
@@ -22,20 +23,15 @@ msgid "- Delete"
 msgstr "- Eliminar"
 
 #. module: kinesis_athletics_view_mods
+#: view:res.partner:kinesis_athletics_view_mods.view_kinesis_athletics_partner_filter
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: kinesis_athletics_view_mods
 #: model:ir.actions.act_window,name:kinesis_athletics_view_mods.action_kinesis_athletics_x_res_company
 #: view:res.partner:kinesis_athletics_view_mods.view_kinesis_athletics_partner_filter
 msgid "Company"
 msgstr "Empresa"
-
-#. module: kinesis_athletics_view_mods
-#: view:res.partner:kinesis_athletics_view_mods.view_kinesis_athletics_partner_filter
-msgid "Group"
-msgstr "Grupo"
-
-#. module: kinesis_athletics_view_mods
-#: view:res.partner:kinesis_athletics_view_mods.view_kinesis_athletics_partner_filter
-msgid "Group By..."
-msgstr "Agrupar por..."
 
 #. module: kinesis_athletics_view_mods
 #: model:ir.actions.act_window,name:kinesis_athletics_view_mods.action_kinesis_athletics_x_tables
@@ -52,6 +48,16 @@ msgstr "Abrir"
 #: view:res.partner:kinesis_athletics_view_mods.view_kinesis_athletics_partner_form
 msgid "Personal Information"
 msgstr "Información Personal"
+
+#. module: kinesis_athletics_view_mods
+#: view:res.partner:kinesis_athletics_view_mods.view_kinesis_athletics_partner_filter
+msgid "Suppliers"
+msgstr ""
+
+#. module: kinesis_athletics_view_mods
+#: view:res.partner:kinesis_athletics_view_mods.view_kinesis_athletics_partner_filter
+msgid "True"
+msgstr ""
 
 #. module: kinesis_athletics_view_mods
 #: model:ir.actions.act_window,name:kinesis_athletics_view_mods.action_kinesis_athletics_x_res_user
